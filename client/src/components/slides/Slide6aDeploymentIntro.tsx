@@ -144,39 +144,39 @@ const Slide6aDeploymentIntro = () => {
                 
                 {activeStep === 1 && (
                   <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
-                    <h4 className="font-semibold text-badir-mocha mb-4 flex items-center">
-                      <i className="fas fa-lightbulb text-badir-rose mr-2"></i>
-                      Key Deployment Concepts
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
-                          <i className="fas fa-cube"></i>
+                    <div className="flex justify-center items-center">
+                      <div className="bg-badir-rose/10 rounded-lg p-4 max-w-lg">
+                        <h4 className="font-semibold text-badir-mocha text-center mb-3">Smart Contract Flow</h4>
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex-1 text-center">
+                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
+                              <i className="fas fa-code"></i>
+                            </div>
+                            <p className="text-sm font-medium">Development</p>
+                          </div>
+                          <div className="w-8 flex justify-center">
+                            <i className="fas fa-arrow-right text-badir-rose/60"></i>
+                          </div>
+                          <div className="flex-1 text-center">
+                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
+                              <i className="fas fa-rocket"></i>
+                            </div>
+                            <p className="text-sm font-medium">Deployment</p>
+                          </div>
+                          <div className="w-8 flex justify-center">
+                            <i className="fas fa-arrow-right text-badir-rose/60"></i>
+                          </div>
+                          <div className="flex-1 text-center">
+                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
+                              <i className="fas fa-eth"></i>
+                            </div>
+                            <p className="text-sm font-medium">Use</p>
+                          </div>
                         </div>
-                        <div>
-                          <h5 className="font-medium text-badir-mocha mb-1">Blockchain Network</h5>
-                          <p className="text-sm text-badir-mocha/70">The distributed ledger where the contract will live permanently</p>
-                        </div>
+                        <p className="text-sm text-badir-mocha/80 text-center">
+                          Smart contracts are deployed once and remain permanent on the blockchain, making deployment a critical step in the development process.
+                        </p>
                       </div>
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
-                          <i className="fas fa-gas-pump"></i>
-                        </div>
-                        <div>
-                          <h5 className="font-medium text-badir-mocha mb-1">Gas Fees</h5>
-                          <p className="text-sm text-badir-mocha/70">Cost paid to miners for processing the deployment transaction</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
-                          <i className="fas fa-file-contract"></i>
-                        </div>
-                        <div>
-                          <h5 className="font-medium text-badir-mocha mb-1">Contract Address</h5>
-                          <p className="text-sm text-badir-mocha/70">Unique identifier for accessing the deployed contract</p>
-                        </div>
-                      </div>
-
                     </div>
                   </div>
                 )}
