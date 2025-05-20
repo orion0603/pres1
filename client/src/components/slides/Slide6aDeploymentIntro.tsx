@@ -28,7 +28,7 @@ const DeploymentAnimation: React.FC = () => {
   
   return (
     <div className="h-full w-full flex flex-col items-center justify-center">
-      <div className="relative w-full max-w-4xl h-[500px] rounded-xl bg-gradient-to-b from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/20 overflow-hidden">
+      <div className="relative w-full max-w-3xl h-[400px] rounded-xl bg-gradient-to-b from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/20 overflow-hidden">
         {/* Blockchain network visualization */}
         <div className="absolute inset-0 z-10">
           <svg width="100%" height="100%" className="opacity-20">
@@ -42,7 +42,7 @@ const DeploymentAnimation: React.FC = () => {
         {/* Dynamic path for the deployment process */}
         <svg className="absolute inset-0 z-20" width="100%" height="100%">
           <motion.path
-            d="M 100,250 Q 180,100 300,250 T 500,250 T 700,250"
+            d="M 80,150 Q 160,80 240,150 T 400,150 T 560,150"
             fill="none"
             stroke="#72383D"
             strokeWidth="2"
@@ -62,14 +62,14 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 1: Compiling Contract */}
         <motion.div 
-          className="absolute top-[180px] left-[100px] z-30"
+          className="absolute top-[150px] left-[80px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <div className={`w-44 h-48 rounded-lg ${contractReady ? 'bg-white' : 'bg-gray-100'} shadow-lg flex flex-col items-center justify-center p-4 border-2 border-badir-tan/30 transition-all duration-500`}>
+          <div className={`w-36 h-36 rounded-lg ${contractReady ? 'bg-white' : 'bg-gray-100'} shadow-lg flex flex-col items-center justify-center p-3 border-2 border-badir-tan/30 transition-all duration-500`}>
             <motion.div 
-              className={`w-16 h-16 rounded-full flex items-center justify-center mb-3 ${contractReady ? 'bg-badir-rose/10' : 'bg-gray-200'}`}
+              className={`w-12 h-12 rounded-full flex items-center justify-center mb-2 ${contractReady ? 'bg-badir-rose/10' : 'bg-gray-200'}`}
               animate={{ scale: contractReady ? [1, 1.1, 1] : 1 }}
               transition={{ duration: 1, repeat: contractReady ? Infinity : 0, repeatType: "reverse" }}
             >
@@ -89,7 +89,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 2: Network Connection */}
         <motion.div 
-          className="absolute top-[100px] left-[300px] z-30"
+          className="absolute top-[80px] left-[240px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 1 }}
@@ -116,7 +116,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 3: Preparing Deployment */}
         <motion.div 
-          className="absolute top-[180px] left-[500px] z-30"
+          className="absolute top-[150px] left-[400px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 3.5 }}
@@ -143,7 +143,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 4: Deploy Contract */}
         <motion.div 
-          className="absolute top-[100px] left-[700px] z-30"
+          className="absolute top-[80px] left-[560px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 6 }}
@@ -178,7 +178,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Blockchain blocks animation */}
         <motion.div 
-          className="absolute top-[320px] left-[500px] z-30"
+          className="absolute top-[280px] left-[400px] z-30"
           initial={{ opacity: 0 }}
           animate={{ opacity: step >= 2 ? 1 : 0 }}
           transition={{ duration: 0.7, delay: 4 }}
@@ -223,13 +223,13 @@ const DeploymentAnimation: React.FC = () => {
                   key={`packet-${packetIndex}`}
                   className="absolute z-20 w-5 h-5 rounded-sm bg-badir-rose/30 border border-badir-rose flex items-center justify-center"
                   initial={{ 
-                    left: 520, 
-                    top: 200,
+                    left: 400, 
+                    top: 150,
                     opacity: 0
                   }}
                   animate={{ 
-                    left: [520, 620, 720],
-                    top: [200, 130, 100],
+                    left: [400, 480, 560],
+                    top: [150, 115, 80],
                     opacity: [0, 1, 0]
                   }}
                   transition={{ 
