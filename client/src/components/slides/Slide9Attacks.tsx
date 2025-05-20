@@ -119,12 +119,17 @@ const Slide9Attacks = () => {
   
   const attackDecentralized = () => {
     // Attack multiple nodes
-    setDecentralizedNodes([false, true, false, true, false, true, true, false, true]);
-    
-    setTimeout(() => {
-      // Network continues to function with remaining nodes
-      setDecentralizedNodes([false, true, false, true, false, true, true, false, true]);
-    }, 1000);
+    setDecentralizedNodes([
+      false, // Node 0 attacked
+      true,
+      false, // Node 2 attacked
+      true,
+      false, // Node 4 attacked
+      true,
+      true,
+      false, // Node 7 attacked
+      true
+    ]);
   };
   
   // Reset network nodes
@@ -541,35 +546,44 @@ function transfer(address to, uint amount)
                         );
                       })}
                       
-                      {/* Connection lines - simplified */}
+                      {/* Horizontal connection lines */}
                       {[0, 1, 2, 3, 4, 5].map((i) => {
                         const row = Math.floor(i / 3);
                         const col = i % 3;
-                        return (
-                          <div 
-                            key={`h-${i}`}
-                            className={`absolute h-0.5 w-[30%] ${decentralizedNodes[i] && decentralizedNodes[i+1] ? 'bg-badir-mocha/40' : 'bg-gray-300/40'}`}
-                            style={{
-                              top: `${20 + row * 30}%`,
-                              left: `${20 + col * 30}%`,
-                            }}
-                          ></div>
-                        );
+                        // Only draw connection if there's a node next to it in the same row
+                        if (col < 2) {
+                          return (
+                            <div 
+                              key={`h-${i}`}
+                              className={`absolute h-0.5 w-[25%] ${decentralizedNodes[i] && decentralizedNodes[i+1] ? 'bg-badir-mocha/40' : 'bg-gray-300/40'}`}
+                              style={{
+                                top: `${20 + row * 30}%`,
+                                left: `${20 + col * 30 + 5}%`,
+                              }}
+                            ></div>
+                          );
+                        }
+                        return null;
                       })}
                       
-                      {[0, 1, 2, 3, 6].map((i) => {
+                      {/* Vertical connection lines */}
+                      {[0, 1, 2, 3, 4, 5].map((i) => {
                         const row = Math.floor(i / 3);
                         const col = i % 3;
-                        return (
-                          <div 
-                            key={`v-${i}`}
-                            className={`absolute w-0.5 h-[30%] ${decentralizedNodes[i] && decentralizedNodes[i+3] ? 'bg-badir-mocha/40' : 'bg-gray-300/40'}`}
-                            style={{
-                              top: `${20 + row * 30}%`,
-                              left: `${20 + col * 30}%`,
-                            }}
-                          ></div>
-                        );
+                        // Only draw connection if there's a node below it
+                        if (row < 2) {
+                          return (
+                            <div 
+                              key={`v-${i}`}
+                              className={`absolute w-0.5 h-[25%] ${decentralizedNodes[i] && decentralizedNodes[i+3] ? 'bg-badir-mocha/40' : 'bg-gray-300/40'}`}
+                              style={{
+                                top: `${20 + row * 30 + 5}%`,
+                                left: `${20 + col * 30}%`,
+                              }}
+                            ></div>
+                          );
+                        }
+                        return null;
                       })}
                     </div>
                   </div>
