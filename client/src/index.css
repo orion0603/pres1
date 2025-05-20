@@ -82,11 +82,11 @@
   }
   
   .nav-dot {
-    @apply w-3 h-3 rounded-full bg-badir-sand mb-2 cursor-pointer transition-all duration-300;
+    @apply w-3 h-3 rounded-full bg-badir-grey mb-2 cursor-pointer transition-all duration-300;
   }
   
   .nav-dot.active {
-    @apply bg-badir-rose scale-110;
+    @apply bg-badir-tan scale-110 shadow-[0_0_8px_rgba(0,167,225,0.7)];
   }
   
   .nav-dots {
