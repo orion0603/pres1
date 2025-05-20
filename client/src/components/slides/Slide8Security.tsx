@@ -73,7 +73,7 @@ const Slide8Security = () => {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium">Donation Amount (ETH):</span>
-              <output className="text-sm font-mono">{donationAmount.toFixed(1)}</output>
+              <span className="text-sm font-mono">{donationAmount.toFixed(1)}</span>
             </div>
             
             <Slider 
@@ -153,9 +153,9 @@ const Slide8Security = () => {
           </div>
           
           <div className="bg-badir-tan bg-opacity-20 rounded-lg p-3 text-xs">
-            <pre className="text-badir-mocha">emit DonationReceived(
+            <pre className="text-badir-mocha">{`emit DonationReceived(
   msg.sender, msg.value, block.timestamp
-);</pre>
+);`}</pre>
           </div>
         </>
       )
