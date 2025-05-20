@@ -8,16 +8,13 @@ interface Slide10ThankYouProps {
 const Slide10ThankYou = ({ onReplayClick }: Slide10ThankYouProps) => {
   const teamMembers = [
     {
-      name: "Yara",
-      role: "Student"
+      name: "Yara"
     },
     {
-      name: "Afnan",
-      role: "Student"
+      name: "Afnan"
     },
     {
-      name: "Leedia",
-      role: "Student"
+      name: "Leedia"
     }
   ];
 
@@ -57,7 +54,7 @@ const Slide10ThankYou = ({ onReplayClick }: Slide10ThankYouProps) => {
               {teamMembers.map((member, index) => (
                 <motion.div 
                   key={index}
-                  className="bg-white rounded-xl p-4 shadow-md"
+                  className="rounded-xl p-4"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
@@ -66,8 +63,7 @@ const Slide10ThankYou = ({ onReplayClick }: Slide10ThankYouProps) => {
                   <div className="w-20 h-20 bg-badir-sand rounded-full mx-auto mb-3 flex items-center justify-center">
                     <i className="fas fa-user text-badir-rose text-2xl"></i>
                   </div>
-                  <h4 className="font-semibold text-badir-mocha">{member.name}</h4>
-                  <p className="text-sm text-badir-mocha">{member.role}</p>
+                  <h4 className="font-semibold text-badir-mocha text-center">{member.name}</h4>
                 </motion.div>
               ))}
             </div>
