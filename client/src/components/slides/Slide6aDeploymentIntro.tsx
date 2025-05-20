@@ -138,9 +138,23 @@ const Slide6aDeploymentIntro = () => {
                   <h3 className="text-2xl font-semibold text-badir-mocha">{steps[activeStep - 1].title}</h3>
                 </div>
                 
-                <p className="text-2xl text-badir-mocha/90 mb-8 leading-relaxed text-center font-medium">
-                  "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users."
-                </p>
+                {activeStep === 1 && (
+                  <p className="text-2xl text-badir-mocha/90 mb-8 leading-relaxed text-center font-medium">
+                    "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users."
+                  </p>
+                )}
+                
+                {activeStep === 2 && (
+                  <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
+                    {steps[activeStep - 1].description}
+                  </p>
+                )}
+                
+                {activeStep === 3 && (
+                  <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
+                    {steps[activeStep - 1].description}
+                  </p>
+                )}
                 
                 {activeStep === 1 && (
                   <div className="flex justify-center">
