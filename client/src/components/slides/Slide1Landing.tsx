@@ -47,11 +47,11 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
         <div ref={containerRef} className="relative">
           <animated.div 
             style={{ transform }} 
-            className="py-12 px-8 md:py-16 md:px-16 tech-card backdrop-blur-sm bg-badir-sand/70 border-t-2 border-r border-l border-b border-badir-tan/30 rounded-sm shadow-[0_5px_20px_rgba(0,0,0,0.5)]"
+            className="py-12 px-8 md:py-16 md:px-16 backdrop-blur-md bg-badir-sand/80 rounded-lg border border-badir-grey shadow-xl"
           >
-            {/* Tech-inspired decorative elements */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-neon rounded-none" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-none" />
+            {/* Subtle decorative elements */}
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-badir-tan/70 rounded-tl-lg" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-badir-tan/70 rounded-br-lg" />
             
             <div className="max-w-3xl mx-auto">
               {/* University Logo */}
@@ -69,27 +69,27 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
               </motion.div>
               
               <motion.h1 
-                className="text-5xl md:text-7xl font-bold text-badir-mocha mb-6 tracking-tight cyber-heading"
+                className="text-5xl md:text-7xl font-bold text-badir-mocha mb-6 tracking-tight"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 <span className="relative">
-                  B<span className="text-badir-neon drop-shadow-[0_0_10px_rgba(103,255,242,0.8)]">adir</span>
-                  <div className="absolute -top-2 -right-4 w-8 h-8 rounded-full bg-badir-neon/20 blur-xl" />
+                  B<span className="text-badir-tan">adir</span>
+                  <div className="absolute -top-2 -right-4 w-8 h-8 rounded-full bg-badir-tan/20 blur-lg" />
                 </span>
               </motion.h1>
               
               <motion.h2 
-                className="text-2xl md:text-4xl font-medium text-badir-tan mb-8 relative uppercase tracking-wider"
+                className="text-2xl md:text-4xl font-medium text-badir-neon mb-8 relative"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <span className="relative">
-                  Blockchain <span className="relative">Donation<span className="absolute -top-1 -right-2 w-2 h-2 bg-badir-neon rounded-none animate-pulse" /></span> Platform
+                  Blockchain <span className="relative">Donation<span className="absolute -top-1 -right-2 w-2 h-2 bg-badir-rose rounded-full animate-pulse" /></span> Platform
                 </span>
-                <div className="h-0.5 bg-gradient-to-r from-transparent via-badir-neon to-transparent mt-2 shadow-[0_0_10px_rgba(103,255,242,0.7)]" />
+                <div className="h-0.5 bg-gradient-to-r from-transparent via-badir-tan to-transparent mt-2" />
               </motion.h2>
               
               <motion.p 
@@ -98,7 +98,7 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <span className="bg-gradient-to-r from-badir-neon to-badir-rose bg-clip-text text-transparent font-medium drop-shadow-sm">
+                <span className="bg-gradient-to-r from-badir-mocha to-badir-neon bg-clip-text text-transparent font-medium">
                   Transparency, Trust, and Technology in Every Transaction
                 </span>
               </motion.p>
@@ -110,16 +110,16 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                <div className="py-3 px-5 bg-badir-sand/80 border-l-2 border-badir-neon inline-block">
+                <div className="py-3 px-5 bg-badir-sand/90 border-l-2 border-badir-rose rounded-r-md">
                   <h3 className="text-lg font-semibold mb-2 text-badir-mocha">By</h3>
-                  <ul className="text-sm space-y-1 text-badir-mocha/90 font-mono">
+                  <ul className="text-sm space-y-1 text-badir-mocha/90">
                     <li>AFNAN MOHAMMAD ISMAIL ALSHATER</li>
                     <li>LEEDIA NEMER SALEEM ALNEMRI</li>
                     <li>YARA OSAMA A. AL-AQARBAH</li>
                   </ul>
-                  <div className="h-px bg-badir-tan/40 my-2" />
+                  <div className="h-px bg-badir-grey/40 my-2" />
                   <p className="text-sm text-badir-mocha/90">Supervised by</p>
-                  <p className="text-sm text-badir-neon font-medium">Dr. Musab Al Ghadi</p>
+                  <p className="text-sm text-badir-tan font-medium">Dr. Musab Al Ghadi</p>
                 </div>
               </motion.div>
               
@@ -130,10 +130,9 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-badir-neon to-badir-tan rounded-sm blur opacity-75" />
                 <Button 
                   onClick={onStartClick}
-                  className="relative px-10 py-5 h-auto text-lg bg-badir-tan uppercase tracking-wider text-white rounded-sm font-medium border-t border-badir-neon shadow-[0_0_15px_rgba(103,255,242,0.5)] hover:shadow-[0_0_25px_rgba(103,255,242,0.7)] transition-all duration-300"
+                  className="relative px-10 py-5 h-auto text-lg bg-badir-tan text-white rounded-md font-medium hover:bg-badir-tan/90 transition-all duration-300 shadow-md"
                 >
                   <span className="mr-2">Begin Presentation</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
@@ -142,12 +141,12 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 </Button>
               </motion.div>
               
-              {/* Tech decorative elements */}
-              <div className="absolute bottom-8 left-8 w-28 h-5 flex space-x-1">
+              {/* Subtle decorative elements */}
+              <div className="absolute bottom-8 left-8 w-28 h-4 flex space-x-1">
                 {[1, 2, 3, 4, 5].map((_, i) => (
                   <motion.div 
                     key={i}
-                    className="h-full bg-badir-neon/50 rounded-none flex-1 shadow-[0_0_5px_rgba(103,255,242,0.5)]"
+                    className="h-full bg-badir-tan/40 rounded-sm flex-1"
                     initial={{ height: 0 }}
                     animate={{ height: '100%' }}
                     transition={{ delay: 0.8 + (i * 0.1), duration: 0.4 }}

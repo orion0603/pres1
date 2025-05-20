@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  /* Neon cyber-city colors for a high-tech aesthetic */
-  --badir-cream: #2A3056;  /* Deep night background */
-  --badir-sand: #294933;   /* Box/Card Background */
-  --badir-tan: #43B0AF;    /* Primary Accent - hover elements, highlights */
-  --badir-rose: #81EC86;   /* Success Highlights / CTA */
-  --badir-mocha: #FFFFFF;  /* Text color - white for readability on dark bg */
-  --badir-grey: #446B5C;   /* Shadows/Borders */
-  --badir-neon: #67FFF2;   /* Secondary Accent - neon glow effects */
+  /* Professional tech-inspired color palette */
+  --badir-cream: #0F1A2A;  /* Deep blue background */
+  --badir-sand: #1E293B;   /* Box/Card Background */
+  --badir-tan: #3B82F6;    /* Primary Blue Accent */
+  --badir-rose: #10B981;   /* Emerald Success Highlights */
+  --badir-mocha: #FFFFFF;  /* Text color - white */
+  --badir-grey: #334155;   /* Slate Grey for Shadows/Borders */
+  --badir-neon: #60A5FA;   /* Lighter Blue Accent */
   
   /* Base color variables */
   --background: var(--badir-cream);
