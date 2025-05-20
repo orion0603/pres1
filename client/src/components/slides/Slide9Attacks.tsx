@@ -261,7 +261,7 @@ const Slide9Attacks = () => {
                         {[1, 2, 3, 4].map((step) => (
                           <div 
                             key={step}
-                            className={`w-3 h-3 rounded-full ${reentrancyStep >= step ? 'bg-red-500' : 'bg-gray-300'}`}
+                            className={`w-3 h-3 rounded-full ${reentrancyStep >= step ? 'bg-badir-rose' : 'bg-badir-tan/40'}`}
                           ></div>
                         ))}
                       </div>
@@ -279,10 +279,10 @@ const Slide9Attacks = () => {
                       className="space-y-3"
                     >
                       {reentrancyStep >= 1 && (
-                        <div className={`p-2 rounded-md border ${reentrancyStep >= 2 ? 'border-gray-300 bg-gray-100' : 'border-red-300 bg-red-50'}`}>
+                        <div className={`p-2 rounded-md border ${reentrancyStep >= 2 ? 'border-badir-tan/40 bg-badir-cream/50' : 'border-badir-rose/30 bg-badir-rose/10'}`}>
                           <p className="text-sm">
                             <span className="font-mono text-badir-mocha/70">withdraw()</span> 
-                            <span className="font-mono ml-2 text-xs px-1 py-0.5 rounded bg-gray-200">Attacker → Contract</span>
+                            <span className="font-mono ml-2 text-xs px-1 py-0.5 rounded bg-badir-tan/30 text-badir-mocha">Attacker → Contract</span>
                           </p>
                         </div>
                       )}
