@@ -16,12 +16,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        "badir-cream": "#EFE9E1",
-        "badir-sand": "#D1C7BD",
-        "badir-tan": "#AC9C8D",
-        "badir-rose": "#72383D",
-        "badir-mocha": "#322D29",
-        "badir-grey": "#D9D9D9",
+        "badir-cream": "#2A3056", /* Deep night background */
+        "badir-sand": "#294933",  /* Box/Card Background */
+        "badir-tan": "#43B0AF",   /* Primary Accent */
+        "badir-rose": "#81EC86",  /* Success Highlights */
+        "badir-mocha": "#FFFFFF", /* Text color - white */
+        "badir-grey": "#446B5C",  /* Shadows/Borders */
+        "badir-neon": "#67FFF2",  /* Secondary Accent */
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

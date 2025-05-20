@@ -34,7 +34,7 @@ const Presentation = () => {
   }, []);
 
   return (
-    <div className="presentation-container">
+    <div className="presentation-container bg-badir-cream">
       <NavigationDots 
         activeSlide={activeSlide} 
         totalSlides={TOTAL_SLIDES} 
@@ -58,7 +58,7 @@ const Presentation = () => {
       <div className="fixed bottom-4 right-4 flex space-x-2 md:hidden z-50">
         <button 
           onClick={navigatePrev}
-          className="w-10 h-10 bg-badir-rose text-white rounded-full flex items-center justify-center shadow-lg"
+          className="w-10 h-10 bg-badir-tan text-white rounded-sm flex items-center justify-center shadow-[0_0_10px_rgba(103,255,242,0.5)] hover:shadow-[0_0_15px_rgba(103,255,242,0.7)] transition-all duration-300"
           aria-label="Previous slide"
           disabled={activeSlide === 1}
         >
@@ -66,7 +66,7 @@ const Presentation = () => {
         </button>
         <button 
           onClick={navigateNext}
-          className="w-10 h-10 bg-badir-rose text-white rounded-full flex items-center justify-center shadow-lg"
+          className="w-10 h-10 bg-badir-tan text-white rounded-sm flex items-center justify-center shadow-[0_0_10px_rgba(103,255,242,0.5)] hover:shadow-[0_0_15px_rgba(103,255,242,0.7)] transition-all duration-300"
           aria-label="Next slide"
           disabled={activeSlide === TOTAL_SLIDES}
         >

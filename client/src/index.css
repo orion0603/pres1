@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Matching the exact color palette from the image */
-  --badir-cream: #67FFF2;  /* Bright cyan */
-  --badir-sand: #43B0AF;   /* Teal */
-  --badir-tan: #2A3056;    /* Dark navy blue */
-  --badir-rose: #81EC86;   /* Bright green */
-  --badir-mocha: #000000;  /* Pure black for text */
-  --badir-grey: #446B5C;   /* Dark green-gray */
+  /* Neon cyber-city colors for a high-tech aesthetic */
+  --badir-cream: #2A3056;  /* Deep night background */
+  --badir-sand: #294933;   /* Box/Card Background */
+  --badir-tan: #43B0AF;    /* Primary Accent - hover elements, highlights */
+  --badir-rose: #81EC86;   /* Success Highlights / CTA */
+  --badir-mocha: #FFFFFF;  /* Text color - white for readability on dark bg */
+  --badir-grey: #446B5C;   /* Shadows/Borders */
+  --badir-neon: #67FFF2;   /* Secondary Accent - neon glow effects */
   
   /* Base color variables */
   --background: var(--badir-cream);
@@ -96,14 +97,19 @@
     @apply font-mono whitespace-pre-wrap overflow-x-auto text-sm;
   }
   
-  /* Tech-focused styling additions */
+  /* Cyber Tech-focused styling additions */
   .tech-card {
-    @apply backdrop-blur-sm bg-badir-cream/20 rounded-xl border border-badir-tan/30 
+    @apply backdrop-blur-sm bg-badir-sand rounded-sm border-t-2 border-r border-l border-b border-badir-tan/30 
            shadow-lg transition-all duration-300 hover:shadow-xl overflow-hidden;
   }
   
+  .tech-card::before {
+    content: '';
+    @apply absolute top-0 left-0 h-1 w-full bg-badir-neon shadow-[0_0_10px_2px_rgba(103,255,242,0.7)];
+  }
+  
   .tech-gradient-text {
-    @apply bg-gradient-to-r from-badir-mocha to-badir-rose bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-badir-neon to-badir-rose bg-clip-text text-transparent;
   }
   
   .tech-border {
@@ -112,12 +118,12 @@
   
   .tech-border::before {
     content: '';
-    @apply absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-rose rounded-tl-xl;
+    @apply absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-neon rounded-none;
   }
   
   .tech-border::after {
     content: '';
-    @apply absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-br-xl;
+    @apply absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-none;
   }
   
   .tech-glow {
@@ -126,7 +132,31 @@
   
   .tech-glow::before {
     content: '';
-    @apply absolute -inset-0.5 bg-gradient-to-r from-badir-rose to-badir-tan rounded-full blur opacity-75;
+    @apply absolute -inset-0.5 bg-gradient-to-r from-badir-neon to-badir-tan rounded-sm blur opacity-75;
+  }
+  
+  .cyber-button {
+    @apply bg-badir-tan px-6 py-2 relative text-white font-poppins uppercase tracking-wider text-sm
+           border-t border-badir-neon shadow-[0_0_8px_1px_rgba(103,255,242,0.5)] 
+           transition-all duration-300 hover:shadow-[0_0_15px_3px_rgba(103,255,242,0.7)];
+  }
+  
+  .cyber-success-button {
+    @apply bg-badir-rose border-t border-badir-neon shadow-[0_0_8px_1px_rgba(129,236,134,0.5)]
+           hover:shadow-[0_0_15px_3px_rgba(129,236,134,0.7)];
+  }
+  
+  .cyber-text {
+    @apply text-badir-neon drop-shadow-[0_0_4px_rgba(103,255,242,0.7)];
+  }
+  
+  .cyber-heading {
+    @apply text-white uppercase font-poppins tracking-widest relative inline-block;
+  }
+  
+  .cyber-heading::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-0.5 w-full bg-badir-neon shadow-[0_0_5px_1px_rgba(103,255,242,0.7)];
   }
   
   .animate-spin-slow {
@@ -163,9 +193,11 @@
 }
 
 .font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .font-dmsans {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.2px;
 }
