@@ -163,36 +163,59 @@ const Slide6aDeploymentIntro = () => {
                 )}
                 
                 {activeStep === 2 && (
-                  <div className="space-y-6">
-                    <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
-                      <h4 className="font-semibold text-badir-mocha mb-4">Why Immutability Matters</h4>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <i className="fas fa-shield-alt text-badir-rose mt-1 mr-3"></i>
-                          <span className="text-badir-mocha/90">
-                            <span className="font-medium">Security:</span> Once deployed, no one can alter the contract's logic, protecting users from malicious changes.
-                          </span>
-                        </li>
-                        <li className="flex items-start">
-                          <i className="fas fa-handshake text-badir-rose mt-1 mr-3"></i>
-                          <span className="text-badir-mocha/90">
-                            <span className="font-medium">Trust:</span> Donors can verify that the contract behavior will remain consistent throughout its lifetime.
-                          </span>
-                        </li>
-                        <li className="flex items-start">
-                          <i className="fas fa-gavel text-badir-rose mt-1 mr-3"></i>
-                          <span className="text-badir-mocha/90">
-                            <span className="font-medium">Compliance:</span> Creates a permanent record of the contract's terms, useful for auditing and legal purposes.
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-badir-mocha/5 rounded-xl p-6 border border-badir-mocha/10 text-center">
-                      <div className="font-medium text-badir-mocha mb-2">Permanent Storage Warning</div>
-                      <p className="text-sm text-badir-mocha/80 italic">
-                        "Deploy once, deploy right. There's no delete button on the blockchain."
-                      </p>
+                  <div className="flex justify-center">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-badir-tan/20 shadow-md max-w-2xl">
+                      <h4 className="font-semibold text-badir-mocha mb-4 text-center">Smart Contract Immutability Simulation</h4>
+                      
+                      <div className="relative flex items-center justify-center mb-6 h-64">
+                        {/* Blockchain representation */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
+                            <i className="fas fa-cube text-badir-rose"></i>
+                          </div>
+                          <div className="w-24 h-1 bg-badir-rose/30"></div>
+                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
+                            <i className="fas fa-cube text-badir-rose"></i>
+                          </div>
+                          <div className="w-24 h-1 bg-badir-rose/30"></div>
+                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
+                            <i className="fas fa-cube text-badir-rose"></i>
+                          </div>
+                        </div>
+                        
+                        {/* Contract in center */}
+                        <div className="relative z-10 bg-white rounded-xl border-2 border-badir-rose shadow-lg p-4 w-48 h-48 flex flex-col items-center justify-center">
+                          <div className="w-16 h-16 bg-badir-rose/10 rounded-full flex items-center justify-center mb-3">
+                            <i className="fas fa-file-contract text-2xl text-badir-rose"></i>
+                          </div>
+                          <h5 className="font-semibold text-badir-mocha mb-1">Smart Contract</h5>
+                          <p className="text-xs text-center text-badir-mocha/70">Once deployed, cannot be modified</p>
+                          
+                          <div className="absolute -top-3 -right-3 bg-badir-rose rounded-full p-2 shadow-md animate-pulse">
+                            <i className="fas fa-lock text-white"></i>
+                          </div>
+                        </div>
+                        
+                        {/* Failed edit attempts */}
+                        <div className="absolute top-4 left-4 transform rotate-12 opacity-70">
+                          <i className="fas fa-edit text-red-500 text-2xl"></i>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-red-500 transform rotate-45"></div>
+                          </div>
+                        </div>
+                        <div className="absolute bottom-4 right-4 transform -rotate-12 opacity-70">
+                          <i className="fas fa-eraser text-red-500 text-2xl"></i>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-full h-0.5 bg-red-500 transform rotate-45"></div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="text-center mt-2">
+                        <p className="text-badir-mocha/80 font-medium">
+                          "Deploy once, deploy right. There's no delete button on the blockchain."
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
