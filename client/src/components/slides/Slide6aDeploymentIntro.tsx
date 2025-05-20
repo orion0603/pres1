@@ -22,7 +22,7 @@ const DeploymentAnimation: React.FC = () => {
   
   return (
     <div className="w-full h-full flex items-center justify-center p-4">
-      <div className="w-full max-w-6xl bg-white/80 backdrop-blur-sm rounded-xl border border-badir-tan/20 shadow-lg p-6 relative">
+      <div className="w-full max-w-6xl bg-white/90 backdrop-blur-sm rounded-xl border-2 border-badir-tan/30 shadow-xl p-8 relative">
         {/* Simple grid background */}
         <div className="absolute inset-0 z-0 opacity-20">
           <svg width="100%" height="100%">
@@ -33,43 +33,43 @@ const DeploymentAnimation: React.FC = () => {
           </svg>
         </div>
         
-        {/* Deployment flow path - simple straight line */}
-        <div className="relative w-full h-8 my-16 z-10">
-          <div className="absolute inset-0 h-1 top-1/2 -translate-y-1/2 bg-gray-200"></div>
+        {/* Deployment flow path - enhanced progress bar */}
+        <div className="relative w-full h-16 my-16 z-10">
+          <div className="absolute inset-0 h-2 top-1/2 -translate-y-1/2 bg-gray-200 rounded-full shadow-inner"></div>
           
           <motion.div 
-            className="absolute inset-0 h-1 top-1/2 -translate-y-1/2 bg-badir-rose origin-left"
+            className="absolute inset-0 h-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-badir-tan via-badir-rose to-badir-rose rounded-full origin-left shadow-md"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: step / 5 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           ></motion.div>
           
           {/* Step markers */}
           {[1, 2, 3, 4, 5].map((markerStep) => (
             <motion.div
               key={markerStep}
-              className={`absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center
-                ${step >= markerStep ? 'bg-badir-rose text-white' : 'bg-white text-gray-400 border border-gray-300'}`}
+              className={`absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center
+                ${step >= markerStep ? 'bg-badir-rose text-white' : 'bg-white text-gray-400 border-2 border-gray-300'}`}
               style={{ left: `${(markerStep - 1) * 25}%` }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ 
                 scale: step >= markerStep ? 1 : 0.8, 
                 opacity: 1,
-                boxShadow: step >= markerStep ? "0 0 10px rgba(114, 56, 61, 0.5)" : "none"
+                boxShadow: step >= markerStep ? "0 0 15px rgba(114, 56, 61, 0.6)" : "0 2px 5px rgba(0,0,0,0.1)"
               }}
               transition={{ duration: 0.5, delay: 0.1 * markerStep }}
             >
               {step > markerStep ? (
-                <i className="fas fa-check text-sm"></i>
+                <i className="fas fa-check text-base"></i>
               ) : (
-                <span className="text-sm">{markerStep}</span>
+                <span className="text-base font-medium">{markerStep}</span>
               )}
             </motion.div>
           ))}
         </div>
         
         {/* Step labels */}
-        <div className="relative w-full flex justify-between mb-12 z-10">
+        <div className="relative w-full flex justify-between mb-16 z-10">
           {[
             { label: "Contract Compilation", icon: "fa-file-code" },
             { label: "Network Connection", icon: "fa-network-wired" },
@@ -79,27 +79,31 @@ const DeploymentAnimation: React.FC = () => {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className={`w-36 text-center flex flex-col items-center ${idx === 0 ? '' : idx === 4 ? '' : ''}`}
-              style={{ marginLeft: idx === 0 ? '0' : '', marginRight: idx === 4 ? '0' : '' }}
+              className="w-36 text-center flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ 
-                opacity: step >= idx + 1 ? 1 : 0.5, 
+                opacity: step >= idx + 1 ? 1 : 0.4, 
                 y: 0,
+                scale: step === idx + 1 ? [1, 1.05, 1] : 1
               }}
-              transition={{ duration: 0.5, delay: 0.1 * (idx + 1) }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.1 * (idx + 1),
+                scale: { repeat: step === idx + 1 ? Infinity : 0, duration: 1.5 }
+              }}
             >
               <div 
-                className={`w-16 h-16 rounded-full mb-2 flex items-center justify-center
-                  ${step >= idx + 1 ? 'bg-badir-rose/10' : 'bg-gray-100'}`}
+                className={`w-20 h-20 rounded-full mb-3 flex items-center justify-center shadow-md
+                  ${step >= idx + 1 ? 'bg-badir-rose/20 border-2 border-badir-rose/30' : 'bg-gray-100 border border-gray-200'}`}
               >
-                <i className={`fas ${item.icon} text-2xl ${step >= idx + 1 ? 'text-badir-rose' : 'text-gray-400'}`}></i>
+                <i className={`fas ${item.icon} text-3xl ${step >= idx + 1 ? 'text-badir-rose' : 'text-gray-400'}`}></i>
               </div>
-              <div className={`text-sm font-medium ${step >= idx + 1 ? 'text-badir-mocha' : 'text-gray-400'}`}>
+              <div className={`text-base font-medium ${step >= idx + 1 ? 'text-badir-mocha' : 'text-gray-400'}`}>
                 {item.label}
               </div>
               {step === idx + 1 && (
                 <motion.div 
-                  className="w-2 h-2 bg-badir-rose rounded-full mt-2"
+                  className="w-3 h-3 bg-badir-rose rounded-full mt-2"
                   animate={{ scale: [1, 1.5, 1] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
                 />
@@ -108,60 +112,87 @@ const DeploymentAnimation: React.FC = () => {
           ))}
         </div>
         
-        {/* Animated blocks at the bottom */}
-        <div className="w-full flex justify-center mt-2 mb-8">
-          <div className="flex space-x-4">
+        {/* Animated blockchain blocks */}
+        <div className="w-full flex justify-center mt-4 mb-10">
+          <div className="flex space-x-6">
             {[0, 1, 2, 3, 4].map((blockIndex) => (
               <motion.div
                 key={blockIndex}
-                className={`w-16 h-16 flex items-center justify-center rounded-lg border 
-                  ${step >= 4 && blockIndex === 0 ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200'}`}
+                className={`flex flex-col items-center`}
                 initial={{ opacity: 0 }}
                 animate={{ 
                   opacity: step >= 3 ? 1 : 0,
-                  y: step >= 3 ? (blockIndex % 2 === 0 ? [0, -8, 0] : [0, -4, 0]) : 0
                 }}
                 transition={{ 
-                  opacity: { duration: 0.5 },
-                  y: { repeat: Infinity, duration: 2, delay: blockIndex * 0.2 }
+                  opacity: { duration: 0.8, delay: 0.3 * blockIndex },
                 }}
               >
-                <i className="fas fa-cube text-xl text-badir-mocha/70"></i>
+                <motion.div 
+                  className={`w-20 h-20 flex items-center justify-center rounded-lg shadow-md
+                    ${step >= 4 && blockIndex === 0 
+                      ? 'bg-green-50 border-2 border-green-300' 
+                      : 'bg-white border border-badir-tan/30'}`}
+                  animate={{ 
+                    y: step >= 3 
+                      ? (blockIndex % 2 === 0 ? [0, -12, 0] : [0, -8, 0]) 
+                      : 0
+                  }}
+                  transition={{ 
+                    y: { 
+                      repeat: Infinity, 
+                      duration: 2 + (blockIndex * 0.3), 
+                      delay: blockIndex * 0.2,
+                      ease: "easeInOut"
+                    }
+                  }}
+                >
+                  <i className={`fas fa-cube text-2xl ${step >= 4 && blockIndex === 0 ? 'text-green-600' : 'text-badir-mocha/80'}`}></i>
+                </motion.div>
+                <div className="mt-2 text-xs font-mono">
+                  {step >= 4 && blockIndex === 0 ? (
+                    <span className="text-green-600 font-bold">NEW BLOCK</span>
+                  ) : (
+                    <span className="text-badir-mocha/70">#{(16428790 - blockIndex).toString().slice(-6)}</span>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
         
-        {/* Flying data packets */}
+        {/* Flying data packets - more visible */}
         <AnimatePresence>
           {step >= 3 && step < 5 && (
             <>
               {[0, 1, 2].map((packetIndex) => (
                 <motion.div
                   key={`packet-${packetIndex}`}
-                  className="absolute z-20 w-6 h-6 rounded-full border-2 border-badir-rose flex items-center justify-center"
+                  className={`absolute z-20 rounded-lg border-2 flex items-center justify-center p-1
+                    ${step >= 4 ? 'border-green-400 bg-green-50' : 'border-badir-rose bg-badir-rose/10'}`}
                   initial={{ 
-                    left: '50%', 
-                    top: '40%',
+                    left: '45%', 
+                    top: '35%',
                     opacity: 0,
                     scale: 0.8,
+                    width: '36px',
+                    height: '36px'
                   }}
                   animate={{ 
-                    left: ['50%', '60%', '70%', '80%'],
-                    top: ['40%', '40%', '40%', '40%'],
+                    left: ['45%', '55%', '65%', '75%'],
+                    top: ['35%', '35%', '35%', '35%'],
                     opacity: [0, 1, 1, 0],
-                    scale: [0.8, 1.2, 1, 0.8],
-                    backgroundColor: 'rgba(114, 56, 61, 0.1)'
+                    scale: [0.8, 1.2, 1.2, 0.8],
+                    rotate: [0, 5, -5, 0]
                   }}
                   transition={{ 
                     duration: 2,
-                    delay: packetIndex * 0.6,
+                    delay: packetIndex * 0.7,
                     repeat: Infinity,
                     repeatDelay: 0.5
                   }}
                   exit={{ opacity: 0 }}
                 >
-                  <i className="fas fa-code text-sm text-badir-rose"></i>
+                  <i className={`fas fa-code text-base ${step >= 4 ? 'text-green-600' : 'text-badir-rose'}`}></i>
                 </motion.div>
               ))}
             </>
@@ -175,24 +206,24 @@ const DeploymentAnimation: React.FC = () => {
           animate={{ opacity: showSummary ? 1 : 0, y: showSummary ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="bg-white rounded-lg border border-green-200 p-4 shadow-md">
-            <div className="flex items-center mb-3">
-              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                <i className="fas fa-check-circle text-green-600"></i>
+          <div className="bg-white rounded-lg border-2 border-green-300 p-6 shadow-lg">
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3 shadow-md">
+                <i className="fas fa-check-circle text-green-600 text-xl"></i>
               </div>
-              <h3 className="text-lg font-medium text-badir-mocha">Contract Successfully Deployed</h3>
+              <h3 className="text-xl font-semibold text-badir-mocha">Contract Successfully Deployed</h3>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <div className="text-sm text-badir-mocha/70 mb-1">Contract Address:</div>
+                <div className="text-sm font-medium text-badir-mocha/70 mb-2">Contract Address:</div>
                 <motion.div
-                  className="font-mono text-sm bg-badir-sand/10 p-2 rounded border border-badir-sand/30"
+                  className="font-mono text-sm bg-green-50 p-3 rounded-md border-2 border-green-200 shadow-sm"
                   animate={{ 
                     boxShadow: [
-                      "0 0 0 rgba(114, 56, 61, 0)",
-                      "0 0 5px rgba(114, 56, 61, 0.3)",
-                      "0 0 0 rgba(114, 56, 61, 0)"
+                      "0 0 0 rgba(22, 163, 74, 0)",
+                      "0 0 10px rgba(22, 163, 74, 0.3)",
+                      "0 0 0 rgba(22, 163, 74, 0)"
                     ]
                   }}
                   transition={{ repeat: Infinity, duration: 2 }}
@@ -202,19 +233,21 @@ const DeploymentAnimation: React.FC = () => {
               </div>
               
               <div>
-                <div className="text-sm text-badir-mocha/70 mb-1">Deployment Summary:</div>
-                <div className="grid grid-cols-2 gap-2 bg-badir-sand/10 p-2 rounded border border-badir-sand/30">
-                  <div className="text-sm text-badir-mocha/70">Network:</div>
+                <div className="text-sm font-medium text-badir-mocha/70 mb-2">Deployment Summary:</div>
+                <div className="grid grid-cols-2 gap-x-3 gap-y-3 bg-badir-sand/10 p-3 rounded-md border border-badir-sand/30 shadow-sm">
+                  <div className="text-sm font-medium text-badir-mocha/80">Network:</div>
                   <div className="text-sm text-badir-mocha">Ganache (8545)</div>
                   
-                  <div className="text-sm text-badir-mocha/70">Gas Used:</div>
+                  <div className="text-sm font-medium text-badir-mocha/80">Gas Used:</div>
                   <div className="text-sm text-badir-mocha">138,241 units</div>
                   
-                  <div className="text-sm text-badir-mocha/70">Deployer:</div>
+                  <div className="text-sm font-medium text-badir-mocha/80">Deployer:</div>
                   <div className="text-sm text-badir-mocha font-mono">0xAbC4...f290</div>
                   
-                  <div className="text-sm text-badir-mocha/70">Status:</div>
-                  <div className="text-sm text-green-600 font-medium">Confirmed</div>
+                  <div className="text-sm font-medium text-badir-mocha/80">Status:</div>
+                  <div className="text-sm text-green-600 font-semibold flex items-center">
+                    <i className="fas fa-check-circle mr-1"></i> Confirmed
+                  </div>
                 </div>
               </div>
             </div>
