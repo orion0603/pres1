@@ -79,8 +79,8 @@ const Slide3aBlockchainFeatures = () => {
                 viewport={{ once: false, amount: 0.5 }}
               >
                 <div className="flex items-start space-x-4">
-                  <div className="bg-badir-rose/90 rounded-full p-3 text-white flex-shrink-0 shadow-md">
-                    <i className={`fas ${feature.icon}`}></i>
+                  <div className="bg-badir-rose/90 rounded-full p-4 text-white flex-shrink-0 shadow-md w-12 h-12 flex items-center justify-center">
+                    <i className={`fas ${feature.icon} text-lg`}></i>
                   </div>
                   <div>
                     <h4 className="font-semibold text-lg text-badir-mocha">{feature.title}</h4>

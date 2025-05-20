@@ -93,12 +93,12 @@ const Slide4SmartContract = () => {
                   whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
                 >
                   <div className="flex items-center mb-3">
-                    <div className="bg-badir-rose rounded-full p-3 mr-4 text-white flex-shrink-0">
-                      <i className={`fas ${feature.icon}`}></i>
+                    <div className="bg-badir-rose rounded-full p-4 mr-4 text-white flex-shrink-0 w-12 h-12 flex items-center justify-center shadow-md">
+                      <i className={`fas ${feature.icon} text-lg`}></i>
                     </div>
                     <h4 className="font-semibold text-lg text-badir-mocha">{feature.title}</h4>
                   </div>
-                  <p className="text-badir-mocha/80 pl-14">{feature.description}</p>
+                  <p className="text-badir-mocha/80 pl-16">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
