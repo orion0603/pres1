@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  /* Color palette - Deeper, more vibrant colors */
-  --badir-cream: #E8DFD3;  /* Slightly darker cream */
-  --badir-sand: #C5B8A5;   /* Deeper sand tone */
-  --badir-tan: #9A8776;    /* Richer tan */
-  --badir-rose: #8E2A32;   /* More vibrant rose/burgundy */
-  --badir-mocha: #251F1A;  /* Darker mocha for better contrast */
-  --badir-grey: #CCCCCC;   /* Slightly darker grey */
+  /* New color palette - Modern, high-contrast, tech-focused */
+  --badir-cream: #F0F3F8;  /* Light blue-gray for backgrounds */
+  --badir-sand: #C8D5E9;   /* Lighter accent color */
+  --badir-tan: #7D90B0;    /* Medium accent color */
+  --badir-rose: #3366CC;   /* Vibrant blue primary accent */
+  --badir-mocha: #1A2A40;  /* Dark navy blue for text */
+  --badir-grey: #D6DEE9;   /* Subtle blue-gray */
   
   /* Base color variables */
   --background: var(--badir-cream);
