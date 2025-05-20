@@ -10,14 +10,15 @@ import Slide2Motivation from './slides/Slide2Motivation';
 import Slide3Blockchain from './slides/Slide3Blockchain';
 import Slide3aBlockchainFeatures from './slides/Slide3aBlockchainFeatures';
 import Slide4SmartContract from './slides/Slide4SmartContract';
-import Slide5SmartContractDemo from './slides/Slide5SmartContractDemo';
 import Slide6SmartContractCode from './slides/Slide6SmartContractCode';
+import Slide5SmartContractDemo from './slides/Slide5SmartContractDemo';
+import Slide6aDeploymentIntro from './slides/Slide6aDeploymentIntro';
 import Slide7Deployment from './slides/Slide7Deployment';
 import Slide8Security from './slides/Slide8Security';
 import Slide9Attacks from './slides/Slide9Attacks';
 import Slide10ThankYou from './slides/Slide10ThankYou';
 
-const TOTAL_SLIDES = 11;
+const TOTAL_SLIDES = 12;
 
 const Presentation = () => {
   const { activeSlide, navigateToSlide, navigateNext, navigatePrev } = useSlideNavigation(TOTAL_SLIDES);
@@ -47,6 +48,7 @@ const Presentation = () => {
       <Slide4SmartContract />
       <Slide6SmartContractCode />
       <Slide5SmartContractDemo />
+      <Slide6aDeploymentIntro />
       <Slide7Deployment />
       <Slide8Security />
       <Slide9Attacks />
