@@ -1,0 +1,342 @@
+
+University Logo
+Badir
+Blockchain Donation Platform
+Transparency, Trust, and Technology in Every Transaction
+
+By
+AFNAN MOHAMMAD ISMAIL ALSHATER
+LEEDIA NEMER SALEEM ALNEMRI
+YARA OSAMA A. AL-AQARBAH
+Supervised by
+
+Dr. Musab Al Ghadi
+
+
+Begin Presentation
+Project Motivation
+Lack of Transparency
+Traditional donation systems often lack clear tracking of funds, making it difficult for donors to see where their money goes.
+
+Donor Trust Erosion
+High-profile scandals and mismanagement of funds have led to decreased trust in humanitarian aid organizations.
+
+Gaza Crisis Response
+Inspired by the urgent need for secure aid distribution during the humanitarian crisis in Gaza, ensuring help reaches those in need.
+
+Visualizing Blockchain
+Each donation is recorded as a block in a transparent, immutable chain—creating a permanent, public ledger of all transactions.
+
+How Blockchain Works
+Blocks are linked through cryptographic hashes, creating an unbreakable chain of transactions.Hover over each block to see details andscroll horizontally to view the entire chain.
+
+Genesis Block
+Hash:
+0000abc...
+Prev:
+None
+(Platform Creation)
+Block #1
+Hash:
+0000def...
+Prev:
+0000abc...
+ETH:
+0.5
+From:
+0x71a...3bd
+Block #2
+Hash:
+0000ghi...
+Prev:
+0000def...
+ETH:
+1.2
+From:
+0x82b...47f
+Block #3
+Hash:
+0000jkl...
+Prev:
+0000ghi...
+ETH:
+0.8
+From:
+0x93c...52e
+New Block
+Mining in progress...
+Hash:
+Calculating...
+Prev:
+0000jkl...
+Genesis Block
+Confirmed Donations
+Block in Progress
+Hash-Based Link
+Key Blockchain Features
+Understanding the revolutionary aspects that make blockchain ideal for donation platforms
+
+Immutability
+Once recorded, data cannot be altered or deleted, ensuring donation records remain permanent.
+
+Transparency
+All transactions are public and verifiable by anyone, ensuring complete visibility.
+
+Decentralization
+No single entity controls the network, making it resistant to corruption and censorship.
+
+Traceability
+Complete history of all donations is maintained, allowing for full audit trails.
+
+What is a Smart Contract?
+Definition
+A smart contract is self-executing code that automatically enforces and executes the terms of an agreement when predetermined conditions are met. It operates on blockchain technology and eliminates the need for intermediaries while ensuring trust, security, and transparency.
+
+Key Features
+Self-Executing
+Automatically executes when conditions are met without human intervention
+
+Immutable
+Cannot be changed once deployed, ensuring consistent execution
+
+Trustless
+No need to trust intermediaries; the code enforces the rules
+
+Transparent
+Code is visible to all participants, ensuring transparency
+
+Smart Contract Functions
+Explore the technical implementation of donation processing and security in our Ethereum smart contract:
+
+Contract Components
+donate()
+onlyOwner
+withinDonationLimits
+getTotalDonations()
+donate() Function
+Core Functionality
+function donate() public payable {
+  // Ensure donation meets minimum requirement
+  require(msg.value >= 0.1, 
+    "Minimum donation is 0.1 ETH");
+    
+  // Ensure donation is within limits
+  require(msg.value <= 100,
+    "Maximum donation is 100 ETH");
+    
+  // Record donation in mapping
+  donations[msg.sender] += msg.value;
+  
+  // Update total donations
+  totalDonations += msg.value;
+  
+  // Emit event for tracking
+  emit DonationReceived(
+    msg.sender, 
+    msg.value,
+    block.timestamp
+  );
+}
+Function Breakdown
+Accepts ETH payments with payable modifier
+Validates donation amount (0.1-100 ETH)
+Records donation in persistent storage
+Emits event for off-chain tracking
+Blockchain Transparency
+Real-time verification of donations through immutable blockchain records
+
+Donation Verification Portal
+Live Blockchain Data
+8.0 ETH
+Total Donations
+6.0 ETH
+Funds Distributed
+2.0 ETH
+Available Balance
+Verified Donations
+Last updated: 2 minutes ago
+Donor Address	Amount (ETH)	Message	Time	Status
+0x8a21...93f1	1.25 ETH	Sending hope and support to Gaza. Stay strong!	2 hours ago	Confirmed
+0x3b48...72c9	0.75 ETH	For medical supplies	5 hours ago	Confirmed
+0x71a5...23bd	2 ETH	For food and water	7 hours ago	Distributed
+0xc934...12f4	0.5 ETH	No message	1 day ago	Distributed
+0x5e72...b8d1	3.2 ETH	For emergency relief efforts	2 days ago	Distributed
+0x947f...22a7	0.3 ETH	Hope this helps someone in need	3 days ago	Distributed
+Verification
+All transactions are permanently recorded on the Ethereum blockchain and can be verified using block explorers like Etherscan by searching for the contract address:
+
+0x18d4e5F8d7A46cEff9FE74f0A5F2C4e3c5aB91B3
+Fund Distribution
+Medical Supplies
+55%
+Food & Water
+30%
+Shelter & Protection
+15%
+Smart Contract Deployment
+5
+Contract Compilation
+Converting Solidity code to bytecode that runs on Ethereum Virtual Machine
+Network Connection
+Connecting to Ethereum network via RPC endpoint (Ganache, Infura, etc.)
+Transaction Preparation
+Creating transaction with bytecode, gas limits, and signing with private key
+Blockchain Processing
+Miners validate transaction and include it in a new block on the chain
+Deployment Confirmation
+Contract confirmed on blockchain with unique address for future interactions
+NEW BLOCK
+#428789
+#428788
+#428787
+#428786
+Contract Successfully Deployed
+Contract Address:
+0x9eAe9b64A0Ce8cfa9C535506dADcC3b06D330546
+Deployment Summary:
+Network:
+Ganache (8545)
+Gas Used:
+138,241 units
+Deployer:
+0xAbC4...f290
+Status:
+Confirmed
+Deployment Workflow
+How we develop, test, and deploy the Badir smart contract to ensure security and reliability.
+
+Write in Solidity
+Smart contracts are written in Solidity, the primary language for Ethereum development.
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract BadirDonation {
+  // Contract code here
+}
+Solidity
+VSCode
+Remix IDE
+1
+Test Locally
+Local blockchain testing with Ganache to validate smart contract functionality.
+
+$ npx hardhat test
+  Contract: BadirDonation
+    ✓ should accept valid donations
+    ✓ should reject donations below minimum
+    ✓ should track donor history correctly
+    ✓ owner should be able to withdraw funds
+Ganache
+Hardhat
+JavaScript
+2
+Deploy with Hardhat
+After thorough testing, we deploy to Ethereum testnets and finally mainnet using Hardhat.
+
+$ npx hardhat run scripts/deploy.js --network goerli
+Deploying BadirDonation...
+BadirDonation deployed to: 0x123...abc
+Hardhat
+Ethers.js
+Goerli Testnet
+3
+Interact via Web3.py
+Our backend services use Web3.py to interact with the deployed contract and provide APIs for the frontend.
+
+from web3 import Web3
+
+# Connect to Ethereum node
+w3 = Web3(Web3.HTTPProvider('...'))
+
+# Load contract ABI and address
+contract = w3.eth.contract(
+  address=CONTRACT_ADDRESS, 
+  abi=CONTRACT_ABI
+)
+
+# Get donation stats
+total = contract.functions.getTotalDonations().call()
+Web3.py
+Python
+API
+4
+Security Mechanisms in Badir
+Multiple layers of security ensure the integrity of the platform and protect donations.
+
+onlyOwner
+Restricts access to admin functions
+
+Only the contract owner (deployer) can access critical functions like fund withdrawal or parameter updates.
+
+Access Simulation:
+
+Contract Owner
+Access granted: Can withdraw funds
+
+modifier onlyOwner() {
+  require(msg.sender == owner);
+  _;
+}
+withinDonationLimits
+Enforces donation amount boundaries
+
+Prevents both dust attacks (too small amounts) and potential money laundering (excessive amounts).
+
+Donation Amount (ETH):
+0.5
+0
+Min: 0.1
+Max: 100
+120
+Valid amount: Transaction would succeed
+
+require(
+  msg.value >= 0.1 && 
+  msg.value <= 100
+);
+Transaction Logs
+Public and viewable by anyone
+
+All transactions are permanently recorded on the blockchain and can be audited by donors, recipients, and oversight organizations.
+
+Recent Transactions:
+Etherscan
+Tx: 0x73f...a8b
+1.2 ETH
+From: 0x631...59d → Badir
+Tx: 0x45d...c7e
+0.5 ETH
+From: 0x912...f3a → Badir
+Tx: 0x89b...d2f
+2.0 ETH
+From: 0x777...e4c → Badir
+emit DonationReceived(
+  msg.sender, msg.value, block.timestamp
+);
+Security Audit Results: Before
+Initial security audit findings before implementing blockchain security measures
+
+Terminal - Slither Analysis
+Slither Analysis Results showing vulnerabilities
+3 VULNERABILITIES DETECTED
+•
+HIGH RISK
+Reentrancy vulnerability detected in 'withdrawDonation' function
+BadirDonation.sol:145:7
+- The contract state is modified after an external call
+- Consider using the Checks-Effects-Interactions pattern
+•
+MEDIUM RISK
+Unchecked external call return value in 'sendDonation' function
+BadirDonation.sol:98:10
+- The return value of an external call is not checked
+- Use require() to validate return values
+•
+LOW RISK
+Integer overflow in donation tracking
+BadirDonation.sol:58:14
+- Integer arithmetic operation can overflow
+- Consider using SafeMath or Solidity 0.8+ built-in overflow checks
+RECOMMENDATION: Contract needs security fixes before deployment
+Security Audit Results: After

@@ -32,64 +32,70 @@ const Slide8aAuditBefore = () => {
           </div>
           
           {/* Terminal Content */}
-          <div className="p-5 font-mono text-sm">
-            <div className="text-badir-cream mb-2">$ slither BadirDonation.sol</div>
-            
-            <div className="my-4">
-              <span className="text-red-500 font-bold text-lg animate-pulse">
-                3 VULNERABILITIES DETECTED
-              </span>
+          <div className="font-mono text-sm">
+            <div className="bg-black p-2">
+              <img 
+                src="attached_assets/image_1747776652507.png" 
+                alt="Slither Analysis Results showing vulnerabilities" 
+                className="w-full h-auto border border-zinc-700"
+              />
             </div>
             
-            <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
-              <div className="flex items-center mb-2">
-                <span className="text-red-500 font-bold mr-2">•</span>
-                <span className="text-red-500 font-bold">HIGH RISK</span>
+            <div className="p-5">
+              <div className="my-4">
+                <span className="text-red-500 font-bold text-lg animate-pulse">
+                  3 VULNERABILITIES DETECTED
+                </span>
               </div>
-              <div className="text-red-300 ml-6 mb-3">
-                Reentrancy vulnerability detected in 'withdrawDonation' function
-              </div>
-              <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
-                <div>BadirDonation.sol:145:7</div>
-                <div>- The contract state is modified after an external call</div>
-                <div>- Consider using the Checks-Effects-Interactions pattern</div>
-              </div>
-            </div>
             
-            <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
-              <div className="flex items-center mb-2">
-                <span className="text-yellow-500 font-bold mr-2">•</span>
-                <span className="text-yellow-500 font-bold">MEDIUM RISK</span>
+              <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
+                <div className="flex items-center mb-2">
+                  <span className="text-red-500 font-bold mr-2">•</span>
+                  <span className="text-red-500 font-bold">HIGH RISK</span>
+                </div>
+                <div className="text-red-300 ml-6 mb-3">
+                  Reentrancy vulnerability detected in 'withdrawDonation' function
+                </div>
+                <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
+                  <div>BadirDonation.sol:145:7</div>
+                  <div>- The contract state is modified after an external call</div>
+                  <div>- Consider using the Checks-Effects-Interactions pattern</div>
+                </div>
               </div>
-              <div className="text-yellow-300 ml-6 mb-3">
-                Unchecked external call return value in 'sendDonation' function
+              
+              <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
+                <div className="flex items-center mb-2">
+                  <span className="text-yellow-500 font-bold mr-2">•</span>
+                  <span className="text-yellow-500 font-bold">MEDIUM RISK</span>
+                </div>
+                <div className="text-yellow-300 ml-6 mb-3">
+                  Unchecked external call return value in 'sendDonation' function
+                </div>
+                <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
+                  <div>BadirDonation.sol:98:10</div>
+                  <div>- The return value of an external call is not checked</div>
+                  <div>- Use require() to validate return values</div>
+                </div>
               </div>
-              <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
-                <div>BadirDonation.sol:98:10</div>
-                <div>- The return value of an external call is not checked</div>
-                <div>- Use require() to validate return values</div>
+              
+              <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
+                <div className="flex items-center mb-2">
+                  <span className="text-blue-500 font-bold mr-2">•</span>
+                  <span className="text-blue-500 font-bold">LOW RISK</span>
+                </div>
+                <div className="text-blue-300 ml-6 mb-3">
+                  Integer overflow in donation tracking
+                </div>
+                <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
+                  <div>BadirDonation.sol:58:14</div>
+                  <div>- Integer arithmetic operation can overflow</div>
+                  <div>- Consider using SafeMath or Solidity 0.8+ built-in overflow checks</div>
+                </div>
               </div>
-            </div>
-            
-
-            
-            <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
-              <div className="flex items-center mb-2">
-                <span className="text-blue-500 font-bold mr-2">•</span>
-                <span className="text-blue-500 font-bold">LOW RISK</span>
+              
+              <div className="text-red-400 font-bold mt-4">
+                RECOMMENDATION: Contract needs security fixes before deployment
               </div>
-              <div className="text-blue-300 ml-6 mb-3">
-                Integer overflow in donation tracking
-              </div>
-              <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
-                <div>BadirDonation.sol:58:14</div>
-                <div>- Integer arithmetic operation can overflow</div>
-                <div>- Consider using SafeMath or Solidity 0.8+ built-in overflow checks</div>
-              </div>
-            </div>
-            
-            <div className="text-red-400 font-bold mt-4">
-              RECOMMENDATION: Contract needs security fixes before deployment
             </div>
           </div>
         </motion.div>
