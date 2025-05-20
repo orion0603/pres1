@@ -191,7 +191,7 @@ const DeploymentAnimation: React.FC = () => {
                 <motion.div
                   key={`packet-${packetIndex}`}
                   className={`absolute z-20 rounded-lg border-2 flex items-center justify-center p-1
-                    ${step >= 4 ? 'border-green-400 bg-green-50' : 'border-badir-rose bg-badir-rose/10'}`}
+                    ${step >= 4 ? 'border-badir-neon bg-badir-neon/10' : 'border-badir-rose bg-badir-rose/10'}`}
                   initial={{ 
                     left: '45%', 
                     top: '35%',
@@ -215,7 +215,7 @@ const DeploymentAnimation: React.FC = () => {
                   }}
                   exit={{ opacity: 0 }}
                 >
-                  <i className={`fas fa-code text-base ${step >= 4 ? 'text-green-600' : 'text-badir-rose'}`}></i>
+                  <i className={`fas fa-code text-base ${step >= 4 ? 'text-badir-neon' : 'text-badir-rose'}`}></i>
                 </motion.div>
               ))}
             </>
@@ -268,7 +268,7 @@ const DeploymentAnimation: React.FC = () => {
                   <div className="text-sm text-badir-mocha font-mono">0xAbC4...f290</div>
                   
                   <div className="text-sm font-medium text-badir-mocha/80">Status:</div>
-                  <div className="text-sm text-green-600 font-semibold flex items-center">
+                  <div className="text-sm text-badir-neon font-semibold flex items-center">
                     <i className="fas fa-check-circle mr-1"></i> Confirmed
                   </div>
                 </div>
