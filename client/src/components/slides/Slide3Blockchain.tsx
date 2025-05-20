@@ -18,7 +18,7 @@ const Slide3Blockchain = () => {
       details: "(Platform Creation)",
       amount: null,
       from: null,
-      color: "#72383D" // badir-rose
+      color: "#00D474" // badir-rose (now green)
     },
     {
       id: "block1",
@@ -28,7 +28,7 @@ const Slide3Blockchain = () => {
       details: null,
       amount: 0.5,
       from: "0x71a...3bd",
-      color: "#AC9C8D" // badir-tan
+      color: "#00A7E1" // badir-tan (now blue)
     },
     {
       id: "block2",
@@ -38,7 +38,7 @@ const Slide3Blockchain = () => {
       details: null,
       amount: 1.2,
       from: "0x82b...47f",
-      color: "#AC9C8D" // badir-tan
+      color: "#00A7E1" // badir-tan (now blue)
     },
     {
       id: "block3",
@@ -48,7 +48,7 @@ const Slide3Blockchain = () => {
       details: null,
       amount: 0.8,
       from: "0x93c...52e",
-      color: "#AC9C8D" // badir-tan
+      color: "#00A7E1" // badir-tan (now blue)
     },
     {
       id: "new",
@@ -147,7 +147,7 @@ const Slide3Blockchain = () => {
           
           {/* Enhanced diagram instructions */}
           <motion.div
-            className="bg-white/80 backdrop-blur-sm rounded-xl p-4 mb-8 max-w-3xl mx-auto text-center shadow-md border border-badir-tan/20"
+            className="bg-badir-sand/90 backdrop-blur-sm rounded-xl p-4 mb-8 max-w-3xl mx-auto text-center shadow-md border border-badir-tan/20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -156,7 +156,7 @@ const Slide3Blockchain = () => {
               <i className="fas fa-info-circle text-badir-rose mr-2 text-lg"></i>
               <h3 className="font-medium">How Blockchain Works</h3>
             </div>
-            <p className="text-sm text-badir-mocha/80">
+            <p className="text-sm text-badir-mocha">
               Blocks are linked through cryptographic hashes, creating an unbreakable chain of transactions.
               <span className="ml-1 text-badir-rose font-medium">Hover over each block to see details</span> and
               <span className="ml-1 text-badir-rose font-medium">scroll horizontally</span> to view the entire chain.
@@ -183,9 +183,9 @@ const Slide3Blockchain = () => {
                          style={{ backgroundColor: block.color, opacity: 0.7 }} 
                     />
                     
-                    <div className="relative z-10 backdrop-blur-sm bg-badir-cream/50 rounded-lg p-6">
+                    <div className="relative z-10 backdrop-blur-sm bg-badir-sand/40 rounded-lg p-6">
                       <div className="flex items-center mb-5">
-                        <div className="bg-badir-rose rounded-full p-3 mr-4 text-white flex items-center justify-center w-14 h-14 shadow-md">
+                        <div className="bg-badir-rose rounded-full p-3 mr-4 text-badir-mocha flex items-center justify-center w-14 h-14 shadow-md">
                           <i className="fas fa-cube text-lg"></i>
                         </div>
                         <div>
@@ -201,14 +201,14 @@ const Slide3Blockchain = () => {
                         </div>
                       </div>
                       
-                      <div className="bg-white/80 backdrop-blur-sm rounded-lg p-5 font-mono text-sm shadow-md">
+                      <div className="bg-badir-sand/60 backdrop-blur-sm rounded-lg p-5 font-mono text-sm shadow-md">
                         <div className="flex justify-between mb-3">
                           <span className="text-badir-rose font-bold">Hash:</span>
-                          <span>{block.hash}</span>
+                          <span className="text-badir-mocha">{block.hash}</span>
                         </div>
                         <div className="flex justify-between mb-3">
                           <span className="text-badir-rose font-bold">Prev:</span>
-                          <span>{block.prev}</span>
+                          <span className="text-badir-mocha">{block.prev}</span>
                         </div>
                         
                         {block.amount !== null && (
