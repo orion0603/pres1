@@ -28,7 +28,7 @@ const Slide4SmartContract = () => {
   return (
     <section id="slide4" className="slide relative overflow-hidden">
       {/* Tech background */}
-      <ParticleNetwork variant="tech" density={15} />
+      <ParticleNetwork variant="tech" density={15} color={['#38B6FF', '#00A7E1', '#00D474']} />
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
       
       <div className="slide-container">
@@ -85,7 +85,7 @@ const Slide4SmartContract = () => {
               {features.map((feature, index) => (
                 <motion.div 
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-5 shadow-md border border-badir-tan/30 transform transition-all"
+                  className="bg-badir-sand/80 backdrop-blur-sm rounded-xl p-5 shadow-md border border-badir-tan/30 transform transition-all"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }}
@@ -93,12 +93,12 @@ const Slide4SmartContract = () => {
                   whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
                 >
                   <div className="flex items-center mb-3">
-                    <div className="bg-badir-rose rounded-full p-4 mr-4 text-white flex-shrink-0 w-12 h-12 flex items-center justify-center shadow-md">
+                    <div className="bg-badir-rose rounded-full p-4 mr-4 text-badir-mocha flex-shrink-0 w-12 h-12 flex items-center justify-center shadow-md">
                       <i className={`fas ${feature.icon} text-lg`}></i>
                     </div>
                     <h4 className="font-semibold text-lg text-badir-mocha">{feature.title}</h4>
                   </div>
-                  <p className="text-badir-mocha/80 pl-16">{feature.description}</p>
+                  <p className="text-badir-mocha/90 pl-16">{feature.description}</p>
                 </motion.div>
               ))}
             </div>

@@ -211,7 +211,7 @@ function getContractBalance()
           {/* Code Display Area */}
           <div className="lg:col-span-4">
             <motion.div 
-              className="bg-white rounded-xl p-6 shadow-lg"
+              className="bg-badir-sand/90 rounded-xl p-6 shadow-lg"
               key={activeSection}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -219,20 +219,20 @@ function getContractBalance()
             >
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold text-badir-mocha">{title}</h3>
-                <span className="text-xs bg-badir-rose text-white py-1 px-2 rounded">{tag}</span>
+                <span className="text-xs bg-badir-rose text-badir-mocha py-1 px-2 rounded">{tag}</span>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Code block */}
                 <div className="md:col-span-2">
-                  <div className="bg-badir-mocha rounded-lg p-4">
-                    <pre className="code-block text-badir-grey text-sm">{code}</pre>
+                  <div className="bg-badir-cream rounded-lg p-4">
+                    <pre className="code-block text-badir-mocha text-sm">{code}</pre>
                   </div>
                 </div>
                 
                 {/* Explanation */}
                 <div className="md:col-span-1">
-                  <div className="bg-badir-sand bg-opacity-30 rounded-lg p-4 h-full">
+                  <div className="bg-badir-sand/80 rounded-lg p-4 h-full">
                     <h4 className="font-medium text-badir-mocha mb-3">
                       {activeSection === 'donate' && 'Function Breakdown'}
                       {activeSection === 'onlyOwner' && 'Security Explanation'}
