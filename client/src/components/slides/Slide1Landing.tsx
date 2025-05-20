@@ -51,6 +51,20 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-br-xl" />
             
             <div className="max-w-3xl mx-auto">
+              {/* University Logo */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                className="mb-8"
+              >
+                <img 
+                  src="/assets/university-logo.png" 
+                  alt="University Logo" 
+                  className="h-28 mx-auto"
+                />
+              </motion.div>
+              
               <motion.div
                 className="h-24 w-24 mx-auto mb-8 relative"
                 initial={{ opacity: 0, rotateZ: -90 }}
@@ -87,7 +101,7 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
               </motion.h2>
               
               <motion.p 
-                className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -97,10 +111,31 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 </span>
               </motion.p>
               
+              {/* Team Information */}
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <div className="py-3 px-5 rounded-xl backdrop-blur-sm bg-badir-cream/50 inline-block">
+                  <h3 className="text-lg font-semibold mb-2 text-badir-mocha">By</h3>
+                  <ul className="text-sm space-y-1 text-badir-mocha/90">
+                    <li>AFNAN MOHAMMAD ISMAIL ALSHATER</li>
+                    <li>LEEDIA NEMER SALEEM ALNEMRI</li>
+                    <li>YARA OSAMA A. AL-AQARBAH</li>
+                  </ul>
+                  <div className="h-px bg-badir-tan/40 my-2" />
+                  <p className="text-sm text-badir-mocha/90">Supervised by</p>
+                  <p className="text-sm text-badir-mocha">Dr. Musab Al Ghadi</p>
+                  <p className="text-sm text-badir-mocha">Dr. Mamoon Obiedat</p>
+                </div>
+              </motion.div>
+              
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >

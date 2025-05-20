@@ -40,8 +40,15 @@ const TechCircuitBackground = () => {
       const cols = Math.ceil(canvas.width / cellSize) + 1;
       const rows = Math.ceil(canvas.height / cellSize) + 1;
 
+      // Define the point interface
+      interface Point {
+        x: number;
+        y: number;
+        neighbors: Point[];
+      }
+
       // Generate points in a grid
-      const points = [];
+      const points: Point[] = [];
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           // Add some randomness to the grid
