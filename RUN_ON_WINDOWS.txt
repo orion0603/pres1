@@ -12,11 +12,13 @@ QUICK START:
 
 ALTERNATE METHOD (FOR CUSTOM PORT):
 
-1. Open PowerShell in this folder
-2. Run: .\run-windows-local.ps1
+1. Open PowerShell as Administrator in this folder
+2. Allow script execution with this command:
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+3. Run: .\run-windows-local.ps1
    (For custom port, run: .\run-windows-local.ps1 -Port 3000)
-3. Open http://localhost:5000 in your browser (or your custom port)
-4. Press Ctrl+C in PowerShell to stop the server
+4. Open http://localhost:5000 in your browser (or your custom port)
+5. Press Ctrl+C in PowerShell to stop the server
 
 --------------------------------------------------------
 

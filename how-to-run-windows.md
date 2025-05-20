@@ -14,18 +14,22 @@
 ### Option 1: Using PowerShell (Recommended)
 
 1. Extract the project files to a folder of your choice
-2. Open PowerShell:
-   - Right-click on the Start menu and select "Windows PowerShell" or "Windows Terminal"
-   - Or press `Win + X` and select PowerShell/Terminal
+2. Open PowerShell as Administrator:
+   - Right-click on the Start menu and select "Windows PowerShell (Admin)" or "Windows Terminal (Admin)"
+   - Or press `Win + X` and select PowerShell/Terminal with Admin rights
 3. Navigate to the project folder:
    ```
    cd "path\to\project\folder"
    ```
-4. Run the presentation using the provided script:
+4. Set the execution policy to allow the script to run (one-time setting):
+   ```
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   ```
+5. Run the presentation using the provided script:
    ```
    .\run-windows-local.ps1
    ```
-5. If you want to use a custom port (e.g., 3000 instead of the default 5000):
+6. If you want to use a custom port (e.g., 3000 instead of the default 5000):
    ```
    .\run-windows-local.ps1 -Port 3000
    ```
