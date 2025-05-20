@@ -361,6 +361,17 @@ const Slide9Attacks = () => {
                 This security measure prevents contract phishing attacks by ensuring only direct user transactions are allowed, not calls from malicious contracts.
               </p>
               
+              {/* NoContract Attack Diagram */}
+              <div className="flex justify-center mb-6">
+                <div className="max-w-md">
+                  <img 
+                    src="/images/nocontract-diagram.png"
+                    alt="No Contract Attack Diagram"
+                    className="w-full h-auto rounded-lg shadow-md border border-badir-tan/30"
+                  />
+                </div>
+              </div>
+              
               <div className="relative bg-badir-grey/10 rounded-xl p-4 mb-6 border border-badir-tan/30">
                 {/* Code example */}
                 <div className="grid grid-cols-2 gap-6 mb-6">
