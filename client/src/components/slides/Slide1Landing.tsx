@@ -39,7 +39,7 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
     <section id="slide1" className="slide relative overflow-hidden">
       {/* Multiple layered backgrounds for depth */}
       <TechCircuitBackground />
-      <ParticleNetwork variant="landing" density={35} color={['#67FFF2', '#43B0AF', '#81EC86']} />
+      <ParticleNetwork variant="landing" density={40} color={['#38B6FF', '#00A7E1', '#00D474']} />
       
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream/10 via-badir-cream/90 to-badir-cream/20 -z-10" />
       
@@ -47,11 +47,11 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
         <div ref={containerRef} className="relative">
           <animated.div 
             style={{ transform }} 
-            className="py-12 px-8 md:py-16 md:px-16 backdrop-blur-md bg-badir-sand/80 rounded-lg border border-badir-grey shadow-xl"
+            className="py-12 px-8 md:py-16 md:px-16 backdrop-blur-md bg-badir-sand/90 rounded-lg border border-badir-tan/50 shadow-lg"
           >
             {/* Subtle decorative elements */}
-            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-badir-tan/70 rounded-tl-lg" />
-            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-badir-tan/70 rounded-br-lg" />
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-badir-tan rounded-tl-lg" />
+            <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-badir-tan rounded-br-lg" />
             
             <div className="max-w-3xl mx-auto">
               {/* University Logo */}
