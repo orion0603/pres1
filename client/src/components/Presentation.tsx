@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import NavigationDots from './navigation/NavigationDots';
 import CyberBackgroundAnimation from './animations/CyberBackgroundAnimation';
-import TechElements from './animations/TechElements';
-import GlowingHexGrid from './animations/GlowingHexGrid';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 
 // Import slides
@@ -40,13 +38,7 @@ const Presentation = () => {
     <div className="presentation-container">
       <div className="fixed inset-0 z-0">
         <CyberBackgroundAnimation variant={activeSlide % 3 === 0 ? "particles" : activeSlide % 3 === 1 ? "grid" : "network"} />
-        <GlowingHexGrid opacity={0.15} color="#43B0AF" glowColor="#67FFF2" size={0.8} speed={0.3} />
       </div>
-      
-      {/* Decorative tech elements throughout the presentation */}
-      <TechElements variant="circuit" position="top-right" opacity={0.15} color="#43B0AF" scale={1.2} />
-      <TechElements variant="nodes" position="bottom-left" opacity={0.1} color="#67FFF2" scale={1.5} />
-      <TechElements variant="data" position="top-left" opacity={0.12} color="#81EC86" scale={0.8} />
       
       <NavigationDots 
         activeSlide={activeSlide} 
