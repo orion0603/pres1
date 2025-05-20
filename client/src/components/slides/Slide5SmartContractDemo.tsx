@@ -168,20 +168,20 @@ const Slide5SmartContractDemo = () => {
                       <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-badir-tan/30">
+                  <tbody className="bg-badir-sand/70 divide-y divide-badir-tan/30">
                     {donationHistory.map((donation, index) => (
-                      <tr key={index} className="hover:bg-badir-cream/10 transition-colors">
+                      <tr key={index} className="hover:bg-badir-tan/20 transition-colors">
                         <td className="px-5 py-4 whitespace-nowrap text-sm font-mono text-badir-mocha">{donation.donor}</td>
                         <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-badir-mocha">{donation.amount} ETH</td>
                         <td className="px-5 py-4 text-sm text-badir-mocha/90 truncate max-w-[200px]">
-                          {donation.message || <span className="text-gray-400 italic">No message</span>}
+                          {donation.message || <span className="text-badir-mocha/50 italic">No message</span>}
                         </td>
                         <td className="px-5 py-4 whitespace-nowrap text-sm text-badir-mocha/70">{donation.timestamp}</td>
                         <td className="px-5 py-4 whitespace-nowrap">
                           <span className={`px-3 py-1 text-xs rounded-full font-medium ${
                             donation.status === 'Confirmed' 
-                              ? 'bg-blue-100 text-blue-700' 
-                              : 'bg-green-100 text-green-700'
+                              ? 'bg-badir-tan/70 text-badir-mocha' 
+                              : 'bg-badir-rose/70 text-badir-mocha'
                           }`}>
                             {donation.status}
                           </span>
@@ -208,7 +208,7 @@ const Slide5SmartContractDemo = () => {
                   All transactions are permanently recorded on the Ethereum blockchain and can be verified
                   using block explorers like Etherscan by searching for the contract address:
                 </p>
-                <div className="bg-white p-3 rounded-lg font-mono text-sm text-badir-rose/90 break-all border border-badir-tan/20">
+                <div className="bg-badir-cream p-3 rounded-lg font-mono text-sm text-badir-tan break-all border border-badir-tan/20">
                   0x18d4e5F8d7A46cEff9FE74f0A5F2C4e3c5aB91B3
                 </div>
               </div>
@@ -223,9 +223,9 @@ const Slide5SmartContractDemo = () => {
                     <span className="text-badir-mocha/80">Medical Supplies</span>
                     <span className="font-medium text-badir-mocha">55%</span>
                   </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-badir-cream rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-green-500 rounded-full"
+                      className="h-full bg-badir-rose rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: '55%' }}
                       transition={{ duration: 1, delay: 0.7 }}
@@ -237,9 +237,9 @@ const Slide5SmartContractDemo = () => {
                     <span className="text-badir-mocha/80">Food & Water</span>
                     <span className="font-medium text-badir-mocha">30%</span>
                   </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-badir-cream rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-blue-500 rounded-full"
+                      className="h-full bg-badir-tan rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: '30%' }}
                       transition={{ duration: 1, delay: 0.8 }}
@@ -251,9 +251,9 @@ const Slide5SmartContractDemo = () => {
                     <span className="text-badir-mocha/80">Shelter & Protection</span>
                     <span className="font-medium text-badir-mocha">15%</span>
                   </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-badir-cream rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-purple-500 rounded-full"
+                      className="h-full bg-badir-neon rounded-full"
                       initial={{ width: 0 }}
                       whileInView={{ width: '15%' }}
                       transition={{ duration: 1, delay: 0.9 }}
