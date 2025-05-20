@@ -39,16 +39,19 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
     <section id="slide1" className="slide relative overflow-hidden">
       {/* Multiple layered backgrounds for depth */}
       <TechCircuitBackground />
-      <ParticleNetwork variant="landing" density={25} />
+      <ParticleNetwork variant="landing" density={35} color={['#67FFF2', '#43B0AF', '#81EC86']} />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-badir-cream/20 via-badir-cream/80 to-badir-cream/30 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-badir-cream/10 via-badir-cream/90 to-badir-cream/20 -z-10" />
       
       <div className="slide-container flex flex-col items-center justify-center text-center">
         <div ref={containerRef} className="relative">
-          <animated.div style={{ transform }} className="py-12 px-8 md:py-16 md:px-16 backdrop-blur-sm bg-badir-cream/30 rounded-3xl shadow-2xl border border-badir-tan/30">
+          <animated.div 
+            style={{ transform }} 
+            className="py-12 px-8 md:py-16 md:px-16 tech-card backdrop-blur-sm bg-badir-sand/70 border-t-2 border-r border-l border-b border-badir-tan/30 rounded-sm shadow-[0_5px_20px_rgba(0,0,0,0.5)]"
+          >
             {/* Tech-inspired decorative elements */}
-            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-rose rounded-tl-xl" />
-            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-br-xl" />
+            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-neon rounded-none" />
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-none" />
             
             <div className="max-w-3xl mx-auto">
               {/* University Logo */}
@@ -65,60 +68,58 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 />
               </motion.div>
               
-              {/* University logo already added above */}
-              
               <motion.h1 
-                className="text-5xl md:text-7xl font-bold text-badir-mocha mb-6 tracking-tight"
+                className="text-5xl md:text-7xl font-bold text-badir-mocha mb-6 tracking-tight cyber-heading"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 <span className="relative">
-                  B<span className="text-badir-rose">adir</span>
-                  <div className="absolute -top-2 -right-4 w-8 h-8 rounded-full bg-badir-rose/20 blur-lg" />
+                  B<span className="text-badir-neon drop-shadow-[0_0_10px_rgba(103,255,242,0.8)]">adir</span>
+                  <div className="absolute -top-2 -right-4 w-8 h-8 rounded-full bg-badir-neon/20 blur-xl" />
                 </span>
               </motion.h1>
               
               <motion.h2 
-                className="text-2xl md:text-4xl font-medium text-badir-rose mb-8 relative"
+                className="text-2xl md:text-4xl font-medium text-badir-tan mb-8 relative uppercase tracking-wider"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <span className="relative">
-                  Blockchain <span className="relative">Donation<span className="absolute -top-1 -right-2 w-2 h-2 bg-badir-tan rounded-full" /></span> Platform
+                  Blockchain <span className="relative">Donation<span className="absolute -top-1 -right-2 w-2 h-2 bg-badir-neon rounded-none animate-pulse" /></span> Platform
                 </span>
-                <div className="h-px bg-gradient-to-r from-transparent via-badir-rose to-transparent mt-2" />
+                <div className="h-0.5 bg-gradient-to-r from-transparent via-badir-neon to-transparent mt-2 shadow-[0_0_10px_rgba(103,255,242,0.7)]" />
               </motion.h2>
               
               <motion.p 
-                className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <span className="bg-gradient-to-r from-badir-mocha to-badir-rose bg-clip-text text-transparent font-medium">
+                <span className="bg-gradient-to-r from-badir-neon to-badir-rose bg-clip-text text-transparent font-medium drop-shadow-sm">
                   Transparency, Trust, and Technology in Every Transaction
                 </span>
               </motion.p>
               
               {/* Team Information */}
               <motion.div
-                className="mb-8"
+                className="mb-10"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                <div className="py-3 px-5 rounded-xl backdrop-blur-sm bg-badir-cream/50 inline-block">
+                <div className="py-3 px-5 bg-badir-sand/80 border-l-2 border-badir-neon inline-block">
                   <h3 className="text-lg font-semibold mb-2 text-badir-mocha">By</h3>
-                  <ul className="text-sm space-y-1 text-badir-mocha/90">
+                  <ul className="text-sm space-y-1 text-badir-mocha/90 font-mono">
                     <li>AFNAN MOHAMMAD ISMAIL ALSHATER</li>
                     <li>LEEDIA NEMER SALEEM ALNEMRI</li>
                     <li>YARA OSAMA A. AL-AQARBAH</li>
                   </ul>
                   <div className="h-px bg-badir-tan/40 my-2" />
                   <p className="text-sm text-badir-mocha/90">Supervised by</p>
-                  <p className="text-sm text-badir-mocha">Dr. Musab Al Ghadi</p>
+                  <p className="text-sm text-badir-neon font-medium">Dr. Musab Al Ghadi</p>
                 </div>
               </motion.div>
               
@@ -129,10 +130,10 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 whileHover={{ scale: 1.05 }}
                 className="relative"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-badir-rose to-badir-tan rounded-full blur opacity-75" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-badir-neon to-badir-tan rounded-sm blur opacity-75" />
                 <Button 
                   onClick={onStartClick}
-                  className="relative px-10 py-5 h-auto text-lg bg-badir-rose text-white rounded-full font-medium hover:bg-opacity-90 transition-all shadow-lg"
+                  className="relative px-10 py-5 h-auto text-lg bg-badir-tan uppercase tracking-wider text-white rounded-sm font-medium border-t border-badir-neon shadow-[0_0_15px_rgba(103,255,242,0.5)] hover:shadow-[0_0_25px_rgba(103,255,242,0.7)] transition-all duration-300"
                 >
                   <span className="mr-2">Begin Presentation</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
@@ -142,11 +143,11 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
               </motion.div>
               
               {/* Tech decorative elements */}
-              <div className="absolute bottom-8 left-8 w-20 h-5 flex space-x-1">
+              <div className="absolute bottom-8 left-8 w-28 h-5 flex space-x-1">
                 {[1, 2, 3, 4, 5].map((_, i) => (
                   <motion.div 
                     key={i}
-                    className="h-full bg-badir-tan/40 rounded-sm flex-1"
+                    className="h-full bg-badir-neon/50 rounded-none flex-1 shadow-[0_0_5px_rgba(103,255,242,0.5)]"
                     initial={{ height: 0 }}
                     animate={{ height: '100%' }}
                     transition={{ delay: 0.8 + (i * 0.1), duration: 0.4 }}
