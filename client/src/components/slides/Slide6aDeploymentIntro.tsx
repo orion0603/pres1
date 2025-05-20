@@ -176,15 +176,7 @@ const Slide6aDeploymentIntro = () => {
                           <p className="text-sm text-badir-mocha/70">Unique identifier for accessing the deployed contract</p>
                         </div>
                       </div>
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
-                          <i className="fas fa-key"></i>
-                        </div>
-                        <div>
-                          <h5 className="font-medium text-badir-mocha mb-1">Owner Access</h5>
-                          <p className="text-sm text-badir-mocha/70">Secure deployment with owner-only administrative functions</p>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                 )}
