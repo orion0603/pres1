@@ -49,7 +49,7 @@ const DeploymentAnimation: React.FC = () => {
             <motion.div
               key={markerStep}
               className={`absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center
-                ${step >= markerStep ? 'bg-badir-rose text-white' : 'bg-white text-gray-400 border-2 border-gray-300'}`}
+                ${step >= markerStep ? 'bg-badir-rose text-badir-cream' : 'bg-badir-cream/90 text-badir-mocha/70 border-2 border-badir-tan/40'}`}
               style={{ left: `${(markerStep - 1) * 25}%` }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ 
