@@ -45,8 +45,8 @@ const Presentation = () => {
       <Slide3Blockchain />
       <Slide3aBlockchainFeatures />
       <Slide4SmartContract />
-      <Slide5SmartContractDemo />
       <Slide6SmartContractCode />
+      <Slide5SmartContractDemo />
       <Slide7Deployment />
       <Slide8Security />
       <Slide9Attacks />
