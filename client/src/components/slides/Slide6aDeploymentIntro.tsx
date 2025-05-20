@@ -1,233 +1,188 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ParticleNetwork from '../animations/ParticleNetwork';
 
-// Animation component for the deployment process
+// Deployment Terminal Animation
 const DeploymentAnimation = () => {
-  const [step, setStep] = useState(0);
-  const [contractCode, setContractCode] = useState('');
-  const [deploymentComplete, setDeploymentComplete] = useState(false);
+  const [lines, setLines] = useState<{text: string; status: 'typing' | 'complete' | 'spinner'; highlight?: boolean}[]>([]);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [showContractAddress, setShowContractAddress] = useState(false);
+  const terminalRef = useRef<HTMLDivElement>(null);
   
-  // Code snippet that appears letter by letter
-  const fullCode = `contract Donation {
-  address public charity;
-  
-  constructor(address _charity) {
-    charity = _charity;
-  }
-  
-  function donate() public payable {
-    // transfer to charity
-  }
-}`;
+  // The deployment log lines
+  const deploymentLines = [
+    { text: '> Compiling SmartContract.sol...', status: 'typing' },
+    { text: '✓ Contract compiled successfully', status: 'complete', highlight: true },
+    { text: '', status: 'complete' }, // Empty line for spacing
+    { text: '> Connecting to Ethereum network...', status: 'typing' },
+    { text: '✓ Connected to Ganache (localhost:8545)', status: 'complete', highlight: true },
+    { text: '', status: 'complete' }, // Empty line for spacing
+    { text: '> Deploying contract...', status: 'typing' },
+    { text: '⌛ Transaction sent: 0xa93f...2bd3', status: 'spinner' },
+    { text: '⌛ Waiting for confirmations...', status: 'spinner' },
+    { text: '', status: 'complete' }, // Empty line for spacing
+    { text: '✓ Smart contract deployed at:', status: 'complete', highlight: true }
+  ];
 
-  // Typewriter effect for code
+  // Simulates typing effect
   useEffect(() => {
-    if (step < 1) return;
+    if (currentLineIndex >= deploymentLines.length) return;
     
-    let i = 0;
-    const typeWriter = setInterval(() => {
-      if (i < fullCode.length) {
-        setContractCode(fullCode.substring(0, i + 1));
-        i++;
+    const currentLine = deploymentLines[currentLineIndex];
+    
+    if (currentLine.status === 'typing' || currentLine.status === 'complete') {
+      if (currentText.length < currentLine.text.length) {
+        setIsTyping(true);
+        const timeout = setTimeout(() => {
+          setCurrentText(currentLine.text.substring(0, currentText.length + 1));
+        }, 30); // Typing speed
+        return () => clearTimeout(timeout);
       } else {
-        clearInterval(typeWriter);
-        if (step === 1) {
-          setTimeout(() => setStep(2), 800);
-        }
-      }
-    }, 30);
-    
-    return () => clearInterval(typeWriter);
-  }, [step]);
-  
-  // Control animation steps
-  useEffect(() => {
-    // Start typing code
-    const timer1 = setTimeout(() => setStep(1), 1000);
-    
-    // After deploying (initiated in step 2), move to completion
-    const timer3 = step === 2 ? setTimeout(() => {
-      setDeploymentComplete(true);
-      setStep(3);
-    }, 2500) : null;
-    
-    return () => {
-      clearTimeout(timer1);
-      if (timer3) clearTimeout(timer3);
-    };
-  }, [step]);
-  
-  return (
-    <div className="mx-auto w-full h-full relative overflow-hidden rounded-xl bg-gradient-to-r from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/30 shadow-lg">
-      {/* Contract */}
-      <motion.div 
-        className="absolute left-10 top-1/2 -translate-y-1/2 w-[180px] bg-white rounded-lg shadow-lg overflow-hidden border border-badir-rose/20"
-        initial={{ x: -50, opacity: 0 }}
-        animate={{ 
-          x: step >= 2 ? -120 : 0,
-          opacity: 1,
-          scale: step >= 2 ? 0.8 : 1,
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      >
-        <div className="bg-gray-900 text-white text-xs py-1 px-3 font-mono flex items-center">
-          <div className="mr-2 flex space-x-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-          </div>
-          <span>Donation.sol</span>
-        </div>
-        <pre className="p-3 text-xs font-mono text-gray-800 whitespace-pre-wrap h-[200px] overflow-y-auto">
-          {contractCode || "// Smart Contract"}
-        </pre>
-      </motion.div>
-      
-      {/* Deployment Animation */}
-      <motion.div 
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 2 ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Code packets animating toward blockchain */}
-        {step >= 2 && !deploymentComplete && (
-          <>
-            <motion.div 
-              className="absolute w-6 h-6 bg-badir-rose/20 rounded-md border border-badir-rose/40 flex items-center justify-center"
-              initial={{ x: -100, y: 0 }}
-              animate={{ x: 100, y: 0 }}
-              transition={{ 
-                duration: 1.2,
-                ease: "easeOut",
-                repeat: deploymentComplete ? 0 : Infinity,
-                repeatType: "loop",
-                repeatDelay: 0.3
-              }}
-            >
-              <i className="fas fa-code text-xs text-badir-rose"></i>
-            </motion.div>
-            <motion.div 
-              className="absolute w-6 h-6 bg-badir-rose/20 rounded-md border border-badir-rose/40 flex items-center justify-center"
-              initial={{ x: -100, y: 0 }}
-              animate={{ x: 100, y: 0 }}
-              transition={{ 
-                duration: 1.2,
-                delay: 0.4,
-                ease: "easeOut",
-                repeat: deploymentComplete ? 0 : Infinity,
-                repeatType: "loop",
-                repeatDelay: 0.3
-              }}
-            >
-              <i className="fas fa-code text-xs text-badir-rose"></i>
-            </motion.div>
-          </>
-        )}
+        setIsTyping(false);
+        const newLines = [...lines, { ...currentLine, text: currentText }];
+        setLines(newLines);
+        setCurrentText('');
         
-        {/* Deploy button */}
-        <motion.button
-          className={`px-5 py-2 rounded-full font-medium text-sm ${
-            step >= 2 ? 'bg-green-500 text-white' : 'bg-badir-rose text-white'
-          } shadow-md flex items-center`}
-          initial={{ scale: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          animate={step === 1 ? { y: [0, -3, 0] } : {}}
-          transition={{ repeat: step === 1 ? Infinity : 0, duration: 1 }}
-          onClick={() => step === 1 && setStep(2)}
-          disabled={step !== 1}
-        >
-          {step < 2 ? (
-            <>
-              <i className="fas fa-rocket mr-2"></i>
-              Deploy Contract
-            </>
-          ) : deploymentComplete ? (
-            <>
-              <i className="fas fa-check mr-2"></i>
-              Deployed!
-            </>
-          ) : (
-            <>
-              <motion.div 
-                className="mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 0.8, ease: "linear" }}
-              />
-              Deploying...
-            </>
-          )}
-        </motion.button>
-      </motion.div>
+        const timeout = setTimeout(() => {
+          setCurrentLineIndex(prev => prev + 1);
+        }, currentLine.highlight ? 500 : 200); // Pause longer on highlighted lines
+        
+        return () => clearTimeout(timeout);
+      }
+    } else if (currentLine.status === 'spinner') {
+      setIsTyping(false);
+      const newLines = [...lines, { ...currentLine }];
+      setLines(newLines);
+      setCurrentText('');
       
-      {/* Blockchain */}
-      <motion.div 
-        className="absolute right-10 top-1/2 -translate-y-1/2"
-        initial={{ x: 50, opacity: 0 }}
-        animate={{ 
-          x: 0,
-          opacity: 1,
-          scale: deploymentComplete ? 1.05 : 1
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      >
-        <div className="relative w-[180px] h-[220px] bg-white rounded-lg p-3 shadow-lg border border-badir-rose/20 flex flex-col">
-          <div className="text-center mb-3 font-medium text-badir-mocha">Blockchain</div>
-          
-          {/* Blockchain blocks */}
-          <div className="flex-1 overflow-hidden">
-            <div className="space-y-2">
-              {[1, 2, 3, 4, 5].map((block) => (
-                <motion.div 
-                  key={block}
-                  className={`p-2 rounded-md ${
-                    deploymentComplete && block === 1 
-                      ? 'bg-green-50 border border-green-200' 
-                      : 'bg-gray-50 border border-gray-200'
-                  } flex items-center`}
-                  initial={{ x: 0 }}
-                  animate={
-                    deploymentComplete && block === 1 
-                      ? { 
-                          backgroundColor: ["#f0fdf4", "#dcfce7", "#f0fdf4"],
-                          boxShadow: ["0 0 0 rgba(34, 197, 94, 0)", "0 0 8px rgba(34, 197, 94, 0.5)", "0 0 0 rgba(34, 197, 94, 0)"] 
-                        }
-                      : {}
-                  }
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                >
-                  <div className="w-8 h-8 bg-badir-rose/10 mr-2 rounded-md flex items-center justify-center">
-                    <i className="fas fa-cube text-badir-rose/80"></i>
-                  </div>
-                  <div className="text-xs text-badir-mocha/80 overflow-hidden">
-                    {deploymentComplete && block === 1 
-                      ? <div className="font-mono truncate">0x814EED06...</div>
-                      : <div>Block #{16428790 - (block-1)}</div>
-                    }
-                  </div>
-                </motion.div>
-              ))}
+      // For spinner lines, wait longer to simulate processing
+      const timeout = setTimeout(() => {
+        setCurrentLineIndex(prev => prev + 1);
+      }, 1500);
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [currentLineIndex, currentText, lines]);
+  
+  // Show the contract address after all lines are typed
+  useEffect(() => {
+    if (currentLineIndex === deploymentLines.length) {
+      const timeout = setTimeout(() => {
+        setShowContractAddress(true);
+      }, 800);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentLineIndex]);
+  
+  // Auto-scroll to bottom of terminal
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [lines, currentText]);
+
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <div className="w-full max-w-4xl">
+        {/* Terminal Window */}
+        <div className="bg-[#322D29] rounded-md overflow-hidden shadow-xl border border-badir-mocha/20 mx-auto">
+          {/* Terminal Header */}
+          <div className="bg-badir-mocha px-4 py-2 flex items-center">
+            <div className="flex space-x-2 mr-4">
+              <div className="w-3 h-3 rounded-full bg-[#72383D]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#AC9C8D]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#D1C7BD]"></div>
             </div>
+            <div className="text-[#EFE9E1] text-sm font-medium">Smart Contract Deployment</div>
+          </div>
+          
+          {/* Terminal Content */}
+          <div 
+            ref={terminalRef}
+            className="p-4 font-mono text-[#EFE9E1] h-80 overflow-y-auto"
+            style={{ fontSize: '0.95rem', lineHeight: '1.75' }}
+          >
+            {/* Previously completed lines */}
+            {lines.map((line, index) => (
+              <div key={index} className={`mb-1 ${line.highlight ? 'font-bold' : ''}`}>
+                {line.status === 'spinner' ? (
+                  <div className="flex items-center">
+                    <motion.span 
+                      animate={{ opacity: [1, 0.3, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.5 }}
+                      className="inline-block mr-1 text-[#AC9C8D]"
+                    >
+                      {line.text.includes('Transaction') ? '⌛' : '⏳'}
+                    </motion.span>
+                    <span>{line.text.replace(/^[⌛⏳]\s/, '')}</span>
+                  </div>
+                ) : (
+                  <div className={line.text.startsWith('✓') ? 'text-[#72383D] font-semibold' : ''}>
+                    {line.text}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            {/* Currently typing line */}
+            {isTyping && (
+              <div className={`mb-1 ${currentLineIndex < deploymentLines.length && deploymentLines[currentLineIndex].highlight ? 'font-bold' : ''}`}>
+                {currentText}
+                <motion.span 
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ repeat: Infinity, duration: 0.8 }}
+                  className="inline-block w-2 h-4 ml-0.5 bg-[#EFE9E1]"
+                />
+              </div>
+            )}
+            
+            {/* Contract address display box */}
+            {showContractAddress && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mt-2 p-3 bg-[#D1C7BD] text-badir-mocha rounded-md border-l-4 border-[#72383D]"
+              >
+                <div className="font-bold mb-1 text-[#322D29]">Contract Address:</div>
+                <motion.div 
+                  className="font-mono text-[#322D29] break-all"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 0px rgba(114, 56, 61, 0)",
+                      "0 0 2px rgba(114, 56, 61, 0.5)",
+                      "0 0 0px rgba(114, 56, 61, 0)"
+                    ]
+                  }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                >
+                  0x9eAe9b64A0Ce8cfa9C535506dADcC3b06D330546
+                </motion.div>
+              </motion.div>
+            )}
           </div>
         </div>
-      </motion.div>
-      
-      {/* Contract successfully deployed message */}
-      {deploymentComplete && (
+        
+        {/* Legend */}
         <motion.div 
-          className="absolute bottom-3 left-0 right-0 mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: showContractAddress ? 1 : 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="text-center mt-4 text-sm text-badir-mocha/80"
         >
-          <div className="inline-block px-4 py-2 bg-green-50 border border-green-200 rounded-full text-sm text-green-700 font-medium">
-            <i className="fas fa-check-circle mr-2"></i>
-            Contract successfully deployed to the blockchain
-          </div>
+          <span className="inline-block mx-2">
+            <span className="text-[#72383D] font-bold">✓</span> Success
+          </span>
+          <span className="inline-block mx-2">
+            <span className="text-[#AC9C8D]">⌛</span> Processing
+          </span>
+          <span className="inline-block mx-2">
+            <span className="font-mono text-[#72383D]">0x...</span> Address on Blockchain
+          </span>
         </motion.div>
-      )}
+      </div>
     </div>
   );
 };
