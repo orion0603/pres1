@@ -9,15 +9,15 @@ const Slide10ThankYou = ({ onReplayClick }: Slide10ThankYouProps) => {
   const teamMembers = [
     {
       name: "Yara",
-      role: "Smart Contract Developer"
+      role: "Student"
     },
     {
       name: "Afnan",
-      role: "Frontend Engineer"
+      role: "Student"
     },
     {
       name: "Leedia",
-      role: "Blockchain Researcher"
+      role: "Student"
     }
   ];
 
