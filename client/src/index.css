@@ -95,6 +95,71 @@
   .code-block {
     @apply font-mono whitespace-pre-wrap overflow-x-auto text-sm;
   }
+  
+  /* Tech-focused styling additions */
+  .tech-card {
+    @apply backdrop-blur-sm bg-badir-cream/20 rounded-xl border border-badir-tan/30 
+           shadow-lg transition-all duration-300 hover:shadow-xl overflow-hidden;
+  }
+  
+  .tech-gradient-text {
+    @apply bg-gradient-to-r from-badir-mocha to-badir-rose bg-clip-text text-transparent;
+  }
+  
+  .tech-border {
+    @apply relative;
+  }
+  
+  .tech-border::before {
+    content: '';
+    @apply absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-badir-rose rounded-tl-xl;
+  }
+  
+  .tech-border::after {
+    content: '';
+    @apply absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-badir-rose rounded-br-xl;
+  }
+  
+  .tech-glow {
+    @apply relative;
+  }
+  
+  .tech-glow::before {
+    content: '';
+    @apply absolute -inset-0.5 bg-gradient-to-r from-badir-rose to-badir-tan rounded-full blur opacity-75;
+  }
+  
+  .animate-spin-slow {
+    animation: spin 15s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .smart-contract-code {
+    @apply bg-badir-mocha rounded-lg p-4 font-mono text-xs text-badir-cream 
+            shadow-inner border border-badir-tan/20;
+  }
+  
+  .tech-highlight {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 
+           after:bg-badir-rose;
+  }
+  
+  .node-connect {
+    @apply relative;
+  }
+  
+  .node-connect::before {
+    content: '';
+    @apply absolute w-full h-0.5 bg-badir-tan/50 left-0 top-1/2 -translate-y-1/2 -z-10;
+  }
 }
 
 .font-poppins {
