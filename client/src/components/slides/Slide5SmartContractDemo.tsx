@@ -161,27 +161,27 @@ const Slide5SmartContractDemo = () => {
                 <table className="min-w-full divide-y divide-badir-tan/30 bg-white">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Donor Address</th>
-                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Amount (ETH)</th>
-                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Message</th>
-                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Time</th>
-                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Status</th>
+                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Donor Address</th>
+                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Amount (ETH)</th>
+                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Message</th>
+                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Time</th>
+                      <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">Status</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {donationHistory.map((donation, index) => (
                       <tr key={index} className="hover:bg-gray-100 transition-colors">
-                        <td className="px-5 py-4 whitespace-nowrap text-sm font-mono text-badir-mocha">{donation.donor}</td>
-                        <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-badir-mocha">{donation.amount} ETH</td>
-                        <td className="px-5 py-4 text-sm text-badir-mocha/90 truncate max-w-[200px]">
-                          {donation.message || <span className="text-badir-mocha/50 italic">No message</span>}
+                        <td className="px-5 py-4 whitespace-nowrap text-sm font-mono text-black">{donation.donor}</td>
+                        <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-black">{donation.amount} ETH</td>
+                        <td className="px-5 py-4 text-sm text-black truncate max-w-[200px]">
+                          {donation.message || <span className="text-gray-500 italic">No message</span>}
                         </td>
-                        <td className="px-5 py-4 whitespace-nowrap text-sm text-badir-mocha/70">{donation.timestamp}</td>
+                        <td className="px-5 py-4 whitespace-nowrap text-sm text-black">{donation.timestamp}</td>
                         <td className="px-5 py-4 whitespace-nowrap">
                           <span className={`px-3 py-1 text-xs rounded-full font-medium ${
                             donation.status === 'Confirmed' 
-                              ? 'bg-badir-tan/70 text-badir-mocha' 
-                              : 'bg-badir-rose/70 text-badir-mocha'
+                              ? 'bg-green-100 text-green-800' 
+                              : 'bg-blue-100 text-blue-800'
                           }`}>
                             {donation.status}
                           </span>
