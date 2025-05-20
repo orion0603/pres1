@@ -711,11 +711,11 @@ function withdraw()
                     <span className="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">Vulnerable</span>
                   </div>
                   
-                  <div className="bg-gray-50 rounded-md p-3 mb-3 border border-gray-200">
-                    <p className="text-sm text-gray-700 mb-2">
+                  <div className="bg-badir-cream/50 rounded-md p-3 mb-3 border border-badir-tan/30">
+                    <p className="text-sm text-badir-mocha mb-2">
                       <strong>Problem:</strong> Contract sends ETH to all recipients in a loop
                     </p>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-badir-mocha">
                       If any recipient rejects the payment, <strong>all transfers fail</strong>
                     </p>
                   </div>
@@ -745,7 +745,7 @@ function withdraw()
                   
                   {showDoSProtection && (
                     <div className="absolute inset-0 bg-red-500/20 backdrop-blur-sm flex items-center justify-center">
-                      <div className="bg-white rounded-lg p-4 shadow-lg text-center">
+                      <div className="bg-badir-cream/90 rounded-lg p-4 shadow-lg text-center border border-badir-tan/30">
                         <div className="text-3xl text-red-500 mb-2">
                           <i className="fas fa-exclamation-triangle"></i>
                         </div>
@@ -759,22 +759,22 @@ function withdraw()
                 </div>
                 
                 {/* Safe Pull Pattern */}
-                <div className="bg-white rounded-xl p-5 shadow-md border border-green-200 overflow-hidden">
+                <div className="bg-badir-sand/70 rounded-xl p-5 shadow-md border border-badir-neon/30 overflow-hidden">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
-                        <i className="fas fa-arrow-circle-up text-green-600"></i>
+                      <div className="w-8 h-8 bg-badir-neon/20 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-arrow-circle-up text-badir-neon"></i>
                       </div>
                       <h4 className="text-lg font-semibold text-badir-mocha">Pull Pattern</h4>
                     </div>
-                    <span className="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">Secure</span>
+                    <span className="bg-badir-neon/20 text-badir-neon text-xs px-2 py-1 rounded-full">Secure</span>
                   </div>
                   
-                  <div className="bg-gray-50 rounded-md p-3 mb-3 border border-gray-200">
-                    <p className="text-sm text-gray-700 mb-2">
+                  <div className="bg-badir-cream/50 rounded-md p-3 mb-3 border border-badir-tan/30">
+                    <p className="text-sm text-badir-mocha mb-2">
                       <strong>Solution:</strong> Record available funds, let recipients withdraw
                     </p>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-badir-mocha">
                       Each recipient is responsible for their own withdrawal
                     </p>
                   </div>
