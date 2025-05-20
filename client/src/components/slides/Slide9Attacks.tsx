@@ -361,7 +361,7 @@ const Slide9Attacks = () => {
                   <div className="grid grid-cols-3 gap-4">
                     <div className={`rounded-lg p-3 ${ceiStep >= 1 ? 'bg-badir-neon/20 border border-badir-neon/50' : 'bg-badir-tan/20 border border-badir-tan/40'}`}>
                       <h5 className="font-semibold flex items-center">
-                        <span className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center mr-2 text-xs">1</span>
+                        <span className="w-6 h-6 rounded-full bg-badir-neon text-badir-mocha flex items-center justify-center mr-2 text-xs">1</span>
                         Checks
                       </h5>
                       <p className="text-sm mt-2">Validate conditions first</p>
@@ -376,18 +376,18 @@ require(amount > 0, "No balance");`}</pre>
                         Effects
                       </h5>
                       <p className="text-sm mt-2">Update state before interactions</p>
-                      <pre className="text-xs mt-2 bg-white p-2 rounded">{`// Update state BEFORE transfers
+                      <pre className="text-xs mt-2 bg-badir-cream/70 p-2 rounded border border-badir-tan/30">{`// Update state BEFORE transfers
 balances[msg.sender] = 0;
 // State is now updated`}</pre>
                     </div>
                     
-                    <div className={`rounded-lg p-3 ${ceiStep >= 3 ? 'bg-green-100 border border-green-300' : 'bg-gray-100 border border-gray-300'}`}>
+                    <div className={`rounded-lg p-3 ${ceiStep >= 3 ? 'bg-badir-neon/20 border border-badir-neon/50' : 'bg-badir-tan/20 border border-badir-tan/40'}`}>
                       <h5 className="font-semibold flex items-center">
-                        <span className="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center mr-2 text-xs">3</span>
+                        <span className="w-6 h-6 rounded-full bg-badir-neon text-badir-mocha flex items-center justify-center mr-2 text-xs">3</span>
                         Interactions
                       </h5>
                       <p className="text-sm mt-2">External calls come last</p>
-                      <pre className="text-xs mt-2 bg-white p-2 rounded">{`// External interactions LAST
+                      <pre className="text-xs mt-2 bg-badir-cream/70 p-2 rounded border border-badir-tan/30">{`// External interactions LAST
 (bool success, ) = msg.sender.call{
   value: amount
 }("");`}</pre>
@@ -400,9 +400,9 @@ balances[msg.sender] = 0;
           
           {/* 2. NoContract Modifier Tab */}
           <TabsContent value="nocontract" className="mt-0">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-badir-sand/90 rounded-xl p-6 shadow-lg border border-badir-tan/30">
               <div className="flex items-center mb-4">
-                <div className="bg-red-500 rounded-full p-3 mr-3 text-white">
+                <div className="bg-badir-rose rounded-full p-3 mr-3 text-white">
                   <i className="fas fa-user-shield text-xl"></i>
                 </div>
                 <h3 className="text-2xl font-semibold text-badir-mocha">NoContract Modifier Protection</h3>
@@ -480,7 +480,7 @@ function withdraw()
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                       >
-                        <div className="bg-white rounded-lg p-4 shadow-lg max-w-xs text-center">
+                        <div className="bg-badir-cream/90 rounded-lg p-4 shadow-lg max-w-xs text-center border border-badir-tan/30">
                           <div className="text-3xl text-badir-rose mb-2">
                             <i className="fas fa-shield-alt"></i>
                           </div>
