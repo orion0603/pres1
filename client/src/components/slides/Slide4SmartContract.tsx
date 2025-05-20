@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ParticleNetwork from '../animations/ParticleNetwork';
 
 const Slide4SmartContract = () => {
   const features = [
@@ -21,143 +22,98 @@ const Slide4SmartContract = () => {
       icon: "fa-globe",
       title: "Transparent",
       description: "Code is visible to all participants, ensuring transparency"
+    },
+    {
+      icon: "fa-lock",
+      title: "Secure",
+      description: "Cryptographically secured on the blockchain, resistant to tampering"
+    },
+    {
+      icon: "fa-file-contract",
+      title: "Automated",
+      description: "Eliminates the need for manual intervention in executing agreements"
     }
   ];
 
   return (
-    <section id="slide4" className="slide bg-badir-cream">
+    <section id="slide4" className="slide relative overflow-hidden">
+      {/* Tech background */}
+      <ParticleNetwork variant="tech" density={15} />
+      <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
+      
       <div className="slide-container">
-        <h2 className="text-4xl font-bold text-badir-mocha mb-6" data-aos="fade-up">
-          What is a Smart Contract?
-        </h2>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left side: Definition and features */}
-          <div>
-            <motion.div 
-              className="bg-badir-sand rounded-xl p-8 shadow-lg mb-8"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center mb-10">
+            <motion.h2 
+              className="text-4xl font-bold tech-gradient-text mb-6"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: false }}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-badir-mocha">Definition</h3>
-              <p className="text-lg">
-                A smart contract is self-executing code that automatically enforces and executes the terms of an agreement when predetermined conditions are met.
-              </p>
-            </motion.div>
+              What is a Smart Contract?
+            </motion.h2>
             
             <motion.div 
-              className="bg-badir-tan rounded-xl p-8 shadow-lg"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: false }}
-            >
-              <h3 className="text-2xl font-semibold mb-4 text-badir-cream">Key Features</h3>
-              <ul className="space-y-4">
-                {features.map((feature, index) => (
-                  <motion.li 
-                    key={index}
-                    className="flex items-start"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
-                    viewport={{ once: false }}
-                  >
-                    <div className="bg-badir-rose rounded-full p-2 mr-3 text-white mt-1 flex-shrink-0">
-                      <i className={`fas ${feature.icon} text-sm`}></i>
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-badir-cream">{feature.title}</h4>
-                      <p className="text-badir-cream text-sm">{feature.description}</p>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+              className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto mb-10"
+              initial={{ width: 0 }}
+              whileInView={{ width: 128 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
           </div>
           
-          {/* Right side: Smart Contract Benefits */}
+          {/* Definition */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-badir-sand/80 backdrop-blur-sm rounded-xl p-8 shadow-lg mb-12 transform transition-all"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: false }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-2xl font-semibold mb-4 text-badir-mocha">Definition</h3>
+            <p className="text-lg leading-relaxed">
+              A smart contract is self-executing code that automatically enforces and executes the terms of an agreement when predetermined conditions are met. It operates on blockchain technology and eliminates the need for intermediaries while ensuring trust, security, and transparency.
+            </p>
+          </motion.div>
+          
+          {/* Key Features Grid */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: false }}
           >
-            <div className="bg-white rounded-xl p-8 shadow-lg h-full flex flex-col justify-center">
-              <h3 className="text-2xl font-semibold mb-6 text-badir-mocha text-center">
-                Benefits for Donation Platforms
-              </h3>
-              
-              <div className="space-y-6">
+            <h3 className="text-2xl font-semibold mb-6 text-badir-mocha text-center">Key Features</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {features.map((feature, index) => (
                 <motion.div 
-                  className="flex items-start"
-                  initial={{ opacity: 0, y: 10 }}
+                  key={index}
+                  className="bg-white/80 backdrop-blur-sm rounded-xl p-5 shadow-md border border-badir-tan/30 transform transition-all"
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.5 }}
+                  transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }}
                   viewport={{ once: false }}
+                  whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
                 >
-                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
-                    <i className="fas fa-money-bill-wave"></i>
+                  <div className="flex items-center mb-3">
+                    <div className="bg-badir-rose rounded-full p-3 mr-4 text-white flex-shrink-0">
+                      <i className={`fas ${feature.icon}`}></i>
+                    </div>
+                    <h4 className="font-semibold text-lg text-badir-mocha">{feature.title}</h4>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-badir-mocha">Reduced Costs</h4>
-                    <p className="text-sm text-badir-mocha/80">Elimination of intermediaries reduces processing fees and administrative costs</p>
-                  </div>
+                  <p className="text-badir-mocha/80 pl-14">{feature.description}</p>
                 </motion.div>
-                
-                <motion.div 
-                  className="flex items-start"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                  viewport={{ once: false }}
-                >
-                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
-                    <i className="fas fa-university"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-badir-mocha">Direct Transfer</h4>
-                    <p className="text-sm text-badir-mocha/80">Funds move directly from donors to recipients without traditional banking delays</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.7 }}
-                  viewport={{ once: false }}
-                >
-                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
-                    <i className="fas fa-chart-line"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-badir-mocha">Real-time Tracking</h4>
-                    <p className="text-sm text-badir-mocha/80">Donors can track their contributions in real-time from donation to distribution</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div 
-                  className="flex items-start"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                  viewport={{ once: false }}
-                >
-                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
-                    <i className="fas fa-users"></i>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-badir-mocha">Increased Trust</h4>
-                    <p className="text-sm text-badir-mocha/80">Automatic execution builds donor confidence that funds reach intended recipients</p>
-                  </div>
-                </motion.div>
-              </div>
+              ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
