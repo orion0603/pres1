@@ -20,7 +20,7 @@ export default {
         "badir-sand": "#003E8C",  /* Royal blue for sections */
         "badir-tan": "#00A7E1",   /* Bright blue accent */
         "badir-rose": "#00D474",  /* Vibrant green highlights */
-        "badir-mocha": "#FFFFFF", /* Text color - white */
+        "badir-mocha": "#C2E6FF", /* Light blue text color instead of white */
         "badir-grey": "#0062CC",  /* Bright blue for borders */
         "badir-neon": "#38B6FF",  /* Sky blue accent */
         background: "hsl(var(--background))",
