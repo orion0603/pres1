@@ -22,16 +22,6 @@ const Slide4SmartContract = () => {
       icon: "fa-globe",
       title: "Transparent",
       description: "Code is visible to all participants, ensuring transparency"
-    },
-    {
-      icon: "fa-lock",
-      title: "Secure",
-      description: "Cryptographically secured on the blockchain, resistant to tampering"
-    },
-    {
-      icon: "fa-file-contract",
-      title: "Automated",
-      description: "Eliminates the need for manual intervention in executing agreements"
     }
   ];
 
