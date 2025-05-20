@@ -35,7 +35,7 @@ const Slide8aAuditBefore = () => {
           <div className="font-mono text-sm">
             <div className="bg-black p-2">
               <img 
-                src="attached_assets/image_1747776652507.png" 
+                src="/attached_assets/image_1747776652507.png" 
                 alt="Slither Analysis Results showing vulnerabilities" 
                 className="w-full h-auto border border-zinc-700"
               />
