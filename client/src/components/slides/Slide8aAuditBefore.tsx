@@ -37,7 +37,7 @@ const Slide8aAuditBefore = () => {
             
             <div className="my-4">
               <span className="text-red-500 font-bold text-lg animate-pulse">
-                4 VULNERABILITIES DETECTED
+                3 VULNERABILITIES DETECTED
               </span>
             </div>
             
@@ -71,20 +71,7 @@ const Slide8aAuditBefore = () => {
               </div>
             </div>
             
-            <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
-              <div className="flex items-center mb-2">
-                <span className="text-yellow-500 font-bold mr-2">•</span>
-                <span className="text-yellow-500 font-bold">MEDIUM RISK</span>
-              </div>
-              <div className="text-yellow-300 ml-6 mb-3">
-                Incorrect CEI pattern implementation in 'distributeFunds' function
-              </div>
-              <div className="text-zinc-400 ml-6 text-xs bg-zinc-800 p-2 rounded">
-                <div>BadirDonation.sol:172:12</div>
-                <div>- State changes occur after external interactions</div>
-                <div>- Move all state changes before external calls</div>
-              </div>
-            </div>
+
             
             <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
               <div className="flex items-center mb-2">

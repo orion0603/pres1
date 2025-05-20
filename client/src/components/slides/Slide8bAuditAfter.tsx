@@ -67,18 +67,7 @@ const Slide8bAuditAfter = () => {
               </div>
             </div>
             
-            <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
-              <div className="flex items-start">
-                <span className="text-green-400 font-bold mr-2 mt-0.5">✓</span>
-                <div>
-                  <div className="text-green-400 font-bold">CEI pattern implemented correctly</div>
-                  <div className="text-zinc-400 text-xs mt-1 bg-zinc-800 p-2 rounded">
-                    <div>BadirDonation.sol:172:12</div>
-                    <div className="text-green-300">Fixed by reordering operations to follow Checks-Effects-Interactions</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             
             <div className="mb-6 p-3 bg-zinc-800/50 rounded border border-zinc-700">
               <div className="flex items-start">
