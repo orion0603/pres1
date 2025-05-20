@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  /* Color palette */
+  --badir-cream: #EFE9E1;
+  --badir-sand: #D1C7BD;
+  --badir-tan: #AC9C8D;
+  --badir-rose: #72383D;
+  --badir-mocha: #322D29;
+  --badir-grey: #D9D9D9;
+  
+  /* Base color variables */
+  --background: var(--badir-cream);
+  --foreground: var(--badir-mocha);
+  --muted: var(--badir-sand);
+  --muted-foreground: var(--badir-mocha);
+  --popover: var(--badir-cream);
+  --popover-foreground: var(--badir-mocha);
+  --card: var(--badir-sand);
+  --card-foreground: var(--badir-mocha);
+  --border: var(--badir-grey);
+  --input: var(--badir-grey);
+  --primary: var(--badir-rose);
+  --primary-foreground: var(--badir-cream);
+  --secondary: var(--badir-tan);
+  --secondary-foreground: var(--badir-cream);
+  --accent: var(--badir-tan);
+  --accent-foreground: var(--badir-mocha);
+  --destructive: #ef4444;
+  --destructive-foreground: var(--badir-cream);
+  --ring: var(--badir-mocha);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    @apply font-dmsans text-badir-mocha bg-badir-cream;
+  }
+  
+  body {
+    @apply bg-badir-cream text-badir-mocha;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins;
+  }
+}
+
+@layer components {
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    @apply flex flex-col justify-center items-center p-4 md:p-8;
+  }
+  
+  .slide-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+  
+  .hex-grid {
+    @apply absolute inset-0 -z-10 opacity-40;
+  }
+  
+  .blockchain-block {
+    @apply transition-all duration-300 ease-in-out transform origin-center;
+  }
+  
+  .blockchain-block:hover {
+    @apply scale-105 shadow-lg;
+  }
+  
+  .nav-dot {
+    @apply w-3 h-3 rounded-full bg-badir-sand mb-2 cursor-pointer transition-all duration-300;
+  }
+  
+  .nav-dot.active {
+    @apply bg-badir-rose scale-110;
+  }
+  
+  .nav-dots {
+    @apply fixed right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center;
+  }
+  
+  .code-block {
+    @apply font-mono whitespace-pre-wrap overflow-x-auto text-sm;
+  }
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-dmsans {
+  font-family: 'DM Sans', sans-serif;
+}
