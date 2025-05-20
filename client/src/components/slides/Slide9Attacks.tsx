@@ -196,6 +196,17 @@ const Slide9Attacks = () => {
                 This attack occurs when a malicious contract repeatedly calls the vulnerable function before the first call completes, draining funds through repeated withdrawals.
               </p>
               
+              {/* Reentrancy Attack Diagram */}
+              <div className="flex justify-center mb-6">
+                <div className="max-w-md">
+                  <img 
+                    src="/images/image_1747777912912.png"
+                    alt="Reentrancy Attack Flow Diagram"
+                    className="w-full h-auto rounded-lg shadow-md border border-badir-tan/30"
+                  />
+                </div>
+              </div>
+              
               {/* Simulation area */}
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div className="bg-badir-grey/10 rounded-xl p-4 relative h-80 border border-badir-tan/30">
