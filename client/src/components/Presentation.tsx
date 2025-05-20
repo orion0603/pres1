@@ -8,6 +8,7 @@ import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 import Slide1Landing from './slides/Slide1Landing';
 import Slide2Motivation from './slides/Slide2Motivation';
 import Slide3Blockchain from './slides/Slide3Blockchain';
+import Slide3aBlockchainFeatures from './slides/Slide3aBlockchainFeatures';
 import Slide4SmartContract from './slides/Slide4SmartContract';
 import Slide5SmartContractDemo from './slides/Slide5SmartContractDemo';
 import Slide6SmartContractCode from './slides/Slide6SmartContractCode';
@@ -16,7 +17,7 @@ import Slide8Security from './slides/Slide8Security';
 import Slide9Attacks from './slides/Slide9Attacks';
 import Slide10ThankYou from './slides/Slide10ThankYou';
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 11;
 
 const Presentation = () => {
   const { activeSlide, navigateToSlide, navigateNext, navigatePrev } = useSlideNavigation(TOTAL_SLIDES);
@@ -42,6 +43,7 @@ const Presentation = () => {
       <Slide1Landing onStartClick={() => navigateToSlide(2)} />
       <Slide2Motivation />
       <Slide3Blockchain />
+      <Slide3aBlockchainFeatures />
       <Slide4SmartContract />
       <Slide5SmartContractDemo />
       <Slide6SmartContractCode />

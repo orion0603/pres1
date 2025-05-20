@@ -63,28 +63,7 @@ const Slide3Blockchain = () => {
     }
   ];
   
-  const features = [
-    {
-      icon: "fa-lock",
-      title: "Immutability",
-      description: "Once recorded, data cannot be altered or deleted, ensuring donation records remain permanent."
-    },
-    {
-      icon: "fa-eye",
-      title: "Transparency",
-      description: "All transactions are public and verifiable by anyone, ensuring complete visibility."
-    },
-    {
-      icon: "fa-network-wired",
-      title: "Decentralization",
-      description: "No single entity controls the network, making it resistant to corruption and censorship."
-    },
-    {
-      icon: "fa-history",
-      title: "Traceability",
-      description: "Complete history of all donations is maintained, allowing for full audit trails."
-    }
-  ];
+  // Blockchain visualization only - features moved to separate slide
 
   // Block hover animations
   const getSpringProps = (index: number) => useSpring({
@@ -168,15 +147,21 @@ const Slide3Blockchain = () => {
             />
           </div>
           
-          {/* Interactive blockchain visualization */}
-          <div className="overflow-x-auto pb-6 mb-12" ref={blockchainRef}>
-            <div className="flex flex-nowrap space-x-2 min-w-max py-8">
+          {/* Interactive blockchain visualization - enhanced for clarity */}
+          <div className="overflow-x-auto pb-6 mb-8" ref={blockchainRef}>
+            <div className="flex justify-center mb-4">
+              <div className="px-4 py-2 bg-badir-rose/10 border border-badir-rose/20 rounded-full text-sm text-badir-mocha">
+                <i className="fas fa-mouse-pointer mr-1"></i> Scroll horizontally to view all blocks
+              </div>
+            </div>
+            
+            <div className="flex flex-nowrap space-x-4 min-w-max py-8 px-4">
               {blocks.map((block, index) => (
                 <div key={block.id} className="flex items-center">
                   {/* Block */}
                   <animated.div 
                     style={getSpringProps(index)}
-                    className={`blockchain-block p-5 w-64 flex-shrink-0 rounded-xl shadow-md relative`}
+                    className={`blockchain-block p-5 w-72 flex-shrink-0 rounded-xl shadow-lg relative`}
                     onMouseEnter={() => setActiveBlock(index)}
                     onMouseLeave={() => setActiveBlock(null)}
                   >
@@ -185,19 +170,19 @@ const Slide3Blockchain = () => {
                     />
                     
                     <div className={`absolute top-0 left-0 h-2 w-full rounded-t-xl`} 
-                         style={{ backgroundColor: block.color, opacity: 0.6 }} 
+                         style={{ backgroundColor: block.color, opacity: 0.7 }} 
                     />
                     
-                    <div className="relative z-10 backdrop-blur-sm bg-badir-cream/40 rounded-lg p-4">
-                      <div className="flex items-center mb-3">
-                        <div className="bg-badir-rose/90 rounded-full p-2 mr-3 text-white flex items-center justify-center w-10 h-10">
-                          <i className="fas fa-cube text-sm"></i>
+                    <div className="relative z-10 backdrop-blur-sm bg-badir-cream/50 rounded-lg p-5">
+                      <div className="flex items-center mb-4">
+                        <div className="bg-badir-rose rounded-full p-2 mr-3 text-white flex items-center justify-center w-12 h-12 shadow-md">
+                          <i className="fas fa-cube text-base"></i>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-badir-mocha">{block.name}</h4>
+                          <h4 className="font-bold text-badir-mocha text-lg">{block.name}</h4>
                           {block.id === "new" && (
                             <motion.span 
-                              className="text-xs text-badir-rose"
+                              className="text-xs text-badir-rose font-medium"
                               animate={controls}
                             >
                               Mining in progress...
@@ -206,31 +191,31 @@ const Slide3Blockchain = () => {
                         </div>
                       </div>
                       
-                      <div className="bg-white/70 backdrop-blur-sm rounded-lg p-3 font-mono text-xs">
-                        <div className="flex justify-between mb-1">
-                          <span className="text-badir-rose">Hash:</span>
+                      <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 font-mono text-sm shadow-sm">
+                        <div className="flex justify-between mb-2">
+                          <span className="text-badir-rose font-bold">Hash:</span>
                           <span>{block.hash}</span>
                         </div>
-                        <div className="flex justify-between mb-1">
-                          <span className="text-badir-rose">Prev:</span>
+                        <div className="flex justify-between mb-2">
+                          <span className="text-badir-rose font-bold">Prev:</span>
                           <span>{block.prev}</span>
                         </div>
                         
                         {block.amount !== null && (
-                          <div className="mt-2 pt-2 border-t border-badir-tan/30">
-                            <div className="flex justify-between">
-                              <span>ETH:</span>
+                          <div className="mt-3 pt-3 border-t border-badir-tan/30">
+                            <div className="flex justify-between mb-1">
+                              <span className="font-medium">ETH:</span>
                               <span>{block.amount}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span>From:</span>
+                              <span className="font-medium">From:</span>
                               <span>{block.from}</span>
                             </div>
                           </div>
                         )}
                         
                         {block.details && (
-                          <div className="mt-2 pt-2 border-t border-badir-tan/30 text-center">
+                          <div className="mt-3 pt-3 border-t border-badir-tan/30 text-center font-medium">
                             {block.details}
                           </div>
                         )}
@@ -241,15 +226,15 @@ const Slide3Blockchain = () => {
                   {/* Arrow connector (except after last block) */}
                   {index < blocks.length - 1 && (
                     <motion.div 
-                      className="flex items-center px-2"
+                      className="flex items-center px-3"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.1 * index }}
                       viewport={{ once: false }}
                     >
                       <div className="relative">
-                        <div className="absolute -inset-1 bg-badir-rose rounded-full blur-sm opacity-30"></div>
-                        <i className="fas fa-long-arrow-alt-right text-badir-rose text-2xl relative"></i>
+                        <div className="absolute -inset-2 bg-badir-rose rounded-full blur-md opacity-30"></div>
+                        <i className="fas fa-long-arrow-alt-right text-badir-rose text-3xl relative"></i>
                       </div>
                     </motion.div>
                   )}
@@ -258,33 +243,28 @@ const Slide3Blockchain = () => {
             </div>
           </div>
           
-          {/* Key blockchain features */}
+          {/* Blockchain explanation */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-2xl p-6 bg-gradient-to-br from-badir-sand/30 to-badir-cream/60 backdrop-blur-sm border border-badir-tan/30"
+            className="rounded-2xl p-6 bg-gradient-to-br from-badir-sand/30 to-badir-cream/60 backdrop-blur-sm border border-badir-tan/30 mt-8"
           >
-            <h3 className="text-2xl font-semibold text-badir-mocha mb-6 tech-highlight inline-block">Key Blockchain Features</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {features.map((feature, i) => (
-                <motion.div 
-                  key={i}
-                  className="flex items-start space-x-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 + (i * 0.1) }}
-                  viewport={{ once: false, amount: 0.5 }}
-                >
-                  <div className="bg-badir-rose/90 rounded-full p-3 text-white flex-shrink-0 shadow-md">
-                    <i className={`fas ${feature.icon}`}></i>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg">{feature.title}</h4>
-                    <p className="text-sm text-badir-mocha/90">{feature.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <h3 className="text-2xl font-semibold text-badir-mocha mb-4 tech-highlight inline-block">How Blockchain Works</h3>
+            <p className="text-badir-mocha/90 mb-3">
+              A blockchain is a chain of blocks, each containing transaction data that is cryptographically linked to the previous block. 
+              For the Badir platform, each transaction represents a donation that is:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 text-badir-mocha/90">
+              <li><span className="font-medium">Verified</span> by multiple computers in the network</li>
+              <li><span className="font-medium">Sealed</span> with a unique cryptographic hash</li>
+              <li><span className="font-medium">Linked</span> to all previous transactions</li>
+              <li><span className="font-medium">Permanent</span> and cannot be modified or deleted</li>
+            </ul>
+            <div className="flex justify-end mt-2">
+              <div className="text-sm text-badir-rose/80 italic">
+                Hover over each block to see details
+              </div>
             </div>
           </motion.div>
         </motion.div>
