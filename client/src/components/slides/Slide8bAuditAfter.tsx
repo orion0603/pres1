@@ -35,7 +35,7 @@ const Slide8bAuditAfter = () => {
           <div className="font-mono text-sm">
             <div className="bg-black p-2">
               <img 
-                src="/attached_assets/image_1747776690668.png" 
+                src="/images/image_1747776690668.png" 
                 alt="Slither Analysis Results showing no vulnerabilities" 
                 className="w-full h-auto border border-zinc-700"
               />
