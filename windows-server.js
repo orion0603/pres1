@@ -1,7 +1,12 @@
 // Simple Express server for Windows compatibility
-const express = require('express');
-const path = require('path');
-const { exec } = require('child_process');
+import express from 'express';
+import path from 'path';
+import { exec } from 'child_process';
+import { fileURLToPath } from 'url';
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
