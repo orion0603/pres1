@@ -1,51 +1,240 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ParticleNetwork from '../animations/ParticleNetwork';
 
 const Slide6aDeploymentIntro = () => {
-  const deploymentSteps = [
+  const [activeStep, setActiveStep] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(false);
+  
+  const steps = [
     {
-      step: 1,
+      number: 1,
       title: "What is Deployment?",
-      icon: "fa-rocket",
       description: "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users.",
-      code: `// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
-
-contract BadirDonation {
-  // Contract code here
-}`,
-      tags: ["Permanent", "Immutable", "Accessible"],
-      details: [
-        { icon: "fa-cube", title: "Blockchain Network", description: "The distributed ledger where the contract lives permanently" },
-        { icon: "fa-gas-pump", title: "Gas Fees", description: "Cost paid to miners for processing the deployment transaction" },
-        { icon: "fa-file-contract", title: "Contract Address", description: "Unique identifier for accessing the deployed contract" },
-        { icon: "fa-code-branch", title: "Version Control", description: "Managing contract iterations before final deployment" }
-      ]
+      icon: "fa-rocket"
     },
     {
-      step: 2,
+      number: 2,
       title: "Why Does It Matter?",
-      icon: "fa-lock",
       description: "Deployed smart contracts are immutable, meaning their code cannot be changed, ensuring trust and security for all users interacting with the contract.",
-      code: `// ⚠️ Warning: Once deployed, this cannot be modified
-// Plan carefully and audit before deployment
-
-// Deploy script will send this exact code to blockchain
-// No "upgrades" or "patches" possible after deployment`,
-      tags: ["Security", "Trust", "Transparency"],
-      details: [
-        { icon: "fa-shield-alt", title: "Security", description: "No one can alter the contract's logic, protecting users from malicious changes" },
-        { icon: "fa-handshake", title: "Trust", description: "Donors can verify that the contract behavior will remain consistent" },
-        { icon: "fa-gavel", title: "Compliance", description: "Creates a permanent record of the contract's terms for auditing" },
-        { icon: "fa-exclamation-triangle", title: "Warning", description: "\"Deploy once, deploy right. There's no delete button on the blockchain.\"" }
-      ]
+      icon: "fa-lock"
     },
     {
-      step: 3,
+      number: 3,
       title: "Our Deployment Process",
-      icon: "fa-cogs",
       description: "We use Hardhat, an Ethereum development environment, to compile and deploy our donation smart contract to the blockchain network.",
-      code: `const hre = require("hardhat");
+      icon: "fa-cogs"
+    }
+  ];
+  
+  const handleStepClick = (stepNumber: number) => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    setActiveStep(stepNumber);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
+  };
+  
+  return (
+    <section id="slide6a" className="slide relative overflow-hidden">
+      {/* Tech background */}
+      <ParticleNetwork variant="tech" density={15} />
+      <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
+      
+      <div className="slide-container">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="text-center mb-8">
+            <motion.h2 
+              className="text-5xl font-bold tech-gradient-text mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: false }}
+            >
+              Smart Contract Deployment
+            </motion.h2>
+            
+            <motion.p 
+              className="text-xl text-badir-mocha mb-4 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: false }}
+            >
+              Understanding how we make our smart contract accessible on the blockchain
+            </motion.p>
+            
+            <motion.div 
+              className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto mb-8"
+              initial={{ width: 0 }}
+              whileInView={{ width: 128 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            {/* Left side: Step selector */}
+            <div className="lg:col-span-2">
+              <motion.div
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-badir-tan/30"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <h3 className="text-2xl font-semibold text-badir-mocha mb-6">Deployment Steps</h3>
+                
+                {steps.map((step) => (
+                  <motion.div
+                    key={step.number}
+                    className={`flex items-start p-4 rounded-lg mb-4 cursor-pointer transition-all ${
+                      activeStep === step.number 
+                      ? 'bg-badir-rose text-white shadow-md' 
+                      : 'bg-badir-cream/50 text-badir-mocha hover:bg-badir-sand/30'
+                    }`}
+                    onClick={() => handleStepClick(step.number)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className={`flex-shrink-0 w-10 h-10 ${
+                      activeStep === step.number ? 'bg-white' : 'bg-badir-rose'
+                    } rounded-full flex items-center justify-center text-${
+                      activeStep === step.number ? 'badir-rose' : 'white'
+                    } mr-4 font-bold text-lg`}>
+                      {step.number}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg">{step.title}</h4>
+                      <p className={`text-sm ${activeStep === step.number ? 'text-white/90' : 'text-badir-mocha/70'}`}>
+                        Click to learn more
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+            
+            {/* Right side: Step content */}
+            <div className="lg:col-span-3">
+              <motion.div
+                key={activeStep}
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-badir-tan/30 h-full"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-badir-rose rounded-full flex items-center justify-center text-white text-2xl mr-6 shadow-md">
+                    <i className={`fas ${steps[activeStep - 1].icon}`}></i>
+                  </div>
+                  <h3 className="text-2xl font-semibold text-badir-mocha">{steps[activeStep - 1].title}</h3>
+                </div>
+                
+                <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
+                  {steps[activeStep - 1].description}
+                </p>
+                
+                {activeStep === 1 && (
+                  <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
+                    <h4 className="font-semibold text-badir-mocha mb-4 flex items-center">
+                      <i className="fas fa-lightbulb text-badir-rose mr-2"></i>
+                      Key Deployment Concepts
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
+                          <i className="fas fa-cube"></i>
+                        </div>
+                        <div>
+                          <h5 className="font-medium text-badir-mocha mb-1">Blockchain Network</h5>
+                          <p className="text-sm text-badir-mocha/70">The distributed ledger where the contract will live permanently</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
+                          <i className="fas fa-gas-pump"></i>
+                        </div>
+                        <div>
+                          <h5 className="font-medium text-badir-mocha mb-1">Gas Fees</h5>
+                          <p className="text-sm text-badir-mocha/70">Cost paid to miners for processing the deployment transaction</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
+                          <i className="fas fa-file-contract"></i>
+                        </div>
+                        <div>
+                          <h5 className="font-medium text-badir-mocha mb-1">Contract Address</h5>
+                          <p className="text-sm text-badir-mocha/70">Unique identifier for accessing the deployed contract</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
+                          <i className="fas fa-code-branch"></i>
+                        </div>
+                        <div>
+                          <h5 className="font-medium text-badir-mocha mb-1">Version Control</h5>
+                          <p className="text-sm text-badir-mocha/70">Managing contract iterations before final deployment</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {activeStep === 2 && (
+                  <div className="space-y-6">
+                    <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
+                      <h4 className="font-semibold text-badir-mocha mb-4">Why Immutability Matters</h4>
+                      <ul className="space-y-3">
+                        <li className="flex items-start">
+                          <i className="fas fa-shield-alt text-badir-rose mt-1 mr-3"></i>
+                          <span className="text-badir-mocha/90">
+                            <span className="font-medium">Security:</span> Once deployed, no one can alter the contract's logic, protecting users from malicious changes.
+                          </span>
+                        </li>
+                        <li className="flex items-start">
+                          <i className="fas fa-handshake text-badir-rose mt-1 mr-3"></i>
+                          <span className="text-badir-mocha/90">
+                            <span className="font-medium">Trust:</span> Donors can verify that the contract behavior will remain consistent throughout its lifetime.
+                          </span>
+                        </li>
+                        <li className="flex items-start">
+                          <i className="fas fa-gavel text-badir-rose mt-1 mr-3"></i>
+                          <span className="text-badir-mocha/90">
+                            <span className="font-medium">Compliance:</span> Creates a permanent record of the contract's terms, useful for auditing and legal purposes.
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div className="bg-badir-mocha/5 rounded-xl p-6 border border-badir-mocha/10 text-center">
+                      <div className="font-medium text-badir-mocha mb-2">Permanent Storage Warning</div>
+                      <p className="text-sm text-badir-mocha/80 italic">
+                        "Deploy once, deploy right. There's no delete button on the blockchain."
+                      </p>
+                    </div>
+                  </div>
+                )}
+                
+                {activeStep === 3 && (
+                  <div className="space-y-6">
+                    <div className="bg-gray-900 rounded-lg p-5 font-mono text-sm text-white/90 overflow-x-auto shadow-md">
+                      <div className="flex items-center mb-3 border-b border-white/10 pb-2">
+                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-red-500 mr-1.5"></div>
+                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-yellow-500 mr-1.5"></div>
+                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-green-500 mr-1.5"></div>
+                        <span className="ml-2 text-xs text-white/60">deploy.js</span>
+                      </div>
+                      <pre className="text-white/80">
+{`const hre = require("hardhat");
 
 async function main() {
   console.log("Deploying Donation contract...");
@@ -55,6 +244,8 @@ async function main() {
   
   // Use charity address
   const charityAddress = "0x814EED06116D50b17b1d04bE5200b9699aa918e0"; 
+  
+  console.log("Using charity address:", charityAddress);
   
   // Deploy the contract with your charity address
   const donation = await Donation.deploy(charityAddress);
@@ -66,105 +257,54 @@ async function main() {
   const deployedAddress = await donation.getAddress();
   
   console.log("Donation contract deployed to:", deployedAddress);
-}`,
-      tags: ["Hardhat", "Ethers.js", "Ethereum"],
-      details: [
-        { icon: "fa-file-code", title: "Compile Contract", description: "Convert Solidity code to bytecode" },
-        { icon: "fa-sliders-h", title: "Initialize Parameters", description: "Set the charity address for the contract" },
-        { icon: "fa-paper-plane", title: "Submit Transaction", description: "Send deployment transaction to the network" },
-        { icon: "fa-clock", title: "Wait for Confirmation", description: "Transaction is mined into a block on the blockchain" },
-        { icon: "fa-key", title: "Contract Address", description: "Receive unique address for future interactions" }
-      ]
-    }
-  ];
-
-  return (
-    <section id="slide6a" className="slide bg-badir-cream">
-      <div className="slide-container">
-        <h2 className="text-4xl font-bold text-badir-mocha mb-6" data-aos="fade-up">
-          Smart Contract Deployment
-        </h2>
-        
-        <p className="text-xl text-badir-mocha mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-          Understanding how we make our smart contract accessible on the blockchain
-        </p>
-        
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-badir-tan"></div>
-          
-          {deploymentSteps.map((step, index) => (
-            <motion.div 
-              key={index}
-              className={`relative mb-12 ${index === deploymentSteps.length - 1 ? 'mb-0' : ''}`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: false, amount: 0.3 }}
-            >
-              <div className={`flex items-center justify-center ${
-                index % 2 === 0 
-                ? 'md:justify-end md:w-1/2 pr-4 md:pr-8' 
-                : 'md:justify-start md:w-1/2 md:ml-auto pl-4 md:pl-8'
-              }`}>
-                <div className="bg-white rounded-xl p-6 shadow-lg max-w-md">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-badir-rose rounded-full p-3 mr-4 text-white">
-                      <i className={`fas ${step.icon} text-xl`}></i>
+}`}
+                      </pre>
                     </div>
-                    <h3 className="text-xl font-semibold text-badir-mocha">{step.title}</h3>
-                  </div>
-                  
-                  <p className="text-badir-mocha mb-4">{step.description}</p>
-                  
-                  {/* Code section */}
-                  <div className={`rounded-lg p-3 mb-4 ${
-                    index % 2 === 0 ? 'bg-badir-mocha' : 'bg-gray-900'
-                  }`}>
-                    <pre className={`text-xs ${
-                      index % 2 === 0 ? 'text-badir-grey' : 'text-white/80'
-                    }`}>{step.code}</pre>
-                  </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {step.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="bg-badir-sand px-2 py-1 rounded-full text-xs font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Expandable details */}
-                  <div className="mt-4 pt-4 border-t border-badir-tan/30">
-                    <h4 className="font-semibold text-badir-mocha mb-3 flex items-center">
-                      <i className="fas fa-list-ul text-badir-rose mr-2"></i>
-                      Key Points
-                    </h4>
-                    <div className="grid grid-cols-1 gap-3">
-                      {step.details.map((detail, detailIndex) => (
-                        <div key={detailIndex} className="flex items-start">
-                          <div className="flex-shrink-0 w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mr-3">
-                            <i className={`fas ${detail.icon}`}></i>
-                          </div>
-                          <div>
-                            <h5 className="font-medium text-badir-mocha text-sm">{detail.title}</h5>
-                            <p className="text-xs text-badir-mocha/70">{detail.description}</p>
+                    
+                    <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
+                      <h4 className="font-semibold text-badir-mocha mb-4 flex items-center">
+                        <i className="fas fa-terminal text-badir-rose mr-2"></i>
+                        Deployment Steps
+                      </h4>
+                      <div className="space-y-3">
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">1</div>
+                          <div className="text-badir-mocha/90 text-sm">
+                            <span className="font-medium">Compile Contract:</span> Convert Solidity code to bytecode
                           </div>
                         </div>
-                      ))}
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">2</div>
+                          <div className="text-badir-mocha/90 text-sm">
+                            <span className="font-medium">Initialize Parameters:</span> Set the charity address
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">3</div>
+                          <div className="text-badir-mocha/90 text-sm">
+                            <span className="font-medium">Submit Transaction:</span> Send deployment transaction to network
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">4</div>
+                          <div className="text-badir-mocha/90 text-sm">
+                            <span className="font-medium">Wait for Confirmation:</span> Transaction is mined into a block
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">5</div>
+                          <div className="text-badir-mocha/90 text-sm">
+                            <span className="font-medium">Contract Address:</span> Receive unique address for interaction
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              {/* Timeline node */}
-              <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-badir-rose rounded-full w-8 h-8 flex items-center justify-center text-white font-bold z-10">
-                {step.step}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
