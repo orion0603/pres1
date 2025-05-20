@@ -843,7 +843,7 @@ function withdraw() public {
           
           {/* 5. CEI Pattern Tab */}
           <TabsContent value="cei" className="mt-0">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-badir-sand/90 rounded-xl p-6 shadow-lg border border-badir-tan/30">
               <div className="flex items-center mb-4">
                 <div className="bg-badir-rose rounded-full p-3 mr-3 text-white">
                   <i className="fas fa-code text-xl"></i>
@@ -916,28 +916,28 @@ function withdraw() public {
                 <h4 className="text-lg font-semibold mb-3 text-badir-mocha">CEI Pattern Principles</h4>
                 
                 <div className="grid grid-cols-3 gap-4 mb-4">
-                  <div className="bg-white p-3 rounded-lg border border-badir-tan/20">
+                  <div className="bg-badir-cream/70 p-3 rounded-lg border border-badir-tan/30">
                     <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 rounded-full bg-badir-mocha text-white flex items-center justify-center mr-2 text-xs">1</div>
+                      <div className="w-6 h-6 rounded-full bg-badir-rose text-white flex items-center justify-center mr-2 text-xs">1</div>
                       <h5 className="font-semibold">Checks</h5>
                     </div>
-                    <p className="text-xs">First, validate all preconditions and requirements.</p>
+                    <p className="text-xs text-badir-mocha">First, validate all preconditions and requirements.</p>
                   </div>
                   
-                  <div className="bg-white p-3 rounded-lg border border-badir-tan/20">
+                  <div className="bg-badir-cream/70 p-3 rounded-lg border border-badir-tan/30">
                     <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 rounded-full bg-badir-mocha text-white flex items-center justify-center mr-2 text-xs">2</div>
+                      <div className="w-6 h-6 rounded-full bg-badir-tan text-white flex items-center justify-center mr-2 text-xs">2</div>
                       <h5 className="font-semibold">Effects</h5>
                     </div>
-                    <p className="text-xs">Then, modify your contract's state variables.</p>
+                    <p className="text-xs text-badir-mocha">Then, modify your contract's state variables.</p>
                   </div>
                   
-                  <div className="bg-white p-3 rounded-lg border border-badir-tan/20">
+                  <div className="bg-badir-cream/70 p-3 rounded-lg border border-badir-tan/30">
                     <div className="flex items-center mb-2">
-                      <div className="w-6 h-6 rounded-full bg-badir-mocha text-white flex items-center justify-center mr-2 text-xs">3</div>
+                      <div className="w-6 h-6 rounded-full bg-badir-neon text-badir-mocha flex items-center justify-center mr-2 text-xs">3</div>
                       <h5 className="font-semibold">Interactions</h5>
                     </div>
-                    <p className="text-xs">Finally, interact with other contracts or addresses.</p>
+                    <p className="text-xs text-badir-mocha">Finally, interact with other contracts or addresses.</p>
                   </div>
                 </div>
                 
