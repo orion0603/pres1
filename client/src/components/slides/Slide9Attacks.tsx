@@ -508,9 +508,9 @@ function withdraw()
           
           {/* 3. Centralization vs Decentralization Tab */}
           <TabsContent value="centralization" className="mt-0">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-badir-sand/90 rounded-xl p-6 shadow-lg border border-badir-tan/30">
               <div className="flex items-center mb-4">
-                <div className="bg-red-500 rounded-full p-3 mr-3 text-white">
+                <div className="bg-badir-rose rounded-full p-3 mr-3 text-white">
                   <i className="fas fa-network-wired text-xl"></i>
                 </div>
                 <h3 className="text-2xl font-semibold text-badir-mocha">Centralization vs Decentralization</h3>
@@ -684,9 +684,9 @@ function withdraw()
           
           {/* 4. DoS Attack Protection Tab */}
           <TabsContent value="dos" className="mt-0">
-            <div className="bg-white rounded-xl p-6 shadow-lg">
+            <div className="bg-badir-sand/90 rounded-xl p-6 shadow-lg border border-badir-tan/30">
               <div className="flex items-center mb-4">
-                <div className="bg-red-500 rounded-full p-3 mr-3 text-white">
+                <div className="bg-badir-rose rounded-full p-3 mr-3 text-white">
                   <i className="fas fa-ban text-xl"></i>
                 </div>
                 <h3 className="text-2xl font-semibold text-badir-mocha">DoS Attack Protection</h3>
@@ -700,11 +700,11 @@ function withdraw()
               {/* Side-by-side comparison */}
               <div className="grid grid-cols-2 gap-6 mb-6">
                 {/* Vulnerable Push Pattern */}
-                <div className="bg-white rounded-xl p-5 shadow-md border border-red-200 relative overflow-hidden">
+                <div className="bg-badir-sand/70 rounded-xl p-5 shadow-md border border-badir-rose/30 relative overflow-hidden">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-2">
-                        <i className="fas fa-arrow-circle-down text-red-500"></i>
+                      <div className="w-8 h-8 bg-badir-rose/20 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-arrow-circle-down text-badir-rose"></i>
                       </div>
                       <h4 className="text-lg font-semibold text-badir-mocha">Push Pattern</h4>
                     </div>
