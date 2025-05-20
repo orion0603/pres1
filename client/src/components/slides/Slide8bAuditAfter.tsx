@@ -5,13 +5,24 @@ const Slide8bAuditAfter = () => {
   return (
     <section id="slide8bAuditAfter" className="slide bg-badir-background">
       <div className="slide-container max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-badir-teal mb-6" data-aos="fade-up">
-          Security Audit Results: After
-        </h2>
-        
-        <p className="text-xl text-badir-cream/90 mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
-          Improved contract security after implementing all recommended measures
-        </p>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-4xl font-bold text-badir-teal mb-2" data-aos="fade-up">
+              Security Audit Results: After
+            </h2>
+            
+            <p className="text-xl text-badir-cream/90 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+              Improved contract security after implementing all recommended measures
+            </p>
+          </div>
+          <div className="hidden md:block w-24 h-24 opacity-20">
+            <img 
+              src="/images/ethereum-logo.png"
+              alt="Ethereum Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
         
         <motion.div
           className="w-full bg-zinc-900 rounded-lg border border-zinc-700 shadow-[0_0_15px_rgba(129,236,134,0.3)] overflow-hidden"
