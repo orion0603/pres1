@@ -4,15 +4,23 @@ import ParticleNetwork from '../animations/ParticleNetwork';
 
 // Deployment Terminal Animation
 const DeploymentAnimation = () => {
-  const [lines, setLines] = useState<{text: string; status: 'typing' | 'complete' | 'spinner'; highlight?: boolean}[]>([]);
+  // Properly typed state to fix TypeScript errors
+  type LineStatus = 'typing' | 'complete' | 'spinner';
+  type Line = {
+    text: string;
+    status: LineStatus;
+    highlight?: boolean;
+  };
+
+  const [lines, setLines] = useState<Line[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showContractAddress, setShowContractAddress] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
   
-  // The deployment log lines
-  const deploymentLines = [
+  // The deployment log lines with correct typing
+  const deploymentLines: Line[] = [
     { text: '> Compiling SmartContract.sol...', status: 'typing' },
     { text: '✓ Contract compiled successfully', status: 'complete', highlight: true },
     { text: '', status: 'complete' }, // Empty line for spacing
@@ -36,35 +44,33 @@ const DeploymentAnimation = () => {
       if (currentText.length < currentLine.text.length) {
         setIsTyping(true);
         const timeout = setTimeout(() => {
-          setCurrentText(currentLine.text.substring(0, currentText.length + 1));
-        }, 30); // Typing speed
+          setCurrentText(prevText => currentLine.text.substring(0, prevText.length + 1));
+        }, 40); // Typing speed - slightly slower to avoid race conditions
         return () => clearTimeout(timeout);
       } else {
         setIsTyping(false);
-        const newLines = [...lines, { ...currentLine, text: currentText }];
-        setLines(newLines);
+        setLines(prevLines => [...prevLines, { ...currentLine, text: currentText }]);
         setCurrentText('');
         
         const timeout = setTimeout(() => {
           setCurrentLineIndex(prev => prev + 1);
-        }, currentLine.highlight ? 500 : 200); // Pause longer on highlighted lines
+        }, currentLine.highlight ? 600 : 300); // Longer pause for better readability
         
         return () => clearTimeout(timeout);
       }
     } else if (currentLine.status === 'spinner') {
       setIsTyping(false);
-      const newLines = [...lines, { ...currentLine }];
-      setLines(newLines);
+      setLines(prevLines => [...prevLines, currentLine]);
       setCurrentText('');
       
       // For spinner lines, wait longer to simulate processing
       const timeout = setTimeout(() => {
         setCurrentLineIndex(prev => prev + 1);
-      }, 1500);
+      }, 1800);
       
       return () => clearTimeout(timeout);
     }
-  }, [currentLineIndex, currentText, lines]);
+  }, [currentLineIndex, currentText]);
   
   // Show the contract address after all lines are typed
   useEffect(() => {
