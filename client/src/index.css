@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  /* Bold, attention-grabbing color scheme with strong contrast */
-  --badir-cream: #FCFCFC;  /* Almost white background */
-  --badir-sand: #F0F0F0;   /* Light gray for secondary backgrounds */
-  --badir-tan: #404040;    /* Dark gray for borders and separators */
-  --badir-rose: #FF4500;   /* Vivid orange-red for primary accent */
-  --badir-mocha: #202020;  /* Nearly black for text */
-  --badir-grey: #D0D0D0;   /* Medium gray */
+  /* EXTREMELY DIFFERENT color scheme - green and purple */
+  --badir-cream: #81B29A;  /* Sage green background */
+  --badir-sand: #9CC5A1;   /* Lighter green for sections */
+  --badir-tan: #49A078;    /* Medium green */
+  --badir-rose: #9B5DE5;   /* Bright purple accent */
+  --badir-mocha: #222222;  /* Very dark for text */
+  --badir-grey: #D8E2DC;   /* Light mint gray */
   
   /* Base color variables */
   --background: var(--badir-cream);
