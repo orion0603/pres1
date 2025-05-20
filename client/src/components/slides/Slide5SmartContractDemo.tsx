@@ -158,8 +158,8 @@ const Slide5SmartContractDemo = () => {
               </div>
               
               <div className="overflow-hidden rounded-xl border border-badir-tan/30 shadow-md">
-                <table className="min-w-full divide-y divide-badir-tan/30">
-                  <thead className="bg-gradient-to-r from-badir-cream/50 to-badir-sand/30">
+                <table className="min-w-full divide-y divide-badir-tan/30 bg-white">
+                  <thead className="bg-gray-50">
                     <tr>
                       <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Donor Address</th>
                       <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Amount (ETH)</th>
@@ -168,9 +168,9 @@ const Slide5SmartContractDemo = () => {
                       <th scope="col" className="px-5 py-3 text-left text-xs font-semibold text-badir-mocha uppercase tracking-wider">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-badir-sand/70 divide-y divide-badir-tan/30">
+                  <tbody className="bg-white divide-y divide-gray-200">
                     {donationHistory.map((donation, index) => (
-                      <tr key={index} className="hover:bg-badir-tan/20 transition-colors">
+                      <tr key={index} className="hover:bg-gray-100 transition-colors">
                         <td className="px-5 py-4 whitespace-nowrap text-sm font-mono text-badir-mocha">{donation.donor}</td>
                         <td className="px-5 py-4 whitespace-nowrap text-sm font-medium text-badir-mocha">{donation.amount} ETH</td>
                         <td className="px-5 py-4 text-sm text-badir-mocha/90 truncate max-w-[200px]">
