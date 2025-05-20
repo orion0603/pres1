@@ -65,16 +65,7 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                 />
               </motion.div>
               
-              <motion.div
-                className="h-24 w-24 mx-auto mb-8 relative"
-                initial={{ opacity: 0, rotateZ: -90 }}
-                animate={{ opacity: 1, rotateZ: 0 }}
-                transition={{ duration: 1.2 }}
-              >
-                <div className="absolute inset-0 rounded-full border-4 border-badir-rose border-dotted animate-spin-slow" />
-                <div className="absolute inset-2 rounded-full border-4 border-badir-tan" />
-                <div className="absolute inset-4 rounded-full bg-badir-mocha flex items-center justify-center text-white text-3xl font-bold">B</div>
-              </motion.div>
+              {/* University logo already added above */}
               
               <motion.h1 
                 className="text-5xl md:text-7xl font-bold text-badir-mocha mb-6 tracking-tight"

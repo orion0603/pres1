@@ -243,30 +243,12 @@ const Slide3Blockchain = () => {
             </div>
           </div>
           
-          {/* Blockchain explanation */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-2xl p-6 bg-gradient-to-br from-badir-sand/30 to-badir-cream/60 backdrop-blur-sm border border-badir-tan/30 mt-8"
-          >
-            <h3 className="text-2xl font-semibold text-badir-mocha mb-4 tech-highlight inline-block">How Blockchain Works</h3>
-            <p className="text-badir-mocha/90 mb-3">
-              A blockchain is a chain of blocks, each containing transaction data that is cryptographically linked to the previous block. 
-              For the Badir platform, each transaction represents a donation that is:
-            </p>
-            <ul className="list-disc pl-6 space-y-2 text-badir-mocha/90">
-              <li><span className="font-medium">Verified</span> by multiple computers in the network</li>
-              <li><span className="font-medium">Sealed</span> with a unique cryptographic hash</li>
-              <li><span className="font-medium">Linked</span> to all previous transactions</li>
-              <li><span className="font-medium">Permanent</span> and cannot be modified or deleted</li>
-            </ul>
-            <div className="flex justify-end mt-2">
-              <div className="text-sm text-badir-rose/80 italic">
-                Hover over each block to see details
-              </div>
+          {/* Instructions */}
+          <div className="flex justify-end mt-4">
+            <div className="text-sm text-badir-rose/80 italic">
+              Hover over each block to see details
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
