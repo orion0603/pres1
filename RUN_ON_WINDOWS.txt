@@ -1,0 +1,39 @@
+========================================================
+HOW TO RUN BADIR BLOCKCHAIN PRESENTATION ON WINDOWS
+========================================================
+
+QUICK START:
+
+1. Make sure you have Node.js installed (download from https://nodejs.org)
+2. Double-click the "run-windows.bat" file
+3. The presentation will open in your browser automatically
+
+--------------------------------------------------------
+
+ALTERNATE METHOD (FOR CUSTOM PORT):
+
+1. Open PowerShell in this folder
+2. Run: .\run-windows-local.ps1
+   (For custom port, run: .\run-windows-local.ps1 -Port 3000)
+3. Open http://localhost:5000 in your browser (or your custom port)
+4. Press Ctrl+C in PowerShell to stop the server
+
+--------------------------------------------------------
+
+TROUBLESHOOTING:
+
+- If you get errors about Node.js or npm not found:
+  Make sure Node.js is installed and restart your computer
+
+- If you get "port in use" errors:
+  Close other applications that might be using port 5000,
+  or try specifying a different port
+
+- For dependency issues:
+  Run "npm install --force" in PowerShell or Command Prompt
+
+--------------------------------------------------------
+
+For more detailed instructions, see how-to-run-windows.md
+
+========================================================

@@ -1,66 +1,101 @@
-# Badir Blockchain Presentation
+# Badir Blockchain Donation Platform Presentation
 
-An interactive web-based presentation explaining blockchain technology and the donation platform for Gaza, with a focus on smart contracts and blockchain transparency.
+An interactive web-based educational presentation on blockchain security and donation technologies.
 
-## Running Locally
+## Running the Presentation Locally
 
-### Prerequisites
+### Windows
 
-- [Node.js](https://nodejs.org/) (version 18 or higher)
-- npm (comes with Node.js)
+#### Using PowerShell (Recommended)
 
-### Installation
+1. Make sure you have [Node.js](https://nodejs.org/) installed (version 18+ recommended)
+2. Open PowerShell in the project directory
+3. Run the provided PowerShell script:
 
-1. Clone this repository:
-   ```
-   git clone <repository-url>
-   cd badir-blockchain-presentation
-   ```
+```powershell
+.\run-windows-local.ps1
+```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+You can specify a custom port if needed:
 
-3. Start the development server:
-   ```
-   npm run dev
-   ```
+```powershell
+.\run-windows-local.ps1 -Port 3000
+```
 
-4. Open your browser and navigate to:
-   ```
-   http://localhost:5000
-   ```
+#### Using Batch File
 
-## Presentation Controls
+Alternatively, you can use the batch file:
 
-- Use the navigation dots on the right side to jump to specific slides
-- Use arrow keys (up/down) to navigate between slides
-- Click the "Start" button on the landing page to begin the presentation
-- On mobile devices, use the arrow buttons in the bottom right corner
+```
+run-windows.bat
+```
+
+### macOS and Linux
+
+1. Make sure you have [Node.js](https://nodejs.org/) installed (version 18+ recommended)
+2. Open Terminal in the project directory
+3. Install dependencies (first time only):
+
+```bash
+npm install
+```
+
+4. Start the presentation:
+
+```bash
+NODE_ENV=development npx tsx server/index.ts
+```
+
+Or to specify a custom port:
+
+```bash
+PORT=3000 NODE_ENV=development npx tsx server/index.ts
+```
+
+## Accessing the Presentation
+
+Once running, the presentation will be available at:
+
+- Default: [http://localhost:5000](http://localhost:5000)
+- Custom port: http://localhost:YOUR_PORT_NUMBER
+
+## Presentation Navigation
+
+- Use the navigation dots at the bottom of each slide to jump between sections
+- Arrow keys (← →) can be used to navigate between slides
+- Some slides have interactive elements - click buttons to see demonstrations
+- For the best experience, view in a modern browser with full screen mode
 
 ## Project Structure
 
 - `/client` - Frontend React application
-  - `/src/components/slides` - Individual presentation slides
-  - `/src/components/animations` - Animation components
-  - `/src/components/ui` - Reusable UI components
-- `/server` - Backend Express server for serving the application
-- `/shared` - Shared types and schemas used by both frontend and backend
+  - `/src/components/slides` - Individual slide components
+  - `/src/components/animations` - Interactive animations
+- `/server` - Express.js backend server
+- `/public` - Static assets
 
 ## Technologies Used
 
 - React with TypeScript
-- TailwindCSS for styling
 - Framer Motion for animations
+- TailwindCSS for styling
 - Express.js for the backend server
 
-## Building for Production
+## Troubleshooting
 
-To create a production build:
+- If you encounter "port already in use" errors, try:
+  - Windows: `netstat -ano | findstr :5000` to find the process using port 5000
+  - macOS/Linux: `lsof -i :5000` to find the process using port 5000
+  - Then terminate that process or use a different port
 
-```
-npm run build
-```
+- If you have dependency issues:
+  - Try `npm install --force` to resolve conflicts
+  - Make sure you have the correct Node.js version
 
-The production build will be created in the `dist` directory.
+## Team
+
+- Yara
+- Afnan
+- Leedia
+
+Supervisor: Dr. Musab Al Ghadi
