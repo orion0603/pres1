@@ -1,0 +1,49 @@
+I've implemented interactive simulations for several key blockchain security attack vectors in the presentation. Here's a detailed overview of the attacks and their interactive simulations:
+
+1. Reentrancy Attack
+Simulation Details:
+
+Interactive visualization showing how a malicious contract can re-enter a vulnerable function before state is updated
+Step-by-step animation of the attack process with execution stack display
+Live balance tracking showing how funds are drained
+Interactive buttons to trigger and reset the simulation
+What It Demonstrates:
+The simulation shows how a vulnerable withdrawal function can be exploited when it sends ETH before updating balances, allowing attackers to repeatedly withdraw funds before the balance is set to zero.
+
+2. NoContract Modifier Protection
+Simulation Details:
+
+Interactive terminal-style interface showing transaction logs
+Two simulation buttons: legitimate user transaction vs. malicious contract transaction
+Visual indicators showing how the security mechanism blocks contract-based attacks
+What It Demonstrates:
+This simulation shows how the NoContract modifier (checking if tx.origin equals msg.sender) prevents contract-based attacks by blocking any transactions that come from contracts rather than direct user accounts.
+
+3. Centralization vs. Decentralization Attack Resistance
+Simulation Details:
+
+Side-by-side network visualizations (centralized vs. decentralized)
+Interactive attack buttons to simulate network attacks
+Visual feedback showing how centralized systems fail while decentralized systems adapt
+What It Demonstrates:
+Shows how centralized systems have a single point of failure that can bring down the entire network, while decentralized systems continue functioning even when multiple nodes are compromised.
+
+4. DoS (Denial of Service) Attack Protection
+Simulation Details:
+
+Side-by-side comparison of vulnerable "push" pattern vs. secure "pull" pattern
+Illustrates how loops in contracts can hit gas limits or be exploited
+Demonstrates the pull-over-push pattern as a solution
+What It Demonstrates:
+Shows how traditional approaches to distributing funds to multiple recipients can be vulnerable to DoS attacks, and how implementing a pull pattern (where recipients withdraw their own funds) provides protection.
+
+5. Checks-Effects-Interactions (CEI) Pattern
+Simulation Details:
+
+Interactive step-by-step flow showing the correct order of operations
+Side-by-side code comparison between vulnerable and secure implementations
+Tabbed interface showing principles, comparisons, and implementation details
+What It Demonstrates:
+Illustrates the importance of following the CEI pattern (performing checks first, then updating state, and only then making external calls) to prevent reentrancy and other attacks.
+
+Each of these simulations provides an interactive, visual way to understand the security concepts rather than just reading about them. They allow users to see both the vulnerable implementations and the secure solutions to better understand blockchain security principles.
