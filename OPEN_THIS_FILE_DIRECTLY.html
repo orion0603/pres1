@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Badir Blockchain Presentation - Windows Instructions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #2A3056;
+      border-bottom: 2px solid #43B0AF;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #43B0AF;
+      margin-top: 30px;
+    }
+    .command {
+      background-color: #f1f1f1;
+      border-left: 4px solid #43B0AF;
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-family: Consolas, Monaco, 'Courier New', monospace;
+      overflow-x: auto;
+    }
+    .note {
+      background-color: #fffde7;
+      border-left: 4px solid #ffd600;
+      padding: 10px 15px;
+      margin: 15px 0;
+    }
+    .steps {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    ol li {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Badir Blockchain Presentation - Windows Instructions</h1>
+  
+  <p>This guide provides the simplest and most reliable methods to run the Badir Blockchain Presentation on Windows.</p>
+
+  <div class="note">
+    <strong>Important:</strong> The presentation uses modern web technologies and requires Node.js to be installed on your computer.
+  </div>
+
+  <h2>Method 1: Run Vite Development Server Directly</h2>
+  
+  <div class="steps">
+    <ol>
+      <li>Open Command Prompt or PowerShell</li>
+      <li>Navigate to the project folder:
+        <div class="command">cd "path\to\your\project\folder"</div>
+      </li>
+      <li>Then navigate to the client folder:
+        <div class="command">cd client</div>
+      </li>
+      <li>Install dependencies:
+        <div class="command">npm install</div>
+      </li>
+      <li>Run the Vite development server directly:
+        <div class="command">npx vite</div>
+      </li>
+      <li>Open your browser and go to:
+        <div class="command">http://localhost:5173</div>
+      </li>
+    </ol>
+  </div>
+
+  <h2>Method 2: Using PowerShell (With Environment Variables)</h2>
+  
+  <div class="steps">
+    <ol>
+      <li>Open PowerShell</li>
+      <li>Navigate to the project folder:
+        <div class="command">cd "path\to\your\project\folder"</div>
+      </li>
+      <li>Run this command to set up environment variables properly:
+        <div class="command">$env:NODE_ENV="development"; npx tsx server/index.ts</div>
+      </li>
+      <li>Open your browser and go to:
+        <div class="command">http://localhost:5000</div>
+      </li>
+    </ol>
+  </div>
+
+  <h2>Method 3: Build and View Static Files</h2>
+  
+  <div class="steps">
+    <ol>
+      <li>Open Command Prompt</li>
+      <li>Navigate to the project folder:
+        <div class="command">cd "path\to\your\project\folder"</div>
+      </li>
+      <li>Build the project:
+        <div class="command">npm run build</div>
+      </li>
+      <li>Install a simple HTTP server:
+        <div class="command">npm install -g serve</div>
+      </li>
+      <li>Serve the built files:
+        <div class="command">serve -s client/dist</div>
+      </li>
+      <li>Open your browser and go to the URL displayed in the terminal (usually http://localhost:3000)</li>
+    </ol>
+  </div>
+
+  <div class="note">
+    <strong>Troubleshooting:</strong> If none of these methods work, you may try installing the project in a fresh directory or consider using a Linux-based environment like WSL (Windows Subsystem for Linux) for a more Unix-like experience.
+  </div>
+
+</body>
+</html>
