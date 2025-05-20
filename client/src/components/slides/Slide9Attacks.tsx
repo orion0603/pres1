@@ -158,18 +158,9 @@ const Slide9Attacks = () => {
   return (
     <section id="slide9" className="slide bg-badir-cream relative overflow-hidden">
       <div className="slide-container h-full">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-4xl font-bold text-badir-mocha">
-            Blockchain Security Attacks
-          </h2>
-          <div className="hidden md:block w-20 h-20 opacity-25">
-            <img 
-              src="/images/ethereum-logo.png"
-              alt="Ethereum Logo"
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
+        <h2 className="text-4xl font-bold text-badir-mocha mb-4">
+          Blockchain Security Attacks
+        </h2>
         
         <p className="text-lg text-badir-mocha mb-6 max-w-4xl mx-auto">
           Understanding potential vulnerabilities helps us build stronger defenses. Explore interactive simulations of common blockchain attack vectors.
