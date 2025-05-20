@@ -693,60 +693,54 @@ function withdraw()
               </div>
               
               <p className="mb-6">
-                This simulation demonstrates how the "Pull over Push" pattern protects against Denial of Service (DoS) attacks by shifting the responsibility of withdrawing funds to recipients.
+                This simulation demonstrates how the "Pull over Push" pattern protects against Denial of Service (DoS) attacks 
+                by shifting the responsibility of withdrawing funds to recipients.
               </p>
               
               {/* Side-by-side comparison */}
               <div className="grid grid-cols-2 gap-6 mb-6">
                 {/* Vulnerable Push Pattern */}
-                <div className="bg-badir-grey/10 rounded-xl p-4 h-80 border border-badir-tan/30 relative">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg font-semibold text-badir-mocha">Vulnerable Push Pattern</h4>
-                    <span className="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">Vulnerable to DoS</span>
+                <div className="bg-white rounded-xl p-5 shadow-md border border-red-200 relative overflow-hidden">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-arrow-circle-down text-red-500"></i>
+                      </div>
+                      <h4 className="text-lg font-semibold text-badir-mocha">Push Pattern</h4>
+                    </div>
+                    <span className="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">Vulnerable</span>
                   </div>
                   
-                  <div className="font-mono text-sm p-3 bg-gray-900 text-gray-100 rounded-md mb-4 overflow-auto h-36">
-                    <pre>{`// Vulnerable - Push pattern
-function distributePayments() public {
+                  <div className="bg-gray-50 rounded-md p-3 mb-3 border border-gray-200">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Problem:</strong> Contract sends ETH to all recipients in a loop
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      If any recipient rejects the payment, <strong>all transfers fail</strong>
+                    </p>
+                  </div>
+                  
+                  <div className="font-mono text-sm p-3 bg-gray-900 text-gray-100 rounded-md mb-4 overflow-auto h-28">
+                    <pre>{`function distributePayments() public {
   for(uint i = 0; i < recipients.length; i++) {
-    // If any transfer fails, the entire
-    // transaction is reverted
-    // An attacker can create a contract that
-    // rejects payments, blocking all distributions
-    payable(recipients[i]).transfer(
-      payments[i]
-    );
+    // Vulnerable: One failure blocks everything
+    payable(recipients[i]).transfer(amounts[i]);
+    // All future recipients are blocked
   }
 }`}</pre>
                   </div>
                   
-                  <div className="flex flex-col space-y-2">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                      <div 
-                        key={i}
-                        className="flex items-center justify-between bg-white rounded-md p-2 border border-badir-tan/30"
-                      >
-                        <div className="flex items-center">
-                          <div className={`w-6 h-6 rounded-full ${i === 2 ? 'bg-red-100' : 'bg-green-100'} flex items-center justify-center mr-2`}>
-                            <i className={`fas ${i === 2 ? 'fa-times text-red-500' : 'fa-check text-green-500'} text-xs`}></i>
-                          </div>
-                          <span className="text-sm">{i === 2 ? 'Attacker Contract' : `Recipient ${i+1}`}</span>
-                        </div>
-                        <div className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded">
-                          {distributing ? (
-                            i < 2 ? (
-                              <span className="text-green-600">Paid</span>
-                            ) : i === 2 ? (
-                              <span className="text-red-500">Failed</span>
-                            ) : (
-                              <span className="text-gray-400">Pending...</span>
-                            )
-                          ) : (
-                            '0.1 ETH'
-                          )}
-                        </div>
+                  <div className="bg-red-50 border border-red-200 rounded-md p-3">
+                    <div className="flex items-center mb-2">
+                      <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-exclamation-triangle text-red-500 text-xs"></i>
                       </div>
-                    ))}
+                      <span className="text-sm font-medium text-red-700">DoS Attack Vector</span>
+                    </div>
+                    <p className="text-xs text-red-700 ml-7">
+                      An attacker can create a contract that intentionally rejects payments, 
+                      blocking fund distribution to all other recipients.
+                    </p>
                   </div>
                   
                   {showDoSProtection && (
@@ -757,7 +751,7 @@ function distributePayments() public {
                         </div>
                         <h4 className="text-lg font-semibold text-badir-mocha">Transaction Failed</h4>
                         <p className="text-sm mt-2">
-                          DoS Attack: One recipient contract rejected the payment, blocking distribution to all recipients.
+                          Attacker blocked all payments by rejecting their own transfer
                         </p>
                       </div>
                     </div>
@@ -765,53 +759,53 @@ function distributePayments() public {
                 </div>
                 
                 {/* Safe Pull Pattern */}
-                <div className="bg-badir-grey/10 rounded-xl p-4 h-80 border border-badir-tan/30">
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg font-semibold text-badir-mocha">Safe Pull Pattern</h4>
-                    <span className="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">DoS Protected</span>
+                <div className="bg-white rounded-xl p-5 shadow-md border border-green-200 overflow-hidden">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-arrow-circle-up text-green-600"></i>
+                      </div>
+                      <h4 className="text-lg font-semibold text-badir-mocha">Pull Pattern</h4>
+                    </div>
+                    <span className="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">Secure</span>
                   </div>
                   
-                  <div className="font-mono text-sm p-3 bg-gray-900 text-gray-100 rounded-md mb-4 overflow-auto h-36">
-                    <pre>{`// Safe - Pull pattern
-// First, payments are recorded
+                  <div className="bg-gray-50 rounded-md p-3 mb-3 border border-gray-200">
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>Solution:</strong> Record available funds, let recipients withdraw
+                    </p>
+                    <p className="text-sm text-gray-700">
+                      Each recipient is responsible for their own withdrawal
+                    </p>
+                  </div>
+                  
+                  <div className="font-mono text-sm p-3 bg-gray-900 text-gray-100 rounded-md mb-4 overflow-auto h-28">
+                    <pre>{`// 1. Record funds (can't be blocked)
 function recordPayments() public {
   for(uint i = 0; i < recipients.length; i++) {
-    payments[recipients[i]] = amounts[i];
+    balances[recipients[i]] = amounts[i];
   }
 }
 
-// Then, recipients withdraw individually
+// 2. Recipients withdraw individually
 function withdraw() public {
-  uint amount = payments[msg.sender];
-  payments[msg.sender] = 0;
+  uint amount = balances[msg.sender];
+  balances[msg.sender] = 0;
   payable(msg.sender).transfer(amount);
 }`}</pre>
                   </div>
                   
-                  <div className="flex flex-col space-y-2">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                      <div 
-                        key={i}
-                        className="flex items-center justify-between bg-white rounded-md p-2 border border-badir-tan/30"
-                      >
-                        <div className="flex items-center">
-                          <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mr-2">
-                            <i className="fas fa-user-circle text-green-500 text-xs"></i>
-                          </div>
-                          <span className="text-sm">{i === 2 ? 'Attacker Contract' : `Recipient ${i+1}`}</span>
-                        </div>
-                        <div className="text-xs font-mono bg-gray-100 px-2 py-0.5 rounded flex items-center">
-                          {distributing ? (
-                            <>
-                              <span className="mr-2">0.1 ETH</span>
-                              <span className="text-green-600">Ready for withdrawal</span>
-                            </>
-                          ) : (
-                            '0.1 ETH'
-                          )}
-                        </div>
+                  <div className="bg-green-50 border border-green-200 rounded-md p-3">
+                    <div className="flex items-center mb-2">
+                      <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                        <i className="fas fa-shield-alt text-green-600 text-xs"></i>
                       </div>
-                    ))}
+                      <span className="text-sm font-medium text-green-700">DoS Protection</span>
+                    </div>
+                    <p className="text-xs text-green-700 ml-7">
+                      If any recipient's withdrawal fails, it only affects that specific recipient.
+                      All other recipients can still withdraw their funds successfully.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -820,26 +814,28 @@ function withdraw() public {
               <div className="flex justify-between">
                 <Button
                   onClick={simulateDoSVulnerable}
-                  className="bg-red-500 text-white"
+                  className="bg-red-500 text-white px-4 py-2 rounded-md"
                   disabled={distributing}
                 >
-                  <i className="fas fa-play mr-2"></i> Vulnerable Push
+                  <i className="fas fa-play mr-2"></i> Simulate Attack on Push Pattern
                 </Button>
                 <Button
                   onClick={simulateDoSSafe}
-                  className="bg-green-600 text-white"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md"
                   disabled={distributing}
                 >
-                  <i className="fas fa-play mr-2"></i> Secure Pull Pattern
+                  <i className="fas fa-shield-alt mr-2"></i> Show Pull Pattern Protection
                 </Button>
               </div>
               
-              <div className="mt-6 bg-badir-tan/10 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Security Insight</h4>
-                <p className="text-sm">
-                  The "Pull over Push" pattern is a key security principle in blockchain applications. Instead of pushing funds to recipients 
-                  (which can be blocked by a malicious contract), funds are made available for recipients to withdraw individually. This way, 
-                  if one recipient has issues, it doesn't block others from accessing their funds.
+              <div className="mt-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
+                <h4 className="font-semibold mb-2 text-blue-800 flex items-center">
+                  <i className="fas fa-info-circle mr-2"></i> Implementation in Badir
+                </h4>
+                <p className="text-sm text-blue-800">
+                  Badir uses the Pull Pattern for all fund distributions. When charities are allocated funds from donations,
+                  they must withdraw them through a secure claim process, ensuring that no single entity can block the
+                  distribution of funds to all recipients.
                 </p>
               </div>
             </div>
