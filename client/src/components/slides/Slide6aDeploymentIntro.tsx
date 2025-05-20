@@ -68,18 +68,38 @@ const DeploymentAnimation: React.FC = () => {
           ))}
         </div>
         
-        {/* Step labels */}
+        {/* Step labels with details */}
         <div className="relative w-full flex justify-between mb-16 z-10">
           {[
-            { label: "Contract Compilation", icon: "fa-file-code" },
-            { label: "Network Connection", icon: "fa-network-wired" },
-            { label: "Transaction Preparation", icon: "fa-cogs" },
-            { label: "Blockchain Processing", icon: "fa-cube" },
-            { label: "Deployment Confirmation", icon: "fa-check-circle" }
+            { 
+              label: "Contract Compilation", 
+              icon: "fa-file-code",
+              details: "Converting Solidity code to bytecode that runs on Ethereum Virtual Machine"
+            },
+            { 
+              label: "Network Connection", 
+              icon: "fa-network-wired",
+              details: "Connecting to Ethereum network via RPC endpoint (Ganache, Infura, etc.)"
+            },
+            { 
+              label: "Transaction Preparation", 
+              icon: "fa-cogs",
+              details: "Creating transaction with bytecode, gas limits, and signing with private key"
+            },
+            { 
+              label: "Blockchain Processing", 
+              icon: "fa-cube",
+              details: "Miners validate transaction and include it in a new block on the chain"
+            },
+            { 
+              label: "Deployment Confirmation", 
+              icon: "fa-check-circle",
+              details: "Contract confirmed on blockchain with unique address for future interactions"
+            }
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              className="w-36 text-center flex flex-col items-center"
+              className="w-40 text-center flex flex-col items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ 
                 opacity: step >= idx + 1 ? 1 : 0.4, 
@@ -98,8 +118,11 @@ const DeploymentAnimation: React.FC = () => {
               >
                 <i className={`fas ${item.icon} text-3xl ${step >= idx + 1 ? 'text-badir-rose' : 'text-gray-400'}`}></i>
               </div>
-              <div className={`text-base font-medium ${step >= idx + 1 ? 'text-badir-mocha' : 'text-gray-400'}`}>
+              <div className={`text-base font-medium mb-1 ${step >= idx + 1 ? 'text-badir-mocha' : 'text-gray-400'}`}>
                 {item.label}
+              </div>
+              <div className={`text-xs px-1 ${step >= idx + 1 ? 'text-badir-mocha/80' : 'text-gray-400'}`}>
+                {item.details}
               </div>
               {step === idx + 1 && (
                 <motion.div 
