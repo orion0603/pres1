@@ -63,11 +63,11 @@ total = contract.functions.getTotalDonations().call()`,
   return (
     <section id="slide7" className="slide bg-badir-background">
       <div className="slide-container">
-        <h2 className="text-4xl font-bold text-badir-cream mb-6" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-badir-teal mb-6" data-aos="fade-up">
           Deployment Workflow
         </h2>
         
-        <p className="text-xl text-badir-cream/90 mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+        <p className="text-xl text-badir-teal/90 mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
           How we develop, test, and deploy the Badir smart contract to ensure security and reliability.
         </p>
         
