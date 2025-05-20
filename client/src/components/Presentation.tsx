@@ -16,6 +16,8 @@ import Slide5SmartContractDemo from './slides/Slide5SmartContractDemo';
 import Slide6aDeploymentIntro from './slides/Slide6aDeploymentIntro';
 import Slide7Deployment from './slides/Slide7Deployment';
 import Slide8Security from './slides/Slide8Security';
+import Slide8aAuditBefore from './slides/Slide8aAuditBefore';
+import Slide8bAuditAfter from './slides/Slide8bAuditAfter';
 import Slide9Attacks from './slides/Slide9Attacks';
 import Slide10ThankYou from './slides/Slide10ThankYou';
 
