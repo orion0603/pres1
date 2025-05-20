@@ -17,16 +17,16 @@ contract BadirDonation {
     },
     {
       step: 2,
-      title: "Test in Ganache",
+      title: "Test Locally",
       icon: "fa-vial",
-      description: "Local blockchain testing with Ganache and Truffle to validate smart contract functionality.",
-      code: `$ truffle test
+      description: "Local blockchain testing with Ganache to validate smart contract functionality.",
+      code: `$ npx hardhat test
   Contract: BadirDonation
     ✓ should accept valid donations
     ✓ should reject donations below minimum
     ✓ should track donor history correctly
     ✓ owner should be able to withdraw funds`,
-      tags: ["Ganache", "Truffle", "JavaScript"]
+      tags: ["Ganache", "Hardhat", "JavaScript"]
     },
     {
       step: 3,
