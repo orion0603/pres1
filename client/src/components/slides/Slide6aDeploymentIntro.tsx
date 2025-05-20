@@ -22,7 +22,7 @@ const DeploymentAnimation: React.FC = () => {
   
   return (
     <div className="w-full h-full flex items-center justify-center p-4">
-      <div className="w-full max-w-6xl bg-white/90 backdrop-blur-sm rounded-xl border-2 border-badir-tan/30 shadow-xl p-8 relative">
+      <div className="w-full max-w-6xl bg-badir-sand/90 backdrop-blur-sm rounded-xl border-2 border-badir-tan/30 shadow-xl p-8 relative">
         {/* Simple grid background */}
         <div className="absolute inset-0 z-0 opacity-20">
           <svg width="100%" height="100%">
@@ -153,8 +153,8 @@ const DeploymentAnimation: React.FC = () => {
                 <motion.div 
                   className={`w-20 h-20 flex items-center justify-center rounded-lg shadow-md
                     ${step >= 4 && blockIndex === 0 
-                      ? 'bg-green-50 border-2 border-green-300' 
-                      : 'bg-white border border-badir-tan/30'}`}
+                      ? 'bg-badir-neon/20 border-2 border-badir-neon/50' 
+                      : 'bg-badir-cream/70 border border-badir-tan/30'}`}
                   animate={{ 
                     y: step >= 3 
                       ? (blockIndex % 2 === 0 ? [0, -12, 0] : [0, -8, 0]) 
@@ -229,10 +229,10 @@ const DeploymentAnimation: React.FC = () => {
           animate={{ opacity: showSummary ? 1 : 0, y: showSummary ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="bg-white rounded-lg border-2 border-green-300 p-6 shadow-lg">
+          <div className="bg-badir-cream/90 rounded-lg border-2 border-badir-neon/50 p-6 shadow-lg">
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3 shadow-md">
-                <i className="fas fa-check-circle text-green-600 text-xl"></i>
+              <div className="w-10 h-10 rounded-full bg-badir-neon/20 flex items-center justify-center mr-3 shadow-md">
+                <i className="fas fa-check-circle text-badir-neon text-xl"></i>
               </div>
               <h3 className="text-xl font-semibold text-badir-mocha">Contract Successfully Deployed</h3>
             </div>
@@ -241,7 +241,7 @@ const DeploymentAnimation: React.FC = () => {
               <div>
                 <div className="text-sm font-medium text-badir-mocha/70 mb-2">Contract Address:</div>
                 <motion.div
-                  className="font-mono text-sm bg-green-50 p-3 rounded-md border-2 border-green-200 shadow-sm"
+                  className="font-mono text-sm bg-badir-neon/10 p-3 rounded-md border-2 border-badir-neon/30 shadow-sm text-badir-mocha"
                   animate={{ 
                     boxShadow: [
                       "0 0 0 rgba(22, 163, 74, 0)",
