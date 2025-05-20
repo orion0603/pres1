@@ -138,46 +138,13 @@ const Slide6aDeploymentIntro = () => {
                   <h3 className="text-2xl font-semibold text-badir-mocha">{steps[activeStep - 1].title}</h3>
                 </div>
                 
-                <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
-                  {steps[activeStep - 1].description}
+                <p className="text-2xl text-badir-mocha/90 mb-8 leading-relaxed text-center font-medium">
+                  "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users."
                 </p>
                 
                 {activeStep === 1 && (
-                  <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
-                    <div className="flex justify-center items-center">
-                      <div className="bg-badir-rose/10 rounded-lg p-4 max-w-lg">
-                        <h4 className="font-semibold text-badir-mocha text-center mb-3">Smart Contract Flow</h4>
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex-1 text-center">
-                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
-                              <i className="fas fa-code"></i>
-                            </div>
-                            <p className="text-sm font-medium">Development</p>
-                          </div>
-                          <div className="w-8 flex justify-center">
-                            <i className="fas fa-arrow-right text-badir-rose/60"></i>
-                          </div>
-                          <div className="flex-1 text-center">
-                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
-                              <i className="fas fa-rocket"></i>
-                            </div>
-                            <p className="text-sm font-medium">Deployment</p>
-                          </div>
-                          <div className="w-8 flex justify-center">
-                            <i className="fas fa-arrow-right text-badir-rose/60"></i>
-                          </div>
-                          <div className="flex-1 text-center">
-                            <div className="mx-auto w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center text-badir-rose mb-2">
-                              <i className="fas fa-eth"></i>
-                            </div>
-                            <p className="text-sm font-medium">Use</p>
-                          </div>
-                        </div>
-                        <p className="text-sm text-badir-mocha/80 text-center">
-                          Smart contracts are deployed once and remain permanent on the blockchain, making deployment a critical step in the development process.
-                        </p>
-                      </div>
-                    </div>
+                  <div className="flex justify-center">
+                    <div className="mx-auto w-20 h-1 bg-badir-rose/50 rounded-full"></div>
                   </div>
                 )}
                 
