@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import NavigationDots from './navigation/NavigationDots';
+import CyberBackgroundAnimation from './animations/CyberBackgroundAnimation';
 import { useSlideNavigation } from '@/hooks/useSlideNavigation';
 
 // Import slides
@@ -34,7 +35,11 @@ const Presentation = () => {
   }, []);
 
   return (
-    <div className="presentation-container bg-badir-cream">
+    <div className="presentation-container">
+      <div className="fixed inset-0 z-0">
+        <CyberBackgroundAnimation variant={activeSlide % 3 === 0 ? "particles" : activeSlide % 3 === 1 ? "grid" : "network"} />
+      </div>
+      
       <NavigationDots 
         activeSlide={activeSlide} 
         totalSlides={TOTAL_SLIDES} 
