@@ -20,6 +20,8 @@ const Slide9Attacks = () => {
   // Centralization state
   const [centralizedNodes, setCentralizedNodes] = useState<boolean[]>([true, true, true, true, true]);
   const [decentralizedNodes, setDecentralizedNodes] = useState<boolean[]>([true, true, true, true, true, true, true, true, true]);
+  const [centralAttack, setCentralAttack] = useState(false);
+  const [decentralAttack, setDecentralAttack] = useState(false);
   
   // DoS attack state
   const [showDoSProtection, setShowDoSProtection] = useState(false);
@@ -108,22 +110,28 @@ const Slide9Attacks = () => {
   
   // Centralization attack simulation
   const attackCentralized = () => {
-    // Attack the central node
+    if (centralAttack) return; // Prevent multiple attacks
+    
+    setCentralAttack(true);
+    // First attack the central node
     setCentralizedNodes([false, true, true, true, true]);
     
+    // Then after a delay, show all nodes failing
     setTimeout(() => {
-      // All nodes fail because they depend on the central one
       setCentralizedNodes([false, false, false, false, false]);
     }, 1000);
   };
   
   const attackDecentralized = () => {
-    // Attack multiple nodes
+    if (decentralAttack) return; // Prevent multiple attacks
+    
+    setDecentralAttack(true);
+    // Attack multiple nodes but network remains functional
     setDecentralizedNodes([
       false, // Node 0 attacked
       true,
       false, // Node 2 attacked
-      true,
+      true, 
       false, // Node 4 attacked
       true,
       true,
@@ -134,6 +142,8 @@ const Slide9Attacks = () => {
   
   // Reset network nodes
   const resetNetworks = () => {
+    setCentralAttack(false);
+    setDecentralAttack(false);
     setCentralizedNodes([true, true, true, true, true]);
     setDecentralizedNodes([true, true, true, true, true, true, true, true, true]);
   };
@@ -515,8 +525,17 @@ function transfer(address to, uint amount)
                     <Button 
                       onClick={attackCentralized} 
                       className="bg-red-500 text-white"
+                      disabled={centralAttack}
                     >
-                      <i className="fas fa-bolt mr-2"></i> Attack Central Node
+                      {centralAttack ? (
+                        <>
+                          <i className="fas fa-times-circle mr-2"></i> System Down
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-bolt mr-2"></i> Attack Central Node
+                        </>
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -592,8 +611,17 @@ function transfer(address to, uint amount)
                     <Button 
                       onClick={attackDecentralized} 
                       className="bg-red-500 text-white"
+                      disabled={decentralAttack}
                     >
-                      <i className="fas fa-bolt mr-2"></i> Attack Multiple Nodes
+                      {decentralAttack ? (
+                        <>
+                          <i className="fas fa-check-circle mr-2"></i> System Still Running
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-bolt mr-2"></i> Attack Multiple Nodes
+                        </>
+                      )}
                     </Button>
                   </div>
                 </div>
@@ -603,6 +631,7 @@ function transfer(address to, uint amount)
                 <Button 
                   onClick={resetNetworks} 
                   className="bg-badir-mocha text-white"
+                  disabled={!centralAttack && !decentralAttack}
                 >
                   <i className="fas fa-redo mr-2"></i> Reset Networks
                 </Button>
