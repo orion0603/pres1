@@ -21,7 +21,7 @@ import Slide8bAuditAfter from './slides/Slide8bAuditAfter';
 import Slide9Attacks from './slides/Slide9Attacks';
 import Slide10ThankYou from './slides/Slide10ThankYou';
 
-const TOTAL_SLIDES = 12;
+const TOTAL_SLIDES = 14;
 
 const Presentation = () => {
   const { activeSlide, navigateToSlide, navigateNext, navigatePrev } = useSlideNavigation(TOTAL_SLIDES);
@@ -58,6 +58,8 @@ const Presentation = () => {
       <Slide6aDeploymentIntro />
       <Slide7Deployment />
       <Slide8Security />
+      <Slide8aAuditBefore />
+      <Slide8bAuditAfter />
       <Slide9Attacks />
       <Slide10ThankYou onReplayClick={() => navigateToSlide(1)} />
       
