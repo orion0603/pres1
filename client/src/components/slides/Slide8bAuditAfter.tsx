@@ -27,7 +27,7 @@ const Slide8bAuditAfter = () => {
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="text-sm text-badir-cream font-mono">Terminal - Slither Analysis</div>
+            <div className="text-base md:text-lg font-semibold text-white font-mono">Terminal - Slither Analysis</div>
             <div className="w-4"></div>
           </div>
           
