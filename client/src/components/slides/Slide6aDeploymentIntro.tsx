@@ -59,7 +59,7 @@ const DeploymentAnimation = () => {
   }, [step]);
   
   return (
-    <div className="mx-auto w-full max-w-3xl h-[280px] relative overflow-hidden rounded-xl bg-gradient-to-r from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/30 shadow-lg">
+    <div className="mx-auto w-full h-full relative overflow-hidden rounded-xl bg-gradient-to-r from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/30 shadow-lg">
       {/* Contract */}
       <motion.div 
         className="absolute left-10 top-1/2 -translate-y-1/2 w-[180px] bg-white rounded-lg shadow-lg overflow-hidden border border-badir-rose/20"
@@ -280,44 +280,13 @@ const Slide6aDeploymentIntro = () => {
             
             {/* Interactive Animation */}
             <motion.div
-              className="mb-12"
+              className="w-full" 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
+              style={{ height: "calc(100vh - 350px)", minHeight: "400px" }}
             >
               <DeploymentAnimation />
-            </motion.div>
-            
-            {/* Key Points */}
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <div className="bg-badir-cream/30 rounded-lg p-5 border border-badir-tan/30 shadow-md">
-                <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-badir-rose/10 rounded-full flex items-center justify-center mr-3">
-                    <i className="fas fa-lock text-badir-rose"></i>
-                  </div>
-                  <h3 className="font-semibold text-badir-mocha">Immutable</h3>
-                </div>
-                <p className="text-badir-mocha/80 text-sm">
-                  Once deployed, the contract cannot be changed, ensuring security and trust.
-                </p>
-              </div>
-              
-              <div className="bg-badir-cream/30 rounded-lg p-5 border border-badir-tan/30 shadow-md">
-                <div className="flex items-center mb-3">
-                  <div className="w-10 h-10 bg-badir-rose/10 rounded-full flex items-center justify-center mr-3">
-                    <i className="fas fa-globe text-badir-rose"></i>
-                  </div>
-                  <h3 className="font-semibold text-badir-mocha">Accessible</h3>
-                </div>
-                <p className="text-badir-mocha/80 text-sm">
-                  Anyone can interact with the deployed contract using its unique address.
-                </p>
-              </div>
             </motion.div>
           </div>
         </motion.div>
