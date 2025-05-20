@@ -104,21 +104,7 @@ const Slide3aBlockchainFeatures = () => {
             ))}
           </div>
           
-          {/* Technology Summary */}
-          <motion.div
-            className="mt-12 p-6 rounded-xl bg-badir-rose/10 border border-badir-rose/20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <h3 className="text-xl font-semibold text-badir-mocha mb-4">Why Blockchain for Donations?</h3>
-            <p className="text-badir-mocha/90">
-              Blockchain technology creates an unprecedented level of transparency and trust in charitable giving.
-              By leveraging these key features, Badir provides donors with complete confidence that their 
-              contributions reach the intended recipients, while maintaining a permanent and tamper-proof record 
-              of all transactions.
-            </p>
-          </motion.div>
+          {/* Removed Technology Summary section as requested */}
         </motion.div>
       </div>
     </section>
