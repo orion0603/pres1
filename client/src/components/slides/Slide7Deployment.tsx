@@ -61,13 +61,13 @@ total = contract.functions.getTotalDonations().call()`,
   ];
 
   return (
-    <section id="slide7" className="slide bg-badir-cream">
+    <section id="slide7" className="slide bg-badir-background">
       <div className="slide-container">
-        <h2 className="text-4xl font-bold text-badir-mocha mb-6" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-badir-cream mb-6" data-aos="fade-up">
           Deployment Workflow
         </h2>
         
-        <p className="text-xl text-badir-mocha mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+        <p className="text-xl text-badir-cream/90 mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
           How we develop, test, and deploy the Badir smart contract to ensure security and reliability.
         </p>
         
@@ -94,9 +94,9 @@ total = contract.functions.getTotalDonations().call()`,
                     <div className="bg-badir-rose rounded-full p-3 mr-4 text-white">
                       <i className={`fas ${step.icon} text-xl`}></i>
                     </div>
-                    <h3 className="text-xl font-semibold text-badir-mocha">{step.title}</h3>
+                    <h3 className="text-xl font-semibold text-badir-cream">{step.title}</h3>
                   </div>
-                  <p className="text-badir-mocha mb-4">{step.description}</p>
+                  <p className="text-badir-cream/90 mb-4">{step.description}</p>
                   <div className={`rounded-lg p-3 ${
                     index % 2 === 0 ? 'bg-badir-mocha' : 'bg-badir-grey bg-opacity-20'
                   }`}>
