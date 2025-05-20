@@ -1,6 +1,11 @@
 # Windows PowerShell script for running the Badir Blockchain Presentation locally
 # Save this file as run-windows-local.ps1
 
+param(
+    [Parameter(Mandatory=$false)]
+    [int]$Port = 5000
+)
+
 Write-Host "Setting up Badir Blockchain Presentation for local Windows development..." -ForegroundColor Cyan
 
 # Check if Node.js is installed
@@ -31,10 +36,11 @@ if (-not (Test-Path ".\node_modules")) {
 
 # Set environment variables
 $env:NODE_ENV = "development"
+$env:PORT = $Port
 
 # Start the application
 Write-Host "Starting Badir Blockchain Presentation..." -ForegroundColor Cyan
-Write-Host "The application will be available at http://localhost:5000" -ForegroundColor Magenta
+Write-Host "The application will be available at http://localhost:$Port" -ForegroundColor Magenta
 Write-Host "Press Ctrl+C to stop the server" -ForegroundColor Yellow
 
 # Run the server
