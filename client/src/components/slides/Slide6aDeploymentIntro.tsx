@@ -265,42 +265,22 @@ const Slide6aDeploymentIntro: React.FC = () => {
       <ParticleNetwork variant="tech" density={15} />
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream to-badir-cream/90 -z-10" />
       
-      <div className="slide-container flex flex-col items-center justify-center">
+      <div className="slide-container w-full h-full flex flex-col">
         <motion.div
-          className="w-full max-w-6xl"
+          className="w-full h-full"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center mb-8">
-            <motion.h2 
-              className="text-5xl font-bold text-badir-mocha mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: false }}
-            >
+          <div className="text-center mb-2 mt-1">
+            <h2 className="text-3xl font-bold text-badir-mocha">
               Smart Contract <span className="text-badir-rose">Deployment</span>
-            </motion.h2>
+            </h2>
             
-            <motion.div 
-              className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto mb-4"
-              initial={{ width: 0 }}
-              whileInView={{ width: 128 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            />
-            
-            <motion.p
-              className="text-xl text-badir-mocha/90 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              "The process of making a smart contract live on the blockchain network."
-            </motion.p>
+            <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto" />
           </div>
           
-          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-badir-tan/20">
+          <div className="w-full h-full flex items-center justify-center p-2">
             {/* Visual Deployment Animation */}
             <motion.div
               className="w-full" 
