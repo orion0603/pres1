@@ -119,7 +119,6 @@ const Slide1Landing = ({ onStartClick }: Slide1LandingProps) => {
                   <div className="h-px bg-badir-tan/40 my-2" />
                   <p className="text-sm text-badir-mocha/90">Supervised by</p>
                   <p className="text-sm text-badir-mocha">Dr. Musab Al Ghadi</p>
-                  <p className="text-sm text-badir-mocha">Dr. Mamoon Obiedat</p>
                 </div>
               </motion.div>
               
