@@ -12,23 +12,23 @@ const DeploymentAnimation: React.FC = () => {
   const [deployed, setDeployed] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   
-  // Advance through animation steps with timing
+  // Speed up the animation for better user experience
   useEffect(() => {
     const timers = [
-      setTimeout(() => { setStep(1); setContractReady(true); }, 1000),
-      setTimeout(() => { setStep(2); setNetworkReady(true); }, 3500),
-      setTimeout(() => { setStep(3); setPrepReady(true); }, 6000),
-      setTimeout(() => { setStep(4); setSendingTx(true); }, 8500),
-      setTimeout(() => { setStep(5); setDeployed(true); }, 12000),
-      setTimeout(() => { setShowSummary(true); }, 13500)
+      setTimeout(() => { setStep(1); setContractReady(true); }, 800),
+      setTimeout(() => { setStep(2); setNetworkReady(true); }, 2000),
+      setTimeout(() => { setStep(3); setPrepReady(true); }, 3200),
+      setTimeout(() => { setStep(4); setSendingTx(true); }, 4400),
+      setTimeout(() => { setStep(5); setDeployed(true); }, 6000),
+      setTimeout(() => { setShowSummary(true); }, 7000)
     ];
     
     return () => timers.forEach(timer => clearTimeout(timer));
   }, []);
   
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center">
-      <div className="relative w-full max-w-3xl h-[400px] rounded-xl bg-gradient-to-b from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/20 overflow-hidden">
+    <div className="h-full w-full">
+      <div className="relative w-full h-full rounded-xl bg-gradient-to-b from-badir-cream/10 to-white/40 backdrop-blur-sm border border-badir-tan/20 overflow-hidden">
         {/* Blockchain network visualization */}
         <div className="absolute inset-0 z-10">
           <svg width="100%" height="100%" className="opacity-20">
@@ -42,7 +42,7 @@ const DeploymentAnimation: React.FC = () => {
         {/* Dynamic path for the deployment process */}
         <svg className="absolute inset-0 z-20" width="100%" height="100%">
           <motion.path
-            d="M 80,150 Q 160,80 240,150 T 400,150 T 560,150"
+            d="M 100,200 Q 250,100 450,200 T 800,200"
             fill="none"
             stroke="#72383D"
             strokeWidth="2"
@@ -62,7 +62,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 1: Compiling Contract */}
         <motion.div 
-          className="absolute top-[150px] left-[80px] z-30"
+          className="absolute top-[200px] left-[100px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -89,7 +89,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 2: Network Connection */}
         <motion.div 
-          className="absolute top-[80px] left-[240px] z-30"
+          className="absolute top-[100px] left-[370px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 1 ? 1 : 0, y: step >= 1 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 1 }}
@@ -116,7 +116,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 3: Preparing Deployment */}
         <motion.div 
-          className="absolute top-[150px] left-[400px] z-30"
+          className="absolute top-[200px] left-[650px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 2 ? 1 : 0, y: step >= 2 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 3.5 }}
@@ -143,7 +143,7 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Step 4: Deploy Contract */}
         <motion.div 
-          className="absolute top-[80px] left-[560px] z-30"
+          className="absolute top-[100px] left-[720px] z-30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: step >= 3 ? 1 : 0, y: step >= 3 ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 6 }}
