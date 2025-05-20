@@ -150,7 +150,7 @@ const Slide5SmartContractDemo = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <div className="flex justify-between items-center mb-4">
-                <h4 className="text-xl font-semibold text-badir-mocha">Verified Donations</h4>
+                <h4 className="text-xl font-semibold text-white">Verified Donations</h4>
                 <div className="flex items-center text-sm text-badir-mocha/70">
                   <i className="fas fa-sync-alt mr-2"></i>
                   <span>Last updated: 2 minutes ago</span>
