@@ -78,117 +78,83 @@ const Slide4SmartContract = () => {
             </motion.div>
           </div>
           
-          {/* Right side: Visual diagram */}
+          {/* Right side: Smart Contract Benefits */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: false }}
           >
-            <div className="bg-white rounded-xl p-8 shadow-lg h-full">
+            <div className="bg-white rounded-xl p-8 shadow-lg h-full flex flex-col justify-center">
               <h3 className="text-2xl font-semibold mb-6 text-badir-mocha text-center">
-                How Smart Contracts Work
+                Benefits for Donation Platforms
               </h3>
               
-              {/* Smart contract flow visualization */}
-              <div className="relative mb-8">
-                {/* User donation */}
+              <div className="space-y-6">
                 <motion.div 
-                  className="bg-badir-cream rounded-lg p-4 mb-3 text-center border border-badir-sand"
-                  initial={{ opacity: 0, y: -10 }}
+                  className="flex items-start"
+                  initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.5 }}
                   viewport={{ once: false }}
                 >
-                  <i className="fas fa-user-circle text-badir-rose text-2xl mb-2"></i>
-                  <p className="font-medium">User sends donation</p>
+                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
+                    <i className="fas fa-money-bill-wave"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-badir-mocha">Reduced Costs</h4>
+                    <p className="text-sm text-badir-mocha/80">Elimination of intermediaries reduces processing fees and administrative costs</p>
+                  </div>
                 </motion.div>
                 
-                {/* Arrow down */}
                 <motion.div 
-                  className="flex justify-center my-3"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  className="flex items-start"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.6 }}
                   viewport={{ once: false }}
                 >
-                  <i className="fas fa-arrow-down text-badir-rose"></i>
+                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
+                    <i className="fas fa-university"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-badir-mocha">Direct Transfer</h4>
+                    <p className="text-sm text-badir-mocha/80">Funds move directly from donors to recipients without traditional banking delays</p>
+                  </div>
                 </motion.div>
                 
-                {/* Condition check */}
                 <motion.div 
-                  className="bg-badir-rose text-white rounded-lg p-4 mb-3 text-center"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  className="flex items-start"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.7 }}
                   viewport={{ once: false }}
                 >
-                  <p className="font-medium">If donation ≥ 0.1 ETH</p>
+                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
+                    <i className="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-badir-mocha">Real-time Tracking</h4>
+                    <p className="text-sm text-badir-mocha/80">Donors can track their contributions in real-time from donation to distribution</p>
+                  </div>
                 </motion.div>
                 
-                {/* Arrow branches */}
                 <motion.div 
-                  className="flex justify-between my-3"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  className="flex items-start"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.8 }}
                   viewport={{ once: false }}
                 >
-                  <div className="flex-1 flex justify-center">
-                    <div className="flex flex-col items-center">
-                      <i className="fas fa-arrow-down text-badir-rose"></i>
-                      <span className="text-xs mt-1 text-badir-mocha">Yes</span>
-                    </div>
+                  <div className="bg-badir-rose rounded-full p-3 text-white flex-shrink-0 mr-4">
+                    <i className="fas fa-users"></i>
                   </div>
-                  <div className="flex-1 flex justify-center">
-                    <div className="flex flex-col items-center">
-                      <i className="fas fa-arrow-down text-badir-grey"></i>
-                      <span className="text-xs mt-1 text-badir-mocha">No</span>
-                    </div>
-                  </div>
-                </motion.div>
-                
-                {/* Results */}
-                <motion.div 
-                  className="grid grid-cols-2 gap-4"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.9 }}
-                  viewport={{ once: false }}
-                >
-                  <div className="bg-green-100 rounded-lg p-4 text-center border border-green-300">
-                    <i className="fas fa-check-circle text-green-600 text-xl mb-2"></i>
-                    <p className="font-medium text-sm">Accept donation and update ledger</p>
-                  </div>
-                  <div className="bg-gray-100 rounded-lg p-4 text-center border border-gray-300">
-                    <i className="fas fa-undo text-gray-600 text-xl mb-2"></i>
-                    <p className="font-medium text-sm">Return funds to sender</p>
+                  <div>
+                    <h4 className="font-semibold text-badir-mocha">Increased Trust</h4>
+                    <p className="text-sm text-badir-mocha/80">Automatic execution builds donor confidence that funds reach intended recipients</p>
                   </div>
                 </motion.div>
               </div>
-              
-              <motion.div 
-                className="bg-badir-sand bg-opacity-30 rounded-lg p-4 border border-badir-sand"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1 }}
-                viewport={{ once: false }}
-              >
-                <h4 className="font-medium text-badir-mocha mb-2">Example Contract Rule</h4>
-                <div className="bg-badir-mocha rounded p-3">
-                  <pre className="text-badir-cream text-xs">{`function donate() public payable {
-  require(msg.value >= 0.1, 
-    "Minimum donation is 0.1 ETH");
-  
-  // Record donation
-  donations[msg.sender] += msg.value;
-  totalDonations += msg.value;
-  
-  emit DonationReceived(
-    msg.sender, msg.value);
-}`}</pre>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
