@@ -249,54 +249,48 @@ const DeploymentAnimation: React.FC = () => {
         
         {/* Contract Address & Summary */}
         <motion.div 
-          className="absolute bottom-5 left-0 right-0 px-6 z-40"
+          className="absolute bottom-5 left-0 right-0 px-4 z-40"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showSummary ? 1 : 0, y: showSummary ? 0 : 20 }}
           transition={{ duration: 0.7, delay: 0.5 }}
         >
-          <div className="bg-white rounded-lg p-4 shadow-lg border border-badir-tan/20">
+          <div className="bg-white rounded-lg p-3 shadow-lg border border-badir-tan/20">
             <div className="flex items-center mb-2">
-              <div className="w-7 h-7 bg-badir-rose/10 rounded-full flex items-center justify-center mr-2">
-                <i className="fas fa-check-circle text-green-600"></i>
+              <div className="w-6 h-6 bg-badir-rose/10 rounded-full flex items-center justify-center mr-2">
+                <i className="fas fa-check-circle text-green-600 text-sm"></i>
               </div>
-              <h4 className="font-semibold text-badir-mocha">Contract Successfully Deployed</h4>
+              <h4 className="font-semibold text-badir-mocha text-sm">Contract Successfully Deployed</h4>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-              <div>
-                <div className="text-sm text-badir-mocha/70 mb-1">Contract Address:</div>
-                <motion.div 
-                  className="font-mono text-sm break-all bg-badir-sand/10 rounded p-2 border border-badir-sand/30"
-                  animate={{ 
-                    boxShadow: [
-                      "0 0 0 rgba(114, 56, 61, 0)",
-                      "0 0 5px rgba(114, 56, 61, 0.3)",
-                      "0 0 0 rgba(114, 56, 61, 0)"
-                    ]
-                  }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                >
-                  0x9eAe9b64A0Ce8cfa9C535506dADcC3b06D330546
-                </motion.div>
-              </div>
-              
-              <div>
-                <div className="text-sm text-badir-mocha/70 mb-1">Deployment Summary:</div>
-                <div className="bg-badir-sand/10 rounded p-2 border border-badir-sand/30 text-sm">
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="text-badir-mocha/70">Network:</div>
-                    <div className="text-badir-mocha">Ganache (8545)</div>
-                    
-                    <div className="text-badir-mocha/70">Gas Used:</div>
-                    <div className="text-badir-mocha">138,241 units</div>
-                    
-                    <div className="text-badir-mocha/70">Deployer:</div>
-                    <div className="text-badir-mocha font-mono">0xAbC4...f290</div>
-                    
-                    <div className="text-badir-mocha/70">Status:</div>
-                    <div className="text-green-600 font-medium">Confirmed</div>
-                  </div>
-                </div>
+            <motion.div 
+              className="font-mono text-xs break-all bg-badir-sand/10 rounded p-2 border border-badir-sand/30 mb-2"
+              animate={{ 
+                boxShadow: [
+                  "0 0 0 rgba(114, 56, 61, 0)",
+                  "0 0 5px rgba(114, 56, 61, 0.3)",
+                  "0 0 0 rgba(114, 56, 61, 0)"
+                ]
+              }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              <div className="text-xs text-badir-mocha/70 mb-1">Contract Address:</div>
+              0x9eAe9b64A0Ce8cfa9C535506dADcC3b06D330546
+            </motion.div>
+            
+            <div className="bg-badir-sand/10 rounded p-2 border border-badir-sand/30 text-xs">
+              <div className="text-xs text-badir-mocha/70 mb-1">Deployment Summary:</div>
+              <div className="grid grid-cols-4 gap-x-2 gap-y-1">
+                <div className="text-badir-mocha/70">Network:</div>
+                <div className="text-badir-mocha">Ganache</div>
+                
+                <div className="text-badir-mocha/70">Gas Used:</div>
+                <div className="text-badir-mocha">138,241</div>
+                
+                <div className="text-badir-mocha/70">Deployer:</div>
+                <div className="text-badir-mocha font-mono">0xAbC4...</div>
+                
+                <div className="text-badir-mocha/70">Status:</div>
+                <div className="text-green-600 font-medium">Confirmed</div>
               </div>
             </div>
           </div>
