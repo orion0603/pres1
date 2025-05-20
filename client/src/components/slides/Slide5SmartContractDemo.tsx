@@ -529,7 +529,6 @@ const Slide5SmartContractDemo = () => {
                           <Progress 
                             value={transactionProgress} 
                             className="w-full h-3 bg-gray-200 rounded-full mr-4"
-                            indicatorClassName="bg-gradient-to-r from-badir-rose to-badir-tan"
                           />
                           <span className="text-sm font-medium whitespace-nowrap w-12">{transactionProgress}%</span>
                         </div>

@@ -22,16 +22,6 @@ const Slide3aBlockchainFeatures = () => {
       icon: "fa-history",
       title: "Traceability",
       description: "Complete history of all donations is maintained, allowing for full audit trails."
-    },
-    {
-      icon: "fa-shield-alt",
-      title: "Security",
-      description: "Cryptographic principles protect the data from manipulation and unauthorized access."
-    },
-    {
-      icon: "fa-handshake",
-      title: "Trust",
-      description: "Donors can verify their funds are being used as intended through transparent transactions."
     }
   ];
 
