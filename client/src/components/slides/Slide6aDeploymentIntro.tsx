@@ -272,22 +272,20 @@ const Slide6aDeploymentIntro: React.FC = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center mb-2 mt-1">
-            <h2 className="text-3xl font-bold text-badir-mocha">
+          <div className="text-center mb-1 mt-0 pt-1">
+            <h2 className="text-2xl font-bold text-badir-mocha">
               Smart Contract <span className="text-badir-rose">Deployment</span>
             </h2>
-            
-            <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto" />
+            <div className="h-0.5 w-28 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto" />
           </div>
           
-          <div className="w-full h-full flex items-center justify-center p-2">
+          <div className="w-full flex-1 flex items-center justify-center">
             {/* Visual Deployment Animation */}
             <motion.div
-              className="w-full" 
+              className="w-full h-full" 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              style={{ height: "calc(100vh - 300px)", minHeight: "500px" }}
             >
               <DeploymentAnimation />
             </motion.div>
