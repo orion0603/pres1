@@ -230,17 +230,11 @@ const Slide9Attacks = () => {
                   <div className="flex items-center justify-between p-3 bg-badir-tan/20 rounded-md">
                     <div>
                       <p className="text-sm font-semibold">Contract Balance:</p>
-                      <div className="flex items-center">
-                        <p className="text-2xl font-mono text-badir-mocha mr-2">{contractBalance} ETH</p>
-                        <img src="/images/ethereum-logo.png" alt="ETH" className="w-5 h-5" />
-                      </div>
+                      <p className="text-2xl font-mono text-badir-mocha">{contractBalance} ETH</p>
                     </div>
                     <div>
                       <p className="text-sm font-semibold">Attacker Balance:</p>
-                      <div className="flex items-center">
-                        <p className="text-2xl font-mono text-badir-mocha mr-2">{attackerBalance} ETH</p>
-                        <img src="/images/ethereum-logo.png" alt="ETH" className="w-5 h-5" />
-                      </div>
+                      <p className="text-2xl font-mono text-badir-mocha">{attackerBalance} ETH</p>
                     </div>
                   </div>
                   

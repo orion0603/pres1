@@ -5,12 +5,9 @@ const Slide8bAuditAfter = () => {
   return (
     <section id="slide8bAuditAfter" className="slide bg-badir-background">
       <div className="slide-container max-w-5xl mx-auto">
-        <div className="flex items-center mb-6">
-          <h2 className="text-4xl font-bold text-badir-teal" data-aos="fade-up">
-            Security Audit Results: After
-          </h2>
-          <img src="/images/ethereum-logo.png" alt="Ethereum" className="w-8 h-8 ml-3" />
-        </div>
+        <h2 className="text-4xl font-bold text-badir-teal mb-6" data-aos="fade-up">
+          Security Audit Results: After
+        </h2>
         
         <p className="text-xl text-badir-cream/90 mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
           Improved contract security after implementing all recommended measures
