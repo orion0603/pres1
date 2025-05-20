@@ -167,11 +167,11 @@ function getContractBalance()
     <section id="slide6" className="slide bg-badir-cream">
       <div className="slide-container">
         <h2 className="text-4xl font-bold text-badir-mocha mb-6" data-aos="fade-up">
-          Breaking Down Our Smart Contract
+          Smart Contract Functions
         </h2>
         
         <p className="text-xl text-badir-mocha mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="100">
-          The Badir donation platform is powered by a carefully crafted Ethereum smart contract. Let's explore the key components:
+          Explore the technical implementation of donation processing and security in our Ethereum smart contract:
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
