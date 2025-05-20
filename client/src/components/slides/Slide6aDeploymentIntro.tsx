@@ -1,52 +1,198 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ParticleNetwork from '../animations/ParticleNetwork';
 
-const Slide6aDeploymentIntro = () => {
-  const [activeStep, setActiveStep] = useState(1);
-  const [isAnimating, setIsAnimating] = useState(false);
-  
-  const steps = [
-    {
-      number: 1,
-      title: "What is Deployment?",
-      description: "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users.",
-      icon: "fa-rocket"
-    },
-    {
-      number: 2,
-      title: "Why Does It Matter?",
-      description: "Deployed smart contracts are immutable, meaning their code cannot be changed, ensuring trust and security for all users interacting with the contract.",
-      icon: "fa-lock"
-    },
-    {
-      number: 3,
-      title: "Our Deployment Process",
-      description: "We use Hardhat, an Ethereum development environment, to compile and deploy our donation smart contract to the blockchain network.",
-      icon: "fa-cogs"
-    }
+const DeploymentAnimation = () => {
+  const [step, setStep] = useState(0);
+  const [showTerminal, setShowTerminal] = useState(false);
+  const [terminalText, setTerminalText] = useState('');
+  const [contractAddress, setContractAddress] = useState('');
+
+  const terminalLines = [
+    '> npx hardhat run --network ethereum deploy.js',
+    'Compiling contract...',
+    'Contract compiled successfully!',
+    'Deploying contract to Ethereum network...',
+    'Waiting for confirmation...',
+    '✓ Transaction mined in block #16428790',
+    'Contract deployed successfully!',
+    'Contract address: 0x814EED06116D50b17b1d04bE5200b9699aa918e0'
   ];
-  
-  const handleStepClick = (stepNumber: number) => {
-    if (isAnimating) return;
-    
-    setIsAnimating(true);
-    setActiveStep(stepNumber);
-    
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 500);
+
+  useEffect(() => {
+    // Start the animation after component mounts
+    const timer1 = setTimeout(() => setStep(1), 1000);
+    const timer2 = setTimeout(() => setStep(2), 2000);
+    const timer3 = setTimeout(() => {
+      setStep(3);
+      setShowTerminal(true);
+      animateTerminal();
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
+
+  const animateTerminal = async () => {
+    for (let i = 0; i < terminalLines.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      setTerminalText(prev => prev + terminalLines[i] + '\n');
+      
+      // Extract contract address from last line
+      if (i === terminalLines.length - 1) {
+        setContractAddress('0x814EED06116D50b17b1d04bE5200b9699aa918e0');
+        setStep(4);
+      }
+    }
   };
-  
+
+  return (
+    <div className="relative h-[400px] w-full">
+      {/* Step 1: Smart Contract */}
+      <motion.div 
+        className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ 
+          opacity: step >= 0 ? 1 : 0, 
+          y: step >= 0 ? 0 : 50,
+          x: step >= 2 ? -100 : '-50%'
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="bg-white rounded-lg shadow-lg border-2 border-badir-rose w-[180px] h-[200px] p-4 flex flex-col items-center justify-center">
+          <div className="w-16 h-16 bg-badir-rose/10 rounded-full flex items-center justify-center mb-4">
+            <i className="fas fa-file-contract text-2xl text-badir-rose"></i>
+          </div>
+          <h4 className="font-medium text-badir-mocha text-center">Smart Contract</h4>
+          <p className="text-xs text-center text-badir-mocha/70 mt-2">Ready for deployment</p>
+        </div>
+      </motion.div>
+
+      {/* Step 2: Deployment Arrow */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        initial={{ opacity: 0, width: 0 }}
+        animate={{ 
+          opacity: step >= 1 ? 1 : 0,
+          width: step >= 1 ? 100 : 0
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="flex items-center">
+          <div className="h-1 bg-badir-rose flex-grow"></div>
+          <div className="text-badir-rose -mt-1">
+            <i className="fas fa-chevron-right"></i>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Step 3: Blockchain */}
+      <motion.div 
+        className="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ 
+          opacity: step >= 2 ? 1 : 0, 
+          y: step >= 2 ? 0 : 50,
+          x: step >= 2 ? 100 : '50%'
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="relative">
+          <div className="flex items-center justify-center">
+            {[1, 2, 3].map((block) => (
+              <div key={block} className="mx-1">
+                <motion.div 
+                  className="bg-badir-rose/20 w-16 h-16 rounded-lg flex items-center justify-center shadow-md border border-badir-rose/30"
+                  animate={{ 
+                    y: [0, -5, 0],
+                  }}
+                  transition={{ 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    delay: block * 0.2
+                  }}
+                >
+                  <i className="fas fa-cube text-badir-rose"></i>
+                </motion.div>
+                {block < 3 && (
+                  <div className="w-4 h-0.5 bg-badir-rose/50 mx-auto mt-2"></div>
+                )}
+              </div>
+            ))}
+          </div>
+          <motion.div 
+            className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-badir-rose rounded-full p-2 shadow-md"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: step >= 4 ? 1 : 0, 
+              scale: step >= 4 ? 1 : 0,
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            <i className="fas fa-check text-white"></i>
+          </motion.div>
+        </div>
+        <div className="text-center mt-4">
+          <p className="text-sm font-medium text-badir-mocha">Blockchain</p>
+        </div>
+      </motion.div>
+
+      {/* Terminal */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 bg-gray-900 rounded-lg overflow-hidden text-green-400 font-mono text-sm"
+        initial={{ height: 0 }}
+        animate={{ height: showTerminal ? 150 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="p-1 border-b border-gray-700 bg-gray-800 flex items-center">
+          <div className="flex items-center space-x-1 ml-2">
+            <div className="w-2 h-2 rounded-full bg-red-500"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          </div>
+          <span className="ml-2 text-xs text-gray-400">Deployment Terminal</span>
+        </div>
+        <pre className="p-2 text-xs whitespace-pre-wrap overflow-y-auto h-[120px]">
+          {terminalText}
+        </pre>
+      </motion.div>
+
+      {/* Contract Address Display */}
+      {contractAddress && (
+        <motion.div
+          className="absolute top-0 right-0 bg-white/90 backdrop-blur-sm rounded-lg border border-badir-rose/30 p-3 shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: step >= 4 ? 1 : 0, y: step >= 4 ? 0 : -20 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          <div className="flex items-center">
+            <div className="w-8 h-8 bg-badir-rose/10 rounded-full flex items-center justify-center mr-2">
+              <i className="fas fa-globe-americas text-badir-rose"></i>
+            </div>
+            <div>
+              <p className="text-xs text-badir-mocha/70">Contract Address:</p>
+              <p className="font-mono text-xs text-badir-mocha">{contractAddress}</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
+const Slide6aDeploymentIntro = () => {
   return (
     <section id="slide6a" className="slide relative overflow-hidden">
       {/* Tech background */}
       <ParticleNetwork variant="tech" density={15} />
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
       
-      <div className="slide-container">
+      <div className="slide-container flex flex-col items-center justify-center">
         <motion.div
-          className="max-w-6xl mx-auto"
+          className="w-full max-w-4xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -62,16 +208,6 @@ const Slide6aDeploymentIntro = () => {
               Smart Contract Deployment
             </motion.h2>
             
-            <motion.p 
-              className="text-xl text-badir-mocha mb-4 max-w-3xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: false }}
-            >
-              Understanding how we make our smart contract accessible on the blockchain
-            </motion.p>
-            
             <motion.div 
               className="h-0.5 w-32 bg-gradient-to-r from-transparent via-badir-rose to-transparent mx-auto mb-8"
               initial={{ width: 0 }}
@@ -80,225 +216,48 @@ const Slide6aDeploymentIntro = () => {
             />
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {/* Left side: Step selector */}
-            <div className="lg:col-span-2">
-              <motion.div
-                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-badir-tan/30"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <h3 className="text-2xl font-semibold text-badir-mocha mb-6">Deployment Steps</h3>
-                
-                {steps.map((step) => (
-                  <motion.div
-                    key={step.number}
-                    className={`flex items-start p-4 rounded-lg mb-4 cursor-pointer transition-all ${
-                      activeStep === step.number 
-                      ? 'bg-badir-rose text-white shadow-md' 
-                      : 'bg-badir-cream/50 text-badir-mocha hover:bg-badir-sand/30'
-                    }`}
-                    onClick={() => handleStepClick(step.number)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className={`flex-shrink-0 w-10 h-10 ${
-                      activeStep === step.number ? 'bg-white' : 'bg-badir-rose'
-                    } rounded-full flex items-center justify-center text-${
-                      activeStep === step.number ? 'badir-rose' : 'white'
-                    } mr-4 font-bold text-lg`}>
-                      {step.number}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-lg">{step.title}</h4>
-                      <p className={`text-sm ${activeStep === step.number ? 'text-white/90' : 'text-badir-mocha/70'}`}>
-                        Click to learn more
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-badir-tan/30">
+            {/* Definition */}
+            <motion.div
+              className="mb-10 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <p className="text-2xl text-badir-mocha/90 leading-relaxed font-medium">
+                "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users."
+              </p>
+              <div className="flex justify-center mt-4">
+                <div className="mx-auto w-20 h-1 bg-badir-rose/50 rounded-full"></div>
+              </div>
+            </motion.div>
             
-            {/* Right side: Step content */}
-            <div className="lg:col-span-3">
-              <motion.div
-                key={activeStep}
-                className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-badir-tan/30 h-full"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-badir-rose rounded-full flex items-center justify-center text-white text-2xl mr-6 shadow-md">
-                    <i className={`fas ${steps[activeStep - 1].icon}`}></i>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-badir-mocha">{steps[activeStep - 1].title}</h3>
+            {/* Why It Matters */}
+            <motion.div
+              className="mb-12 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <div className="flex justify-center mb-3">
+                <div className="bg-badir-rose/10 rounded-full p-3 text-badir-rose">
+                  <i className="fas fa-lock text-lg"></i>
                 </div>
-                
-                {activeStep === 1 && (
-                  <p className="text-2xl text-badir-mocha/90 mb-8 leading-relaxed text-center font-medium">
-                    "Deployment is the process of making a smart contract live on the blockchain network. Once deployed, the contract becomes permanent and accessible to users."
-                  </p>
-                )}
-                
-                {activeStep === 2 && (
-                  <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
-                    {steps[activeStep - 1].description}
-                  </p>
-                )}
-                
-                {activeStep === 3 && (
-                  <p className="text-lg text-badir-mocha/90 mb-8 leading-relaxed">
-                    {steps[activeStep - 1].description}
-                  </p>
-                )}
-                
-                {activeStep === 1 && (
-                  <div className="flex justify-center">
-                    <div className="mx-auto w-20 h-1 bg-badir-rose/50 rounded-full"></div>
-                  </div>
-                )}
-                
-                {activeStep === 2 && (
-                  <div className="flex justify-center">
-                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-badir-tan/20 shadow-md max-w-2xl">
-                      <h4 className="font-semibold text-badir-mocha mb-4 text-center">Smart Contract Immutability Simulation</h4>
-                      
-                      <div className="relative flex items-center justify-center mb-6 h-64">
-                        {/* Blockchain representation */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
-                            <i className="fas fa-cube text-badir-rose"></i>
-                          </div>
-                          <div className="w-24 h-1 bg-badir-rose/30"></div>
-                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
-                            <i className="fas fa-cube text-badir-rose"></i>
-                          </div>
-                          <div className="w-24 h-1 bg-badir-rose/30"></div>
-                          <div className="w-12 h-12 bg-badir-rose/20 rounded-full flex items-center justify-center animate-pulse">
-                            <i className="fas fa-cube text-badir-rose"></i>
-                          </div>
-                        </div>
-                        
-                        {/* Contract in center */}
-                        <div className="relative z-10 bg-white rounded-xl border-2 border-badir-rose shadow-lg p-4 w-48 h-48 flex flex-col items-center justify-center">
-                          <div className="w-16 h-16 bg-badir-rose/10 rounded-full flex items-center justify-center mb-3">
-                            <i className="fas fa-file-contract text-2xl text-badir-rose"></i>
-                          </div>
-                          <h5 className="font-semibold text-badir-mocha mb-1">Smart Contract</h5>
-                          <p className="text-xs text-center text-badir-mocha/70">Once deployed, cannot be modified</p>
-                          
-                          <div className="absolute -top-3 -right-3 bg-badir-rose rounded-full p-2 shadow-md animate-pulse">
-                            <i className="fas fa-lock text-white"></i>
-                          </div>
-                        </div>
-                        
-                        {/* Failed edit attempts */}
-                        <div className="absolute top-4 left-4 transform rotate-12 opacity-70">
-                          <i className="fas fa-edit text-red-500 text-2xl"></i>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-full h-0.5 bg-red-500 transform rotate-45"></div>
-                          </div>
-                        </div>
-                        <div className="absolute bottom-4 right-4 transform -rotate-12 opacity-70">
-                          <i className="fas fa-eraser text-red-500 text-2xl"></i>
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-full h-0.5 bg-red-500 transform rotate-45"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="text-center mt-2">
-                        <p className="text-badir-mocha/80 font-medium">
-                          "Deploy once, deploy right. There's no delete button on the blockchain."
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {activeStep === 3 && (
-                  <div className="space-y-6">
-                    <div className="bg-gray-900 rounded-lg p-5 font-mono text-sm text-white/90 overflow-x-auto shadow-md">
-                      <div className="flex items-center mb-3 border-b border-white/10 pb-2">
-                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-red-500 mr-1.5"></div>
-                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-yellow-500 mr-1.5"></div>
-                        <div className="flex-shrink-0 w-3 h-3 rounded-full bg-green-500 mr-1.5"></div>
-                        <span className="ml-2 text-xs text-white/60">deploy.js</span>
-                      </div>
-                      <pre className="text-white/80">
-{`const hre = require("hardhat");
-
-async function main() {
-  console.log("Deploying Donation contract...");
-
-  // Get the contract factory
-  const Donation = await hre.ethers.getContractFactory("Donation");
-  
-  // Use charity address
-  const charityAddress = "0x814EED06116D50b17b1d04bE5200b9699aa918e0"; 
-  
-  console.log("Using charity address:", charityAddress);
-  
-  // Deploy the contract with your charity address
-  const donation = await Donation.deploy(charityAddress);
-
-  // Wait for deployment
-  await donation.waitForDeployment();
-  
-  // Get the deployed contract address
-  const deployedAddress = await donation.getAddress();
-  
-  console.log("Donation contract deployed to:", deployedAddress);
-}`}
-                      </pre>
-                    </div>
-                    
-                    <div className="bg-badir-sand/20 rounded-xl p-6 border border-badir-tan/20">
-                      <h4 className="font-semibold text-badir-mocha mb-4 flex items-center">
-                        <i className="fas fa-terminal text-badir-rose mr-2"></i>
-                        Deployment Steps
-                      </h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">1</div>
-                          <div className="text-badir-mocha/90 text-sm">
-                            <span className="font-medium">Compile Contract:</span> Convert Solidity code to bytecode
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">2</div>
-                          <div className="text-badir-mocha/90 text-sm">
-                            <span className="font-medium">Initialize Parameters:</span> Set the charity address
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">3</div>
-                          <div className="text-badir-mocha/90 text-sm">
-                            <span className="font-medium">Submit Transaction:</span> Send deployment transaction to network
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">4</div>
-                          <div className="text-badir-mocha/90 text-sm">
-                            <span className="font-medium">Wait for Confirmation:</span> Transaction is mined into a block
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-badir-rose/90 text-white flex items-center justify-center mr-3 shadow-sm font-medium">5</div>
-                          <div className="text-badir-mocha/90 text-sm">
-                            <span className="font-medium">Contract Address:</span> Receive unique address for interaction
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            </div>
+              </div>
+              <p className="text-lg text-badir-mocha/90 max-w-2xl mx-auto">
+                <span className="font-semibold">Why It Matters:</span> Deployed smart contracts are immutable, meaning their code cannot be changed, ensuring trust and security for all users.
+              </p>
+            </motion.div>
+            
+            {/* Deployment Animation */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <h3 className="text-xl font-semibold text-badir-mocha text-center mb-6">Deployment Simulation</h3>
+              <DeploymentAnimation />
+            </motion.div>
           </div>
         </motion.div>
       </div>
