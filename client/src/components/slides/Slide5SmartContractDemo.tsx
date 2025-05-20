@@ -52,12 +52,12 @@ const Slide5SmartContractDemo = () => {
   return (
     <section id="slide5" className="slide relative overflow-hidden">
       {/* Tech background */}
-      <ParticleNetwork variant="tech" density={15} />
+      <ParticleNetwork variant="tech" density={15} color={['#38B6FF', '#00A7E1', '#00D474']} />
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
       
       <div className="slide-container">
         <motion.div
-          className="max-w-6xl mx-auto tech-border p-6 md:p-8 tech-card"
+          className="max-w-6xl mx-auto tech-border p-6 md:p-8 bg-badir-sand/90 backdrop-blur-sm rounded-lg border border-badir-tan/30 shadow-lg"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -95,7 +95,7 @@ const Slide5SmartContractDemo = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-badir-tan/20"
+            className="bg-badir-sand/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-badir-tan/20"
           >
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
               <h3 className="text-2xl font-semibold text-badir-mocha">Donation Verification Portal</h3>
@@ -107,39 +107,39 @@ const Slide5SmartContractDemo = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
               <motion.div
-                className="bg-gradient-to-br from-badir-cream/30 to-badir-sand/20 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
+                className="bg-gradient-to-br from-badir-cream/50 to-badir-sand/90 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
               >
                 <div className="text-3xl font-bold text-badir-mocha mb-2">8.0 ETH</div>
-                <div className="text-sm text-badir-mocha/70">Total Donations</div>
-                <div className="h-1 w-16 bg-badir-rose/50 rounded-full mt-3"></div>
+                <div className="text-sm text-badir-mocha/90">Total Donations</div>
+                <div className="h-1 w-16 bg-badir-rose rounded-full mt-3"></div>
               </motion.div>
               
               <motion.div
-                className="bg-gradient-to-br from-badir-cream/30 to-badir-sand/20 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
+                className="bg-gradient-to-br from-badir-cream/50 to-badir-sand/90 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
               >
                 <div className="text-3xl font-bold text-badir-mocha mb-2">6.0 ETH</div>
-                <div className="text-sm text-badir-mocha/70">Funds Distributed</div>
-                <div className="h-1 w-16 bg-badir-rose/50 rounded-full mt-3"></div>
+                <div className="text-sm text-badir-mocha/90">Funds Distributed</div>
+                <div className="h-1 w-16 bg-badir-tan rounded-full mt-3"></div>
               </motion.div>
               
               <motion.div
-                className="bg-gradient-to-br from-badir-cream/30 to-badir-sand/20 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
+                className="bg-gradient-to-br from-badir-cream/50 to-badir-sand/90 rounded-xl p-5 flex flex-col items-center justify-center text-center shadow-sm border border-badir-tan/30"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
                 whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
               >
                 <div className="text-3xl font-bold text-badir-mocha mb-2">2.0 ETH</div>
-                <div className="text-sm text-badir-mocha/70">Available Balance</div>
-                <div className="h-1 w-16 bg-badir-rose/50 rounded-full mt-3"></div>
+                <div className="text-sm text-badir-mocha/90">Available Balance</div>
+                <div className="h-1 w-16 bg-badir-neon rounded-full mt-3"></div>
               </motion.div>
             </div>
             

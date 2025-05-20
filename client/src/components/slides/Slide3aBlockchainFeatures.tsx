@@ -28,12 +28,12 @@ const Slide3aBlockchainFeatures = () => {
   return (
     <section id="slide3a" className="slide relative overflow-hidden">
       {/* Tech background */}
-      <ParticleNetwork variant="tech" density={15} />
+      <ParticleNetwork variant="tech" density={15} color={['#38B6FF', '#00A7E1', '#00D474']} />
       <div className="absolute inset-0 bg-gradient-to-b from-badir-cream via-badir-cream to-badir-cream/80 -z-10" />
       
       <div className="slide-container flex flex-col justify-center items-center">
         <motion.div
-          className="max-w-5xl mx-auto p-8 md:p-12 backdrop-blur-sm bg-white/30 rounded-2xl border border-badir-tan/30 shadow-xl"
+          className="max-w-5xl mx-auto p-8 md:p-12 backdrop-blur-sm bg-badir-sand/80 rounded-2xl border border-badir-tan/30 shadow-xl"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -79,7 +79,7 @@ const Slide3aBlockchainFeatures = () => {
                 viewport={{ once: false, amount: 0.5 }}
               >
                 <div className="flex items-start space-x-4">
-                  <div className="bg-badir-rose/90 rounded-full p-4 text-white flex-shrink-0 shadow-md w-12 h-12 flex items-center justify-center">
+                  <div className="bg-badir-rose rounded-full p-4 text-badir-mocha flex-shrink-0 shadow-md w-12 h-12 flex items-center justify-center">
                     <i className={`fas ${feature.icon} text-lg`}></i>
                   </div>
                   <div>
@@ -92,7 +92,7 @@ const Slide3aBlockchainFeatures = () => {
                   <div className="flex justify-between items-center">
                     <div className="w-full bg-badir-tan/20 h-1 rounded-full overflow-hidden">
                       <motion.div 
-                        className="h-full bg-gradient-to-r from-badir-rose to-badir-tan rounded-full"
+                        className="h-full bg-gradient-to-r from-badir-tan to-badir-rose rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: '100%' }}
                         transition={{ duration: 1, delay: 0.4 + (i * 0.1) }}

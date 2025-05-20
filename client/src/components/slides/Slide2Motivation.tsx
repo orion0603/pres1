@@ -45,7 +45,7 @@ const Slide2Motivation = () => {
           Project Motivation
         </motion.h2>
         
-        <div className="bg-badir-tan rounded-2xl shadow-lg p-8 md:p-12">
+        <div className="bg-badir-sand rounded-2xl shadow-lg p-8 md:p-12">
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             variants={container}
@@ -57,10 +57,10 @@ const Slide2Motivation = () => {
               <motion.div 
                 key={index}
                 variants={item}
-                className="bg-badir-cream rounded-xl p-6 shadow-md"
+                className="bg-badir-cream rounded-xl p-6 shadow-md border border-badir-tan/30"
               >
                 <div className="flex items-start mb-4">
-                  <div className="bg-badir-rose rounded-full p-3 mr-4 text-white">
+                  <div className="bg-badir-rose rounded-full p-3 mr-4 text-badir-mocha">
                     <i className={`fas ${motivation.icon} text-xl`}></i>
                   </div>
                   <h3 className="text-xl font-semibold text-badir-mocha">
