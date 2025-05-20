@@ -98,15 +98,15 @@ total = contract.functions.getTotalDonations().call()`,
                   </div>
                   <p className="text-badir-cream/90 mb-4">{step.description}</p>
                   <div className={`rounded-lg p-3 ${
-                    index % 2 === 0 ? 'bg-badir-mocha' : 'bg-badir-grey bg-opacity-20'
+                    index % 2 === 0 ? 'bg-badir-mocha' : 'bg-badir-background/95 border border-badir-teal/30'
                   }`}>
                     <pre className={`text-xs ${
-                      index % 2 === 0 ? 'text-badir-grey' : 'text-badir-mocha'
+                      index % 2 === 0 ? 'text-badir-cream' : 'text-badir-cream'
                     }`}>{step.code}</pre>
                   </div>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {step.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="bg-badir-sand px-2 py-1 rounded-full text-xs font-medium">
+                      <span key={tagIndex} className="bg-badir-teal/20 border border-badir-teal/30 text-badir-cream px-2 py-1 rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
