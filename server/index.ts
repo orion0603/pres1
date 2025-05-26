@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 
   // ✅ Safe port binding for Windows
   const port = process.env.PORT ? parseInt(process.env.PORT) : 5000;
-  server.listen(port, "localhost", () => {
-    log(`✅ Server is running on http://localhost:${port}`);
+  server.listen(port, '0.0.0.0', () => {
+    log(`✅ Server is running on http://0.0.0.0:${port}`);
   });
 })();
